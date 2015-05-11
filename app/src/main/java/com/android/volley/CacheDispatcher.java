@@ -71,7 +71,7 @@ public class CacheDispatcher extends Thread {
      * Forces this dispatcher to quit immediately.  If any requests are still in
      * the queue, they are not guaranteed to be processed.
      */
-    public void koquit() {
+    public void quit() {
         mQuit = true;
         interrupt();
     }

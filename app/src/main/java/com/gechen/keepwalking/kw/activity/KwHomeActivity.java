@@ -6,11 +6,13 @@ import android.view.View;
 import android.widget.Button;
 
 import com.gechen.keepwalking.R;
+import com.gechen.keepwalking.kw.activity.baidumap.KwBaiduMapActivity;
 import com.gechen.keepwalking.kw.activity.base.BaseActivity;
 
 
 public class KwHomeActivity extends BaseActivity {
-    private Button btnBounceScrollView;
+    private Button mBounceScrollView;
+    private Button mBaiduMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,20 +23,26 @@ public class KwHomeActivity extends BaseActivity {
     }
 
    private void setupView() {
-        btnBounceScrollView = (Button) findViewById(R.id.btn_bounce_scroll_view);
+       mBounceScrollView = (Button) findViewById(R.id.btn_bounce_scroll_view);
+       mBaiduMap = (Button) findViewById(R.id.btn_baidu_map);
 
-        String str = String.format("application/json; charset=%s", "utf-8");
-        btnBounceScrollView.setText(str);
-       btnBounceScrollView.setOnClickListener(this);
+       String str = String.format("application/json; charset=%s", "utf-8");
+       mBounceScrollView.setText(str);
+       mBounceScrollView.setOnClickListener(this);
+       mBaiduMap.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
+        Intent intent = null;
         switch (view.getId()) {
             case R.id.btn_bounce_scroll_view:
-                Intent intent = new Intent(getApplicationContext(), BounceScrollViewActivity.class);
+                intent = new Intent(getApplicationContext(), BounceScrollViewActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.btn_baidu_map:
+                intent = new Intent(getApplicationContext(), KwBaiduMapActivity.class);
+                startActivity(intent);
             default:
                 break;
         }

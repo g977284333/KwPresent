@@ -35,8 +35,4 @@ public class BaseActivity extends Activity  implements View.OnClickListener{
 
     }
 
-    protected void gotoActivity(Class clazz) {
-        Intent intent = new Intent(getApplicationContext(), clazz);
-        startActivity(intent);
-    }
 }
