@@ -1,8 +1,7 @@
-package com.gechen.keepwalking.kw.activity.base;
+package com.gechen.keepwalking.common.base;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
 import com.gechen.keepwalking.common.utils.Logger;
@@ -10,7 +9,7 @@ import com.gechen.keepwalking.common.utils.Logger;
 /**
  * Created by G-chen on 2015-3-15.
  */
-public class BaseActivity extends Activity  implements View.OnClickListener{
+public class BaseActivity extends FragmentActivity implements View.OnClickListener{
     protected final String TAG = getClass().getSimpleName();
 
     @Override

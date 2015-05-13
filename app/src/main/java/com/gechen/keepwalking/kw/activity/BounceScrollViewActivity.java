@@ -3,7 +3,7 @@ package com.gechen.keepwalking.kw.activity;
 import android.os.Bundle;
 
 import com.gechen.keepwalking.R;
-import com.gechen.keepwalking.kw.activity.base.BaseActivity;
+import com.gechen.keepwalking.common.base.BaseActivity;
 
 public class BounceScrollViewActivity extends BaseActivity {
 

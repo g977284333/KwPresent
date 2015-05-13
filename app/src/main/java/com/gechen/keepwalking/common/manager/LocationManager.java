@@ -8,17 +8,14 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.LocationClientOption.LocationMode;
 import com.gechen.keepwalking.common.utils.LogUtil;
+import com.gechen.keepwalking.common.constants.ColorType;
 
 /**
  * 百度定位管理
  * Created by G-chen on 2015-5-12.
  */
 public class LocationManager implements IManager{
-    public static final String GC_COLOR = "gcj02 ";
-    public static final String BD_COLOR = "bd09";
-    public static final String BD_11_COLOR = "bd09ll";
-
-    public static  final int SPAN = 5000;
+    private static  final int DEFAULT_SPAN = 5000;
 
     private LocationClient mLocationClient = null;
     private LocationClientOption mOption = null;
@@ -44,6 +41,7 @@ public class LocationManager implements IManager{
         if(mLocationClient == null) {
             mLocationClient = new LocationClient(context);
         }
+
         mLocationClient.registerLocationListener(mLocationListener);
     }
 
@@ -87,8 +85,8 @@ public class LocationManager implements IManager{
     private LocationClientOption getDefaultLocationClientOption() {
         LocationClientOption option = new LocationClientOption();
         option.setLocationMode(LocationMode.Hight_Accuracy);
-        option.setCoorType(GC_COLOR);
-        option.setScanSpan(SPAN);
+        option.setCoorType(ColorType.GC_COLOR);
+        option.setScanSpan(DEFAULT_SPAN);
         option.setIsNeedAddress(true);
         option.setNeedDeviceDirect(true);
         return option;

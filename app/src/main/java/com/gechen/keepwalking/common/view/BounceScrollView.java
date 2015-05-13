@@ -22,7 +22,7 @@ public class BounceScrollView extends ScrollView {
 
     private boolean isCount = false;                  // 是否开始计算移动的距离
 
-    private int size = 2;                              // 可以拉伸的长度为屏幕宽度的比值
+    private int size = 6;                              // 可以拉伸的长度为屏幕宽度的比值
 
     public BounceScrollView(Context context) {
         super(context);
