@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
-import com.gechen.keepwalking.common.utils.Logger;
+import com.gechen.keepwalking.common.utils.LogUtil;
 
 /**
  * Created by G-chen on 2015-3-15.
@@ -20,13 +20,13 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onStart() {
         super.onStart();
-        Logger.debugI(TAG, "className<< " + TAG + " --- started");
+        LogUtil.debugI(TAG, "className<< " + TAG + " --- started");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Logger.debugI(TAG, "className<< " + TAG + " --- finished");
+        LogUtil.debugI(TAG, "className<< " + TAG + " --- finished");
     }
 
     @Override

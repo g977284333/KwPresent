@@ -9,6 +9,7 @@ import com.baidu.location.LocationClientOption;
 import com.baidu.location.LocationClientOption.LocationMode;
 import com.gechen.keepwalking.common.utils.LogUtil;
 import com.gechen.keepwalking.common.constants.BdColorType;
+import com.gechen.keepwalking.kw.KwApplication;
 
 /**
  * 百度定位管理
@@ -19,44 +20,30 @@ public class LocationManager implements IManager{
 
     private LocationClient mLocationClient = null;
     private LocationClientOption mOption = null;
-    private BDLocationListener mLocationListener = new MyLocationListener();
-
-    private static LocationManager INSTANCE = null;
-
-    private LocationManager() {}
-
-    public static LocationManager getInstance() {
-        if(INSTANCE == null) {
-            synchronized (LocationManager.class) {
-                if(INSTANCE == null) {
-                    INSTANCE = new LocationManager();
-                }
-            }
-        }
-        return INSTANCE;
-    }
+    private BDLocation mBDLocation = null;
 
     @Override
-    public void onInit(Context context) {
-        if(mLocationClient == null) {
-            mLocationClient = new LocationClient(context);
-        }
+    public void onInit() {
+        KwApplication application = KwApplication.getInstance();
+        mLocationClient = new LocationClient(application);
+        mBDLocation = mLocationClient.getLastKnownLocation();
 
-        mLocationClient.registerLocationListener(mLocationListener);
+        mLocationClient.setLocOption(getDefaultLocationClientOption());
+        mLocationClient.registerLocationListener(mBDLocationListener);
     }
 
     @Override
     public void onExit() {
-        stop();
+        stopLocation();
     }
 
-    public void start() {
+    public void startLocation() {
         if(mLocationClient != null && !mLocationClient.isStarted()) {
             mLocationClient.start();
         }
     }
 
-    public void stop() {
+    public void stopLocation() {
         if(isReadyForLocation()) {
             mLocationClient.stop();
         }
@@ -85,45 +72,18 @@ public class LocationManager implements IManager{
     private LocationClientOption getDefaultLocationClientOption() {
         LocationClientOption option = new LocationClientOption();
         option.setLocationMode(LocationMode.Hight_Accuracy);
-        option.setCoorType(BdColorType.GC_COLOR);
+        option.setCoorType(BdColorType.BD_11_COLOR);
         option.setScanSpan(DEFAULT_SPAN);
         option.setIsNeedAddress(true);
         option.setNeedDeviceDirect(true);
         return option;
     }
 
-    private class MyLocationListener implements BDLocationListener {
+    private BDLocationListener mBDLocationListener  = new  BDLocationListener() {
 
         @Override
         public void onReceiveLocation(BDLocation location) {
-            StringBuffer sb = new StringBuffer(256);
-            sb.append("time : ");
-            sb.append(location.getTime());
-            sb.append("\nerror code : ");
-            sb.append(location.getLocType());
-            sb.append("\nlatitude : ");
-            sb.append(location.getLatitude());
-            sb.append("\nlontitude : ");
-            sb.append(location.getLongitude());
-            sb.append("\nradius : ");
-            sb.append(location.getRadius());
-            if (location.getLocType() == BDLocation.TypeGpsLocation){
-                sb.append("\nspeed : ");
-                sb.append(location.getSpeed());
-                sb.append("\nsatellite : ");
-                sb.append(location.getSatelliteNumber());
-                sb.append("\ndirection : ");
-                sb.append("\naddr : ");
-                sb.append(location.getAddrStr());
-                sb.append(location.getDirection());
-            } else if (location.getLocType() == BDLocation.TypeNetWorkLocation){
-                sb.append("\naddr : ");
-                sb.append(location.getAddrStr());
-                //运营商信息
-                sb.append("\noperationers : ");
-                sb.append(location.getOperators());
-            }
-            LogUtil.debugD("LocationManager", sb.toString());
+           mBDLocation = location;
         }
-    }
+    };
 }

@@ -13,14 +13,6 @@ import java.security.MessageDigest;
  */
 public class SecretUtil {
 
-	/**
-	 * @Title: md5 
-	 * @说       明: md5加密
-	 * @参       数: @param str
-	 * @参       数: @return   
-	 * @return String    返回类型 
-	 * @throws
-	 */
 	public static String md5(String str) {
 		if(TextUtils.isEmpty(str)) {
 			return null;
@@ -34,14 +26,6 @@ public class SecretUtil {
 		}
 	}
 
-	/**
-	 * @Title: encodeHex 
-	 * @说       明: 将字节数组中的字节转换成一组十六进制值的数组
-	 * @参       数: @param digest
-	 * @参       数: @return   
-	 * @return String    返回类型 
-	 * @throws
-	 */
 	private static String encodeHex(byte[] digest) {
 		StringBuilder hexString = new StringBuilder();
 		String hex = null;
@@ -54,5 +38,4 @@ public class SecretUtil {
 		}
 		return hexString.toString();
 	}
-
 }

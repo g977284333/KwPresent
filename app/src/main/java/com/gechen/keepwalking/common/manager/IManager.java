@@ -7,7 +7,7 @@ import android.content.Context;
  */
 public interface IManager {
 
-    void onInit(Context context);
+    void onInit();
 
     void onExit();
 }

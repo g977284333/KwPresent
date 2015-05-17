@@ -12,7 +12,11 @@ import com.gechen.keepwalking.common.utils.StrictModeWrapper;
  * Created by G-chen on 2015-3-15.
  */
 public class KwApplication extends Application{
-    public static Context mContext = null;
+    public static KwApplication mInstance = null;
+
+    public KwApplication() {
+        mInstance = this;
+    }
 
     @Override
     public void onCreate() {
@@ -21,12 +25,13 @@ public class KwApplication extends Application{
     }
 
     private void init() {
-        mContext = this;
-
         SDKInitializer.initialize(this);
         CrashHandler.getInstance().init(this);
         StrictModeWrapper.init(this);
     }
 
+    public static KwApplication getInstance() {
+        return mInstance;
+    }
 
 }

@@ -17,17 +17,13 @@ import android.os.storage.StorageManager;
  */
 public class SdCardUtil {
 
-	/**
-	 * sd卡是否挂载
-	 */
+	// sd卡是否挂载
 	public static boolean isMounted() {
 		return Environment.MEDIA_MOUNTED
 				.equals(Environment.getExternalStorageState());
 	}
 	
-	/**
-	 * sd卡路径
-	 */
+	// sd卡路径
 	public static String getSdCardPath() {
 		if(isMounted()) {
 			return Environment.getExternalStorageDirectory().getAbsolutePath();			
@@ -35,51 +31,37 @@ public class SdCardUtil {
 		return null;
 	}
 
-    /**
-     * 获取在sd卡上的绝对路径
-     */
+    // 获取在sd卡上的绝对路径
     public static String getAbsolutePath(String path) {
         return getSdCardPath() + path;
     }
 	
-	/**
-	 * 获取sd卡容量
-	 */
+	// 获取sd卡容量
 	public static long getWholeSdSize() {
 		return getStorageSize(getSdCardPath());
 	}
 	
-	/**
-	 * 获取sd卡可用容量
-	 */
+	// 获取sd卡可用容量
 	public static long getAvailSdSize() {
 		return getAvailStorageSize(getSdCardPath());
 	}
 	
-	/**
-	 * 手机内存路径
-	 */
+	// 手机内存路径
 	public static String getDataDirectoryPath() {
 		return Environment.getDataDirectory().getAbsolutePath();
 	}	
 	
-	/**
-	 * 获取手机内存容量
-	 */
+	// 获取手机内存容量
 	public static long getWholeRAMSize() {
 		return getStorageSize(getDataDirectoryPath());
 	}
 	
-	/**
-	 * 获取手机内存可用容量
-	 */
+	// 获取手机内存可用容量
 	public static long getAvailMemorySize() {
 		return getAvailStorageSize(getDataDirectoryPath());
 	}
 	
-	/**
-	 * 获取制定存储器的容量
-	 */
+	// 获取制定存储器的容量
 	@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     private static long getStorageSize(String path) {
 		StatFs statFs = new StatFs(path);
@@ -90,9 +72,7 @@ public class SdCardUtil {
 		return blockSize * blockCount;	
 	}
 	
-	/**
-	 * 获取指定存储器的可用容量
-	 */
+	// 获取指定存储器的可用容量
 	@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     private static long getAvailStorageSize(String path) {
 		StatFs statFs = new StatFs(path);
