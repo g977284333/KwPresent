@@ -16,6 +16,27 @@
             android:layout_height="wrap_content"
             android:gravity="center"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="打开网络设置"
+            android:onClick="openWifiSetting"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="打开GPS设置"
+            android:onClick="openGPSSetting"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="打开GPS设置"
+            android:onClick="openBluetoothSetting"/>
+
     </LinearLayout>
 
 </com.kw_support.view.BounceScrollView>

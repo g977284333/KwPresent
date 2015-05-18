@@ -26,8 +26,6 @@ public class KwHomeActivity extends BaseActivity {
        mBounceScrollView = (Button) findViewById(R.id.btn_bounce_scroll_view);
        mBaiduMap = (Button) findViewById(R.id.btn_baidu_map);
 
-       String str = String.format("application/json; charset=%s", "utf-8");
-       mBounceScrollView.setText(str);
        mBounceScrollView.setOnClickListener(this);
        mBaiduMap.setOnClickListener(this);
     }
