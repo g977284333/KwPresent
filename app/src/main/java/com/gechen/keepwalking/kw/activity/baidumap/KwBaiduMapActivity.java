@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.baidu.mapapi.map.MapView;
 import com.gechen.keepwalking.R;
 import com.gechen.keepwalking.common.manager.LocationManager;
-import com.gechen.keepwalking.common.base.BaseActivity;
+import com.kw_support.base.BaseActivity;
 
 /**
  * demo for baidu map
@@ -24,8 +24,8 @@ public class KwBaiduMapActivity extends BaseActivity {
     }
 
     private void initLocation() {
-        LocationManager.getInstance().onInit(getApplication());
-        LocationManager.getInstance().start();
+        LocationManager.getInstance().onInit();
+        LocationManager.getInstance().startLocation();
     }
 
     private void initView() {
@@ -46,7 +46,7 @@ public class KwBaiduMapActivity extends BaseActivity {
 
     @Override
     protected void onStop() {
-        LocationManager.getInstance().stop();
+        LocationManager.getInstance().stopLocation();
         super.onStop();
     }
 

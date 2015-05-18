@@ -1,7 +1,6 @@
 package com.gechen.keepwalking.common.constants;
 
 /**
- * 百度地图的ColorType
  * Created by G-chen on 2015-5-13.
  */
 public class BdColorType {

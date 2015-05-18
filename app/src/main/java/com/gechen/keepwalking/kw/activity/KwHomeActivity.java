@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import com.gechen.keepwalking.R;
 import com.gechen.keepwalking.kw.activity.baidumap.KwBaiduMapActivity;
-import com.gechen.keepwalking.common.base.BaseActivity;
+import com.kw_support.base.BaseActivity;
 
 
 public class KwHomeActivity extends BaseActivity {

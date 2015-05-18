@@ -2,16 +2,16 @@ package com.gechen.keepwalking.kw
         ;
 
 import android.app.Application;
-import android.content.Context;
 
 import com.baidu.mapapi.SDKInitializer;
-import com.gechen.keepwalking.common.utils.CrashHandler;
-import com.gechen.keepwalking.common.utils.StrictModeWrapper;
+import com.kw_support.base.BaseApplication;
+import com.kw_support.utils.CrashHandler;
+import com.kw_support.utils.StrictModeWrapper;
 
 /**
  * Created by G-chen on 2015-3-15.
  */
-public class KwApplication extends Application{
+public class KwApplication extends BaseApplication {
     public static KwApplication mInstance = null;
 
     public KwApplication() {

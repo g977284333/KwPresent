@@ -1,26 +1,38 @@
 package com.gechen.keepwalking.common.manager;
 
-import android.content.Context;
-
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.LocationClientOption.LocationMode;
-import com.gechen.keepwalking.common.utils.LogUtil;
 import com.gechen.keepwalking.common.constants.BdColorType;
 import com.gechen.keepwalking.kw.KwApplication;
+import com.kw_support.manager.IManager;
 
 /**
- * 百度定位管理
  * Created by G-chen on 2015-5-12.
  */
-public class LocationManager implements IManager{
+public class LocationManager implements IManager {
     private static  final int DEFAULT_SPAN = 5000;
 
     private LocationClient mLocationClient = null;
     private LocationClientOption mOption = null;
     private BDLocation mBDLocation = null;
+
+    private static LocationManager instance = null;
+
+    private LocationManager() {}
+
+    public static LocationManager getInstance() {
+        if(instance == null) {
+            synchronized (LocationManager.class) {
+                if(instance == null) {
+                    instance = new LocationManager();
+                }
+            }
+        }
+        return instance;
+    }
 
     @Override
     public void onInit() {
