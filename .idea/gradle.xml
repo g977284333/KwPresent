@@ -10,7 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/keepwalking_support" />
+            <option value="$PROJECT_DIR$/kw_support" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -1,1 +1,1 @@
-include ':app', ':keepwalking_support'
+include ':app', ':kw_support'

@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KwPresent.iml" filepath="$PROJECT_DIR$/KwPresent.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/keepwalking_support/keepwalking_support.iml" filepath="$PROJECT_DIR$/keepwalking_support/keepwalking_support.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kw_support/kw_support.iml" filepath="$PROJECT_DIR$/kw_support/kw_support.iml" />
     </modules>
   </component>
 </project>
