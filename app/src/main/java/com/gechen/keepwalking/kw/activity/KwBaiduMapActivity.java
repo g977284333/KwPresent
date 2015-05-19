@@ -1,4 +1,4 @@
-package com.gechen.keepwalking.kw.activity.baidumap;
+package com.gechen.keepwalking.kw.activity;
 
 import android.os.Bundle;
 
@@ -17,7 +17,7 @@ public class KwBaiduMapActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kwbaidumap_activitiy);
+        setContentView(R.layout.activitiy_baidumap);
 
         initView();
         initLocation();

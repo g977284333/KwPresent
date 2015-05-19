@@ -33,13 +33,13 @@ import com.kw_support.constants.GlobalConfig;
  */
 public class CrashHandler implements UncaughtExceptionHandler {
 	public static final String TAG = "CrashHandler";
-	
+
 	private UncaughtExceptionHandler mDefaultHandler;
-	
+
 	private static CrashHandler INSTANCE = new CrashHandler();
-	
+
 	private Context mContext;
-	
+
 	// 用来存储设备信息和异常信息
 	private Map<String, String>  infos = new HashMap<String, String>();
 	
@@ -88,7 +88,8 @@ public class CrashHandler implements UncaughtExceptionHandler {
 			@Override
 			public void run() {
 				Looper.prepare();
-				Toast.makeText(mContext, "很抱歉，程序出现异常，即将退出！", Toast.LENGTH_SHORT).show();
+				Toast.makeText(mContext, "很抱歉，程序出现异常，即将退出！",
+						Toast.LENGTH_SHORT).show();
 				Looper.loop();
 			};
 		}.start();

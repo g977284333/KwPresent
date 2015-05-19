@@ -49,8 +49,13 @@
         <activity
             android:name=".kw.activity.BounceScrollViewActivity"
             android:screenOrientation="portrait"/>
+
         <activity
-            android:name=".kw.activity.baidumap.KwBaiduMapActivity"
+            android:name=".kw.activity.KwBaiduMapActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".kw.activity.KwAdapterActivity"
             android:screenOrientation="portrait"/>
 
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"/>

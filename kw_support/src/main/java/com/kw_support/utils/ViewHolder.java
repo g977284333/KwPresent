@@ -62,7 +62,7 @@ public class ViewHolder {
 		return this;
 	}
 	
-	public int getPostion() {
+	public int getPosition() {
 		return mPosition;
 	}
 }
