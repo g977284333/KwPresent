@@ -191,7 +191,28 @@ public class AppUtil {
 
 	public static void openBluetoothWithRequest(Activity activity, int RequestCode) {
 		Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-		activity.startActivityForResult(intent,RequestCode );
+		activity.startActivityForResult(intent, RequestCode);
+	}
+
+	/**
+	 * get recommend default thread pool size
+	 *
+	 * @return if 2 * availableProcessors + 1 less than 8, return it, else return 8;
+	 * @see {@link #getDefaultThreadPoolSize(int)} max is 8
+	 */
+	public static int getDefaultThreadPoolSize() {
+		return getDefaultThreadPoolSize(8);
+	}
+
+	/**
+	 * get recommend default thread pool size
+	 *
+	 * @param max
+	 * @return if 2 * availableProcessors + 1 less than max, return it, else return max;
+	 */
+	public static int getDefaultThreadPoolSize(int max) {
+		int availableProcessors = 2 * Runtime.getRuntime().availableProcessors() + 1;
+		return availableProcessors > max ? max : availableProcessors;
 	}
 
 	/**
