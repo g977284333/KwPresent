@@ -8,4 +8,7 @@
 
     <string name="phone_login">手机登录</string>
     <string name="phone_reg">注册帐号</string>
+    <string name="title_activity_pull_to_refresh_list_view">PullToRefreshListViewActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>

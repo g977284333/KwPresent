@@ -13,6 +13,7 @@ public class KwHomeActivity extends BaseActivity {
     private Button mBounceScrollView;
     private Button mBaiduMap;
     private Button mKwAdapterBtn;
+    private Button mPullToRefreshListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +27,12 @@ public class KwHomeActivity extends BaseActivity {
        mBounceScrollView = (Button) findViewById(R.id.btn_bounce_scroll_view);
        mBaiduMap = (Button) findViewById(R.id.btn_baidu_map);
        mKwAdapterBtn = (Button) findViewById(R.id.btn_kw_adapter);
+       mPullToRefreshListView = (Button) findViewById(R.id.btn_pull_to_refresh_list_view);
 
        mBounceScrollView.setOnClickListener(this);
        mBaiduMap.setOnClickListener(this);
        mKwAdapterBtn.setOnClickListener(this);
+       mPullToRefreshListView.setOnClickListener(this);
     }
 
     @Override
@@ -40,8 +43,13 @@ public class KwHomeActivity extends BaseActivity {
                 break;
             case R.id.btn_baidu_map:
                 gotoTargetActivity(KwBaiduMapActivity.class);
+                break;
             case R.id.btn_kw_adapter:
                 gotoTargetActivity(KwAdapterActivity.class);
+                break;
+            case R.id.btn_pull_to_refresh_list_view:
+                gotoTargetActivity(PullToRefreshListViewActivity.class);
+                break;
             default:
                 break;
         }

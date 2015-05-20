@@ -24,4 +24,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_baidu_map"/>
 
+    <Button
+        android:id="@+id/btn_pull_to_refresh_list_view"
+        android:text="CommonAdapter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_kw_adapter"/>
+
 </RelativeLayout>
