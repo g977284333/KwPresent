@@ -75,12 +75,12 @@ public class KwHomeActivity extends BaseActivity {
         if(mHits[0] > SystemClock.uptimeMillis() - 500) {
             finish();
         } else {
-            UiUtil.showToast(this, "Click again and exit");
+            UiUtil.showToast(this, "å†æŒ‰ä¸€æ¬¡é€€å‡º");
         }
     }
 
 //    @Override
-    // °´ÏÂback¼ü·ÇÍË³ö£¬Òş²ØÔÚºóÌ¨
+    // æŒ‰è¿”å›é”®ï¼Œå›åˆ°ä¸»ç•Œé¢
 //    public boolean onKeyDown(int keyCode, KeyEvent event) {
 //        if (keyCode == KeyEvent.KEYCODE_BACK) {
 //            Intent intent = new Intent(Intent.ACTION_MAIN);

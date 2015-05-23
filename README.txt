@@ -1,19 +1,18 @@
-2015-5-23£º
-    ÏÂ´ÎÐèÒªÌí¼ÓImageUtil¡¢PhotoView
+2015-5-23ï¼š
+    ä¸‹æ¬¡éœ€è¦æ·»åŠ ImageUtilã€PhotoView
 
-ÐèÒªÐÞ¸ÄµÄBUG£º
-    ±àÂë´íÎó
-    ActivityManager¹¦ÄÜ²¹È«
+éœ€è¦ä¿®æ”¹çš„BUGï¼š
+    ActivityManagerè¡¥å…¨åŠŸèƒ½
 
-ÒÔºó»¹ÐèÒªÌí¼Ó¹¦ÄÜ£º
-    ÍøÂçÇëÇó
-    ¶þÎ¬ÂëÉ¨Ãè
-    ViewPagerIndicatorLib¡¢
-    Í¼Æ¬²Ã¼ô
+åŽæœŸéœ€è¦æ·»åŠ ï¼š
+    ç½‘ç»œè¯·æ±‚
+    äºŒç»´ç æ‰«æ
+    ViewPagerIndicatorLib
+    å›¾ç‰‡è£å‰ª
     parallax
 
-ÓÐ¿ÉÄÜÌí¼Ó
-    Êý¾Ý¿â´æ´¢
+æœ‰å¯èƒ½æ·»åŠ 
+    æ•°æ®åº“å­˜å‚¨
     Fresco
 
 
