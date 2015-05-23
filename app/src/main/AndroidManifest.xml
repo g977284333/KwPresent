@@ -57,8 +57,31 @@
 
         <activity
             android:name=".kw.activity.PullToRefreshListViewActivity"
-            android:label="@string/title_activity_pull_to_refresh_list_view" >
+            android:screenOrientation="portrait">
         </activity>
+
+        <activity
+            android:name=".kw.activity.ListOrScrollViewSimpleActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity
+            android:name=".kw.activity.PullToHideScrollViewActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity
+            android:name=".kw.activity.PhotoOrImageSimpleActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity
+            android:name="com.gechen.keepwalking.kw.activity.MainMuliImageSelectorActivity"
+            android:label="@string/app_name" />
+
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name="com.kw_support.activity.MultiImageSelectorActivity" />
 
         <service
             android:name="com.baidu.location.f"

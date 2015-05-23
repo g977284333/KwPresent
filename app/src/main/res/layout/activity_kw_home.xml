@@ -18,17 +18,17 @@
         android:layout_below="@+id/btn_bounce_scroll_view"/>
 
     <Button
-        android:id="@+id/btn_kw_adapter"
-        android:text="CommonAdapter"
+        android:id="@+id/btn_list_or_scroll_view"
+        android:text="ListOrScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_baidu_map"/>
 
     <Button
-        android:id="@+id/btn_pull_to_refresh_list_view"
-        android:text="CommonAdapter"
+        android:id="@+id/btn_photo_or_image"
+        android:text="PhotoOrImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_kw_adapter"/>
+        android:layout_below="@+id/btn_list_or_scroll_view"/>
 
 </RelativeLayout>

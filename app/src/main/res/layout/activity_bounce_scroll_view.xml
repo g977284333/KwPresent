@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="打开GPS设置"
+            android:text="打开蓝牙设置"
             android:onClick="openBluetoothSetting"/>
 
     </LinearLayout>

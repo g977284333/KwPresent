@@ -1,0 +1,25 @@
+<com.kw_support.view.BounceScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gechen.keepwalking.kw.activity.BounceScrollViewActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_multi_image_selector"
+            android:text="MultiImageSelector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="skipToMultiImageSelector"
+            android:layout_below="@+id/btn_kw_adapter"/>
+
+
+
+    </LinearLayout>
+
+</com.kw_support.view.BounceScrollView>

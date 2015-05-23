@@ -11,4 +11,13 @@
     <string name="title_activity_pull_to_refresh_list_view">PullToRefreshListViewActivity</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="select_mode">选择模式</string>
+    <string name="mode_single">单选</string>
+    <string name="mode_multi">多选</string>
+    <string name="max_select_amount">最大选择数量</string>
+    <string name="hint_default_amount">默认数量为9</string>
+    <string name="enable_camera">是否启用照相机</string>
+    <string name="enable">是</string>
+    <string name="disable">否</string>
+    <string name="go_select">图片选择</string>
 </resources>

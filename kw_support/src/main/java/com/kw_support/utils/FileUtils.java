@@ -1,5 +1,7 @@
 package com.kw_support.utils;
 
+import android.content.Context;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.view.TextureView;
 
@@ -13,13 +15,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by G-chen on 2015-5-20.
  */
-public class FileUtil {
+public class FileUtils {
     private final static String FILE_EXTENSION_SEPARATOR = ".";
 
     public static StringBuilder readFile(String filePath, String charsetName) {
@@ -348,5 +353,26 @@ public class FileUtil {
 
         File file = new File(path);
         return (file.exists() && file.isFile() ? file.length() : -1);
+    }
+
+    // Multi_Image_Selector 创建历史文件
+    public static File createTmpFile(Context context){
+
+        String state = Environment.getExternalStorageState();
+        if(state.equals(Environment.MEDIA_MOUNTED)){
+            // 已挂载
+            File pic = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.CHINA).format(new Date());
+            String fileName = "kw_"+timeStamp+"";
+            File tmpFile = new File(pic, fileName+".jpg");
+            return tmpFile;
+        }else{
+            File cacheDir = context.getCacheDir();
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.CHINA).format(new Date());
+            String fileName = "kw_"+timeStamp+"";
+            File tmpFile = new File(cacheDir, fileName+".jpg");
+            return tmpFile;
+        }
+
     }
 }

@@ -1,0 +1,38 @@
+<com.kw_support.view.PushToHideScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".KwHomeActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="第一层子View， View：A"
+        android:background="#ff00cc"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="第一层子View， View：B"
+        android:background="#ccffcc"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="第二层子View， View：C"
+            android:background="#00ffcc"/>
+
+        <ListView
+            android:id="@+id/lv_kw_adapter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="#00000000"/>
+    </LinearLayout>
+
+</com.kw_support.view.PushToHideScrollView>

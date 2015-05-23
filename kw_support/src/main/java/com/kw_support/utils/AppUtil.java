@@ -7,6 +7,7 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.app.ActivityManager.RunningTaskInfo;
+import android.app.Application;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ComponentName;
 import android.content.Context;
@@ -17,10 +18,14 @@ import android.location.LocationManager;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Build.VERSION;
+import android.os.Parcelable;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+
+import com.kw_support.R;
+import com.kw_support.base.BaseApplication;
 
 /**
  * @author: 葛晨  
@@ -213,6 +218,28 @@ public class AppUtil {
 	public static int getDefaultThreadPoolSize(int max) {
 		int availableProcessors = 2 * Runtime.getRuntime().availableProcessors() + 1;
 		return availableProcessors > max ? max : availableProcessors;
+	}
+
+	/**
+	 * 为程序创建桌面快捷方式
+	 * 需要声明权限："com.android.launcher.permission.INSTALL_SHORTCUT"
+	 */
+	private void addShortcut(Activity context, int iconId, Class launcherClazz){
+		Intent addShortCut = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
+		//不能重复创建快捷方式
+		addShortCut.putExtra("duplicate", false);
+		String title = context.getString(R.string.app_name);//名称
+		Parcelable icon = Intent.ShortcutIconResource.fromContext(context, iconId);//图标
+		//点击快捷方式后操作Intent,快捷方式建立后，再次启动该程序
+		Intent intent = new Intent(context,launcherClazz);
+		//设置快捷方式的标题
+		addShortCut.putExtra(Intent.EXTRA_SHORTCUT_NAME, title);
+		//设置快捷方式的图标
+		addShortCut.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, icon);
+		//设置快捷方式对应的Intent
+		addShortCut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, intent);
+		//发送广播添加快捷方式
+		context.sendBroadcast(addShortCut);
 	}
 
 	/**
