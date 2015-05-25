@@ -83,6 +83,12 @@
             android:configChanges="orientation|screenSize"
             android:name="com.kw_support.activity.MultiImageSelectorActivity" />
 
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name="com.gechen.keepwalking.kw.activity.AutoScrollViewPagerActivity" />
+
+
+
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"

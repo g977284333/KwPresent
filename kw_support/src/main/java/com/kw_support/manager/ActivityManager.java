@@ -1,93 +1,53 @@
 package com.kw_support.manager;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import android.app.Activity;
+
 import java.util.Stack;
 
+public class ActivityManager {
 
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Rect;
-import android.net.Uri;
-import android.provider.MediaStore;
-import android.view.MotionEvent;
-import android.view.View;
+    private static ActivityManager instance;
+    private Stack<Activity> activityStack;//activity栈
 
-import com.kw_support.R;
-import com.kw_support.utils.AppUtil;
-import com.kw_support.utils.SdCardUtil;
-import com.kw_support.utils.UiUtil;
+    private ActivityManager() {
+    }
+    //单例模式
+    public static ActivityManager getInstance() {
+        if (instance == null) {
+            instance = new ActivityManager();
+        }
+        return instance;
+    }
+    //把一个activity压入栈中
+    public void pushActivity(Activity actvity) {
+        if (activityStack == null) {
+            activityStack = new Stack<Activity>();
+        }
+        activityStack.add(actvity);
+    }
+    //获取栈顶的activity，先进后出原则
+    public Activity getLastActivity() {
+        return activityStack.lastElement();
+    }
+    //移除一个activity
+    public void popActivity(Activity activity) {
+        if (activityStack != null && activityStack.size() > 0) {
+            if (activity != null) {
+                activity.finish();
+                activityStack.remove(activity);
+                activity = null;
+            }
 
-public class ActivityManager implements IManager{
+        }
+    }
+    //退出所有activity
+    public void finishAllActivity() {
+        if (activityStack != null) {
+            while (activityStack.size() > 0) {
+                Activity activity = getLastActivity();
+                if (activity == null) break;
+                popActivity(activity);
+            }
+        }
+    }}
 
-	private static Stack<Activity> mActivityStack = new Stack<Activity>();
-
-	public static void popActivity(Activity activity) {
-		mActivityStack.remove(activity);
-	}
-
-	public static void pushActivity(Activity activity) {
-		mActivityStack.add(activity);
-	}
-
-	public static Activity getTopActivity() {
-		return mActivityStack.size() == 0 ? null : mActivityStack.lastElement();
-	}
-
-	public static String getFilePath(Activity activity, Uri imageUri) {
-		String[] projection = { MediaStore.Images.Media.DATA };
-		Cursor cursor = activity.getContentResolver().query(imageUri, projection, null, null, null);
-		cursor.moveToFirst();
-		int columnIndex = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
-		String imagePath = cursor.getString(columnIndex);
-		cursor.close();
-		return imagePath;
-	}
-
-	public static String openImageCapture(Activity activity, int requestCode) {
-		String imagePath = null;
-		try {
-			File storagePath = SdCardUtil.getExternalStoragePath();
-			DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault());
-			String fileName = dateFormat.format(new Date()) + ".jpg";
-			File imageFile = new File(storagePath, fileName);
-			imagePath = imageFile.getAbsolutePath();
-			Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-			intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imageFile));
-			activity.startActivityForResult(intent, requestCode);
-		} catch (IOException e) {
-			UiUtil.showAlertDialog((Context)activity, R.string.sdcard_error);
-		} catch (ActivityNotFoundException e) {
-			e.printStackTrace();
-		}
-		return imagePath;
-	}
-
-	public static void openPhotoLibrary(Activity activity, int requestCode) {
-		try {
-			Intent intent = new Intent(Intent.ACTION_PICK);
-			intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-			activity.startActivityForResult(intent, requestCode);
-		} catch (ActivityNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void onInit() {
-
-	}
-
-	@Override
-	public void onExit() {
-
-	}
-}

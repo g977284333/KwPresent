@@ -69,7 +69,6 @@ public class CrashHandler implements UncaughtExceptionHandler {
 			try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
 				LogUtil.debugE(TAG, "error: " + e.getMessage());
 			}
 			

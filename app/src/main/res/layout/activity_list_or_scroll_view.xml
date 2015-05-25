@@ -32,6 +32,13 @@
             android:layout_height="wrap_content"
             android:onClick="skipToPullToHideScrollView"/>
 
+        <Button
+            android:id="@+id/btn_auto_scroll_view_pager"
+            android:text="AutoScrollViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="skipToAutoScrollViewPager"/>
+
     </LinearLayout>
 
 </com.kw_support.view.BounceScrollView>

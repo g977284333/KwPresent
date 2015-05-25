@@ -30,6 +30,10 @@ public class ListOrScrollViewSimpleActivity extends BaseActivity{
         gotoTargetActivity(PullToHideScrollViewActivity.class);
     }
 
+    public void skipToAutoScrollViewPager(View view) {
+        gotoTargetActivity(AutoScrollViewPagerActivity.class);
+    }
+
     private void gotoTargetActivity(Class clazz) {
         Intent intent = new Intent(getApplicationContext(), clazz);
         startActivity(intent);

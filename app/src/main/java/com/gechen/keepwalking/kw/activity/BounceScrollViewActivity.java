@@ -7,6 +7,7 @@ import android.view.View;
 import com.gechen.keepwalking.R;
 import com.kw_support.base.BaseActivity;
 import com.kw_support.utils.AppUtil;
+import com.kw_support.utils.SystemFunUtil;
 import com.kw_support.utils.UiUtil;
 import com.kw_support.view.BounceScrollView;
 
@@ -35,15 +36,15 @@ public class BounceScrollViewActivity extends BaseActivity {
     }
 
     public void openWifiSetting(View view) {
-        AppUtil.gotoSettingNetWork(BounceScrollViewActivity.this);
+        SystemFunUtil.gotoSettingNetWork(BounceScrollViewActivity.this);
     }
 
     public void openGPSSetting(View view) {
-        AppUtil.gotoSettingGPS(BounceScrollViewActivity.this);
+        SystemFunUtil.gotoSettingGPS(BounceScrollViewActivity.this);
     }
 
     public void openBluetoothSetting(View view) {
-        AppUtil.openBluetoothWithRequest(BounceScrollViewActivity.this, 0x0000001);
+        SystemFunUtil.openBluetoothWithRequest(BounceScrollViewActivity.this, 0x0000001);
     }
 
     @Override

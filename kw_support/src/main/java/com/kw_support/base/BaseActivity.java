@@ -19,7 +19,7 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityManager.pushActivity(this);
+        ActivityManager.getInstance().pushActivity(this);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     protected void onDestroy() {
         super.onDestroy();
         LogUtil.debugI(TAG, "className<< " + TAG + " --- finished");
-        ActivityManager.popActivity(this);
+        ActivityManager.getInstance().popActivity(this);
     }
 
     @Override
