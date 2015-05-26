@@ -15,10 +15,14 @@
             android:text="MultiImageSelector"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="skipToMultiImageSelector"
-            android:layout_below="@+id/btn_kw_adapter"/>
+            android:onClick="skipToMultiImageSelector"/>
 
-
+        <Button
+            android:id="@+id/btn_photo_view"
+            android:text="PhotoView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="skipToPhotoViewActivity"/>
 
     </LinearLayout>
 

@@ -23,6 +23,10 @@ public class PhotoOrImageSimpleActivity extends BaseActivity{
         gotoTargetActivity(MainMuliImageSelectorActivity.class);
     }
 
+    public void skipToPhotoViewActivity(View view) {
+        gotoTargetActivity(PhotoViewActivity.class);
+    }
+
     private void gotoTargetActivity(Class clazz) {
         Intent intent = new Intent(getApplicationContext(), clazz);
         startActivity(intent);
