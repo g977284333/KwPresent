@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.kw_support.view.SegmentBar
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/segment_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        ptr:selector="@drawable/img_line_selector" >
+
+        <TextView
+            android:layout_width="0.0dip"
+            android:layout_height="40.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textColor="#00ff00"
+            android:text="subject" />
+
+        <TextView
+            android:layout_width="0.0dip"
+            android:layout_height="40.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textColor="#00ff00"
+            android:text="knowledge" />
+
+        <TextView
+            android:layout_width="0.0dip"
+            android:layout_height="40.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textColor="#00ff00"
+            android:text="question" />
+
+        <TextView
+            android:layout_width="0.0dip"
+            android:layout_height="40.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textColor="#00ff00"
+            android:text="topic" />
+    </com.kw_support.view.SegmentBar>
+
+    <TextView
+        android:id="@+id/tv_segment_bar_tab_hint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textColor="#ff0000"/>
+
+</LinearLayout>

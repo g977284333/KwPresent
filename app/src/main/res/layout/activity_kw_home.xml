@@ -31,4 +31,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_list_or_scroll_view"/>
 
+    <Button
+        android:id="@+id/btn_custom_widget"
+        android:text="CustomWidget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_photo_or_image"/>
+
 </RelativeLayout>

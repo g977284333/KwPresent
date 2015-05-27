@@ -18,6 +18,7 @@ public class KwHomeActivity extends BaseActivity {
     private Button mBaiduMap;
     private Button mKwAdapterBtn;
     private Button mPhotoOrImage;
+    private Button mCustomWidget;
 
     private long[] mHits = new long[2];
 
@@ -34,11 +35,13 @@ public class KwHomeActivity extends BaseActivity {
        mBaiduMap = (Button) findViewById(R.id.btn_baidu_map);
        mKwAdapterBtn = (Button) findViewById(R.id.btn_list_or_scroll_view);
        mPhotoOrImage = (Button) findViewById(R.id.btn_photo_or_image);
+       mCustomWidget = (Button) findViewById(R.id.btn_custom_widget);
 
        mBounceScrollView.setOnClickListener(this);
        mBaiduMap.setOnClickListener(this);
        mKwAdapterBtn.setOnClickListener(this);
        mPhotoOrImage.setOnClickListener(this);
+       mCustomWidget.setOnClickListener(this);
     }
 
     @Override
@@ -55,6 +58,9 @@ public class KwHomeActivity extends BaseActivity {
                 break;
             case R.id.btn_photo_or_image:
                 gotoTargetActivity(PhotoOrImageSimpleActivity.class);
+                break;
+            case R.id.btn_custom_widget:
+                gotoTargetActivity(CustomWidgetActivity.class);
                 break;
             default:
                 break;

@@ -91,6 +91,14 @@
             android:configChanges="orientation|screenSize"
             android:name="com.gechen.keepwalking.kw.activity.PhotoViewActivity" />
 
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name="com.gechen.keepwalking.kw.activity.SegmentBarActivity" />
+
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name="com.gechen.keepwalking.kw.activity.CustomWidgetActivity" />
+
 
         <service
             android:name="com.baidu.location.f"

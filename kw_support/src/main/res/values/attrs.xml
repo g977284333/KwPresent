@@ -77,4 +77,12 @@
         <attr name="ptrDrawableBottom" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="SegmentBar">
+        <attr name="selector" format="color|reference" />
+        <attr name="unselector" format="color|reference" />
+        <attr name="dividerDrawable" format="color|reference" />
+        <attr name="dividerWidth" format="dimension" />
+        <attr name="dividerHeight" format="dimension" />
+        <attr name="dividerPaddings" format="dimension" />
+    </declare-styleable>
 </resources>
