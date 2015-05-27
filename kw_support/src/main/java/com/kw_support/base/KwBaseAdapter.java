@@ -10,57 +10,57 @@ import android.widget.BaseAdapter;
 
 import com.kw_support.utils.ViewHolder;
 
-public abstract class KwBaseAdapter<T> extends BaseAdapter{
-	protected Context mContext;
-	protected LayoutInflater mInflater;
-	protected List<T> mDatas;
-	protected final int mItemLayoutId;
-	
-	public KwBaseAdapter(Context context, List<T> datas, int itemLayoutId) {
-		this.mContext = context;
-		this.mInflater = LayoutInflater.from(context);
-		this.mDatas = datas;
-		mItemLayoutId = itemLayoutId;
-	}
-	
-	
-	@Override
-	public int getCount() {
-		return mDatas == null ? 0 : mDatas.size();
-	}
+public abstract class KwBaseAdapter<T> extends BaseAdapter {
+    protected Context mContext;
+    protected LayoutInflater mInflater;
+    protected List<T> mDatas;
+    protected final int mItemLayoutId;
 
-	@Override
-	public T getItem(int position) {
-		return mDatas == null ? null : mDatas.get(position);
-	}
+    public KwBaseAdapter(Context context, List<T> datas, int itemLayoutId) {
+        this.mContext = context;
+        this.mInflater = LayoutInflater.from(context);
+        this.mDatas = datas;
+        mItemLayoutId = itemLayoutId;
+    }
 
-	@Override
-	public int getViewTypeCount() {
-		return super.getViewTypeCount();
-	}
 
-	@Override
-	public int getItemViewType(int position) {
-		return super.getItemViewType(position);
-	}
-	
-	@Override
-	public long getItemId(int position) {
-		return position;
-	}
+    @Override
+    public int getCount() {
+        return mDatas == null ? 0 : mDatas.size();
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		final ViewHolder viewHolder = getViewHolder(position, convertView, parent);
-		convert(viewHolder, getItem(position));
-		return viewHolder.getConvertView();
-	}
-	
-	public abstract void convert(ViewHolder viewHolder, T item);
+    @Override
+    public T getItem(int position) {
+        return mDatas == null ? null : mDatas.get(position);
+    }
 
-	private ViewHolder getViewHolder(int position, View convertView,
-			ViewGroup parent) {
-		return ViewHolder.getViewHolder(mContext, convertView, parent, mItemLayoutId, position);
-	}
+    @Override
+    public int getViewTypeCount() {
+        return super.getViewTypeCount();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        final ViewHolder viewHolder = getViewHolder(position, convertView, parent);
+        convert(viewHolder, getItem(position));
+        return viewHolder.getConvertView();
+    }
+
+    public abstract void convert(ViewHolder viewHolder, T item);
+
+    private ViewHolder getViewHolder(int position, View convertView,
+                                     ViewGroup parent) {
+        return ViewHolder.getViewHolder(mContext, convertView, parent, mItemLayoutId, position);
+    }
 
 }

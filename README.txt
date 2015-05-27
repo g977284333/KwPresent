@@ -12,3 +12,12 @@
     ViewPagerIndicatorLib
 
 有时间梳理一下
+    CrashHandler
+    FileUtils
+    ImageUtil
+    LogUtil
+    ShellUtils
+    PackageUtils
+
+Bug
+   多图选择需要引入v7包

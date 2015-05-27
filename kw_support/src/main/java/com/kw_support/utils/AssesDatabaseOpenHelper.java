@@ -34,7 +34,7 @@ public class AssesDatabaseOpenHelper {
 
     public synchronized SQLiteDatabase getReadableDatabase() {
         File dbFile = mContext.getDatabasePath(mDatabaseName);
-        if(dbFile != null && !dbFile.exists()) {
+        if (dbFile != null && !dbFile.exists()) {
             try {
                 copyDatabase(dbFile);
             } catch (IOException e) {
@@ -48,7 +48,7 @@ public class AssesDatabaseOpenHelper {
         return mDatabaseName;
     }
 
-    private void copyDatabase(File dbFile) throws IOException{
+    private void copyDatabase(File dbFile) throws IOException {
         InputStream stream = mContext.getAssets().open(mDatabaseName);
         FileUtils.writeFile(dbFile, stream);
         stream.close();

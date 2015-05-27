@@ -14,7 +14,7 @@ public class CommonUtil {
     }
 
     public static boolean isEmpty(String str) {
-        if(!TextUtils.isEmpty(str) && !str.equals("null")) {
+        if (!TextUtils.isEmpty(str) && !str.equals("null")) {
             return true;
         }
         return false;

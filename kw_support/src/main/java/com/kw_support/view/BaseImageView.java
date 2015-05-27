@@ -21,7 +21,7 @@ public abstract class BaseImageView extends ImageView {
     protected Context mContext;
 
     private static final Xfermode sXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
-//    private BitmapShader mBitmapShader;
+    //    private BitmapShader mBitmapShader;
     private Bitmap mMaskBitmap;
     private Paint mPaint;
     private WeakReference<Bitmap> mWeakBitmap;
@@ -49,7 +49,9 @@ public abstract class BaseImageView extends ImageView {
 
     public void invalidate() {
         mWeakBitmap = null;
-        if (mMaskBitmap != null) { mMaskBitmap.recycle(); }
+        if (mMaskBitmap != null) {
+            mMaskBitmap.recycle();
+        }
         super.invalidate();
     }
 
@@ -73,9 +75,9 @@ public abstract class BaseImageView extends ImageView {
                         drawable.draw(bitmapCanvas);
 
                         // If mask is already set, skip and use cached mask.
-						if (mMaskBitmap == null || mMaskBitmap.isRecycled()) {
+                        if (mMaskBitmap == null || mMaskBitmap.isRecycled()) {
                             mMaskBitmap = getBitmap();
-						}
+                        }
 
                         // Draw Bitmap.
                         mPaint.reset();

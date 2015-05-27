@@ -10,6 +10,7 @@ import android.widget.ScrollView;
 
 /**
  * Created by G-chen on 2015-3-15.
+ *
  * @disctiption: ScrollView反弹效果的实现
  */
 public class BounceScrollView extends ScrollView {
@@ -39,14 +40,14 @@ public class BounceScrollView extends ScrollView {
 
     @Override
     protected void onFinishInflate() {
-        if(getChildCount() > 0) {
+        if (getChildCount() > 0) {
             inner = getChildAt(0);                      // 获取第一个子View
         }
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        if(null != inner) {
+        if (null != inner) {
             commOnTouchEvent(ev);
         }
         return super.onTouchEvent(ev);
@@ -82,13 +83,13 @@ public class BounceScrollView extends ScrollView {
                 // 当滚动到最上面或者最下面时就不再滚动，这时候移动布局
                 if (isNeedMove()) {
                     // 初始化头部矩形
-                    if(normal.isEmpty()) {
+                    if (normal.isEmpty()) {
                         // 保持正常的布局位置
                         normal.set(inner.getLeft(), inner.getTop(),
                                 inner.getRight(), inner.getBottom());
                     }
                     //　移动布局
-                    inner.layout(inner.getLeft(), inner.getTop() -  deltaY / size,
+                    inner.layout(inner.getLeft(), inner.getTop() - deltaY / size,
                             inner.getRight(), inner.getBottom() - deltaY / size);
                 }
 
@@ -115,16 +116,16 @@ public class BounceScrollView extends ScrollView {
     }
 
     /**
-     *  是否要移动布局
-     *  inner.getMeasuredHeight()是获取控件的总高度
-     *  getHeight是屏幕的高度
+     * 是否要移动布局
+     * inner.getMeasuredHeight()是获取控件的总高度
+     * getHeight是屏幕的高度
      */
     public boolean isNeedMove() {
         int offset = inner.getMeasuredHeight() - getHeight();
         int scrollY = getScrollY();
 
         // 0是顶部，后面的是底部
-        if(scrollY == 0 || scrollY == offset) {
+        if (scrollY == 0 || scrollY == offset) {
             return true;
         }
         return false;

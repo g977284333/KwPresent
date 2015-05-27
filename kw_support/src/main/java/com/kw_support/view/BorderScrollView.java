@@ -7,13 +7,13 @@ import android.widget.ScrollView;
 
 /**
  * BorderScrollView
- *
+ * <p/>
  * onTop and onBottom response ScrollView
  */
 public class BorderScrollView extends ScrollView {
 
     private OnBorderListener onBorderListener;
-    private View             contentView;
+    private View contentView;
 
     public BorderScrollView(Context context) {
         super(context);

@@ -101,14 +101,9 @@ public class AppUtil {
     }
 
     /**
-     * Activity中
-     * public boolean dispatchTouchEvent(MotionEvent event) {
-     * List<View> viewList = new ArrayList<View>();
-     * viewList.add(mEditPhone);
-     * viewList.add(mEditVerifyCode);
-     * <p/>
-     * AppUtils.checkNeedHideSoftInput(this, (int) event.getX(), (int) event.getY(), viewList);
-     * return super.dispatchTouchEvent(event);}
+     * put the method into the dispatchTouchEvent(MotionEvetn evetn) method in your Activity
+     *
+     * @params viewList the list of views which you want to be ignored
      */
     public static void checkNeedHideSoftInput(Activity activity, int x, int y, List<View> viewList) {
         boolean needHide = true;
@@ -147,22 +142,11 @@ public class AppUtil {
     }
 
 
-    /**
-     * get recommend default thread pool size
-     *
-     * @return if 2 * availableProcessors + 1 less than 8, return it, else return 8;
-     * @see {@link #getDefaultThreadPoolSize(int)} max is 8
-     */
+    //  if 2 * availableProcessors + 1 less than 8, return it, else return 8;
     public static int getDefaultThreadPoolSize() {
         return getDefaultThreadPoolSize(8);
     }
 
-    /**
-     * get recommend default thread pool size
-     *
-     * @param max
-     * @return if 2 * availableProcessors + 1 less than max, return it, else return max;
-     */
     public static int getDefaultThreadPoolSize(int max) {
         int availableProcessors = 2 * Runtime.getRuntime().availableProcessors() + 1;
         return availableProcessors > max ? max : availableProcessors;

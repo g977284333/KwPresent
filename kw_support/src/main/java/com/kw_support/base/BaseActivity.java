@@ -13,7 +13,7 @@ import com.kw_support.utils.LogUtil;
 /**
  * Created by G-chen on 2015-3-15.
  */
-public class BaseActivity extends FragmentActivity implements View.OnClickListener{
+public class BaseActivity extends FragmentActivity implements View.OnClickListener {
     protected final String TAG = getClass().getSimpleName();
 
     @Override

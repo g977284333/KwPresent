@@ -137,7 +137,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 			sb.append("----------------------------------<exception end>--------------------------------------------");
 			String fileName = "crach-" + time + "-" + timeStamp + "-exception.log";
 			if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-				String path = SdCardUtil.getSdCardPath() + GlobalConfig.LOG_PATH;
+				String path = SdCardUtil.getExternalStorageAbsolutePath() + GlobalConfig.LOG_PATH;
 				File filePath = new File(path);
 				if(!filePath.exists()) {
 					filePath.mkdirs();

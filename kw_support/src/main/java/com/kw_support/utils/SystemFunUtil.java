@@ -26,8 +26,11 @@ import java.util.Locale;
  */
 public class SystemFunUtil {
 
+    /**
+     *  get the file path by uri
+     */
     public static String getFilePath(Activity activity, Uri imageUri) {
-        String[] projection = { MediaStore.Images.Media.DATA };
+        String[] projection = {MediaStore.Images.Media.DATA};
         Cursor cursor = activity.getContentResolver().query(imageUri, projection, null, null, null);
         cursor.moveToFirst();
         int columnIndex = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
@@ -48,7 +51,7 @@ public class SystemFunUtil {
             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imageFile));
             activity.startActivityForResult(intent, requestCode);
         } catch (IOException e) {
-            UiUtil.showAlertDialog((Context)activity, R.string.sdcard_error);
+            UiUtil.showAlertDialog((Context) activity, R.string.sdcard_error);
         } catch (ActivityNotFoundException e) {
             e.printStackTrace();
         }
@@ -93,24 +96,24 @@ public class SystemFunUtil {
     }
 
     /**
-     * 为程序创建桌面快捷方式
-     * 需要声明权限："com.android.launcher.permission.INSTALL_SHORTCUT"
+     * Create a desktop shortcut for the application
+     * Need to declare permissions ："com.android.launcher.permission.INSTALL_SHORTCUT"
      */
-    private void addShortcut(Activity context, int iconId, Class launcherClazz){
+    private void addShortcut(Activity context, int iconId, Class launcherClazz) {
         Intent addShortCut = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
-        //不能重复创建快捷方式
+        //  Create only a shortcut
         addShortCut.putExtra("duplicate", false);
-        String title = context.getString(R.string.app_name);//名称
-        Parcelable icon = Intent.ShortcutIconResource.fromContext(context, iconId);//图标
+        String title = context.getString(R.string.app_name);//  the name of applicaiton
+        Parcelable icon = Intent.ShortcutIconResource.fromContext(context, iconId);//   the icon of applicaiton
         //点击快捷方式后操作Intent,快捷方式建立后，再次启动该程序
-        Intent intent = new Intent(context,launcherClazz);
-        //设置快捷方式的标题
+        Intent intent = new Intent(context, launcherClazz);
+        //  Set the title of the shortcut
         addShortCut.putExtra(Intent.EXTRA_SHORTCUT_NAME, title);
-        //设置快捷方式的图标
+        //  Set up shortcut icon
         addShortCut.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, icon);
         //设置快捷方式对应的Intent
         addShortCut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, intent);
-        //发送广播添加快捷方式
+        //  Add shortcuts to send broadcas
         context.sendBroadcast(addShortCut);
     }
 }
