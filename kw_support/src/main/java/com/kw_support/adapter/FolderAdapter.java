@@ -26,7 +26,7 @@ public class FolderAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater mInflater;
 
-    private List<Folder> mFolders = new ArrayList<>();
+    private List<Folder> mFolders = new ArrayList<Folder>();
 
     int mImageSize;
 

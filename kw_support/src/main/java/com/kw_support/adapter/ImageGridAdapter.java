@@ -32,8 +32,8 @@ public class ImageGridAdapter extends BaseAdapter {
     private boolean showCamera = true;
     private boolean showSelectIndicator = true;
 
-    private List<Image> mImages = new ArrayList<>();
-    private List<Image> mSelectedImages = new ArrayList<>();
+    private List<Image> mImages = new ArrayList<Image>();
+    private List<Image> mSelectedImages = new ArrayList<Image>();
 
     private int mItemSize;
     private GridView.LayoutParams mItemLayoutParams;

@@ -9,7 +9,6 @@
 
 有可能添加
     数据库存储
-    ViewPagerIndicatorLib
 
 有时间梳理一下
     CrashHandler
@@ -18,6 +17,4 @@
     LogUtil
     ShellUtils
     PackageUtils
-
-Bug
-   多图选择需要引入v7包
+    优化MutiImageSelector
