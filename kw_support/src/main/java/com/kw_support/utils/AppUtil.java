@@ -21,13 +21,13 @@ import java.util.List;
 
 /**
  * @version 1.0
- * @author: 葛晨
- * @类 说   明:	应用程序的工具类
- * @创建时间：2014-10-29 下午8:16:41
+ * @author: gchen
+ * @description:	apputil
+ * @date：2014-10-29 8:16:41
  */
 public class AppUtil {
 
-    // 当前进程是否以processName命名
+    // whether current progress named by progressName
     public static boolean isNamedProcess(Context context, String processName) {
         if (null == context) {
             return false;
@@ -48,8 +48,6 @@ public class AppUtil {
         return false;
     }
 
-
-    //  判断应用是否在后台
     public static boolean isApplicationBackground(Context context) {
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         List<RunningTaskInfo> taskList = am.getRunningTasks(1); // 1表示当前当前运行的task
@@ -62,7 +60,7 @@ public class AppUtil {
         return false;
     }
 
-    // 用来检索activity中是否正在运行某个service.
+    //  To judge whether the service is running
     public static boolean isServiceRunning(Context context, String serviceName) {
         ActivityManager manger = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         List<RunningServiceInfo> rs = manger.getRunningServices(50);
@@ -88,13 +86,11 @@ public class AppUtil {
         return versionName;
     }
 
-    // 获取设备号
     public static String getDeviceId(Context context) {
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         return tm.getDeviceId();
     }
 
-    // 获取mac地址
     public static String getMacAddress(Context context) {
         WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         return wifiManager.getConnectionInfo().getMacAddress();
