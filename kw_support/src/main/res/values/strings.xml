@@ -6,6 +6,8 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="sdcard_error">SD卡不存在或不可用，请检查后重试！</string>
     <string name="loading">正在加载</string>
+    <string name="no_blue_tooth_drive">本机没有找到蓝牙硬件或驱动</string>
+
 
     <!-- MultiImageSelctor -->
     <string name="folder_all">All Images</string>

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.kw_support.R;
+import com.kw_support.view.controller.ScrollerProxy;
 
 public class SegmentBar extends LinearLayout {
 

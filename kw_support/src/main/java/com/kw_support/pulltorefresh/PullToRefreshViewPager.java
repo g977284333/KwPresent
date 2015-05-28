@@ -15,7 +15,7 @@
  * limitations under the License.
  * *****************************************************************************
  */
-package com.kw_support.view;
+package com.kw_support.pulltorefresh;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;

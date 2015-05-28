@@ -1,4 +1,4 @@
-package com.kw_support.view;
+package com.kw_support.view.controller;
 
 import android.content.Context;
 import android.view.animation.Interpolator;

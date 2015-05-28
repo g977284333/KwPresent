@@ -14,7 +14,7 @@ import java.util.Locale;
  * @创建时间：2014-11-5 下午4:55:06
  */
 @SuppressLint("SimpleDateFormat")
-public class TimeUtils {
+public class TimeUtil {
 
     public static SimpleDateFormat DEFUALT_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     public static SimpleDateFormat DATE_FORMAT_DATE = new SimpleDateFormat("yyyy-MM-dd");

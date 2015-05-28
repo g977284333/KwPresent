@@ -35,8 +35,8 @@ import com.kw_support.adapter.ImageGridAdapter;
 import com.kw_support.base.BaseFragment;
 import com.kw_support.bean.Folder;
 import com.kw_support.bean.Image;
-import com.kw_support.utils.FileUtils;
-import com.kw_support.utils.TimeUtils;
+import com.kw_support.utils.FileUtil;
+import com.kw_support.utils.TimeUtil;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -220,7 +220,7 @@ public class MultiImageSelectorFragment extends BaseFragment {
                     int index = firstVisibleItem + 1 == view.getAdapter().getCount() ? view.getAdapter().getCount() - 1 : firstVisibleItem + 1;
                     Image image = (Image) view.getAdapter().getItem(index);
                     if (image != null) {
-                        mTimeLineText.setText(TimeUtils.formatPhotoDate(image.path));
+                        mTimeLineText.setText(TimeUtil.formatPhotoDate(image.path));
                     }
                 }
             }
@@ -407,7 +407,7 @@ public class MultiImageSelectorFragment extends BaseFragment {
         if (cameraIntent.resolveActivity(getActivity().getPackageManager()) != null) {
             // 设置系统相机拍照后的输出路径
             // 创建临时文件
-            mTmpFile = FileUtils.createTmpFile(getActivity());
+            mTmpFile = FileUtil.createTmpFile(getActivity());
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mTmpFile));
             startActivityForResult(cameraIntent, REQUEST_CAMERA);
         } else {

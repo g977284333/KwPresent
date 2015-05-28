@@ -24,7 +24,7 @@ import java.util.Locale;
 /**
  * Created by G-chen on 2015-5-20.
  */
-public class FileUtils {
+public class FileUtil {
     private final static String FILE_EXTENSION_SEPARATOR = ".";
 
     public static StringBuilder readFile(String filePath, String charsetName) {

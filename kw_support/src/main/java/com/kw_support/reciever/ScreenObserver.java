@@ -8,7 +8,7 @@ import android.os.PowerManager;
 
 /**
  * @author gechen
- * @类说明:利用监听屏幕开关状态来判断系统的锁屏和解锁
+ * @discription: ScreenObserver
  */
 public class ScreenObserver {
     private Context mContext;
@@ -26,28 +26,27 @@ public class ScreenObserver {
         @Override
         public void onReceive(Context context, Intent intent) {
             action = intent.getAction();
-            if (Intent.ACTION_SCREEN_ON.equals(action)) { // 开屏
+            if (Intent.ACTION_SCREEN_ON.equals(action)) {
                 mScreenStateListener.OnScreenOn();
-            } else if (Intent.ACTION_SCREEN_OFF.equals(action)) { // 锁屏
+            } else if (Intent.ACTION_SCREEN_OFF.equals(action)) {
                 mScreenStateListener.OnScreenOff();
-            } else if (Intent.ACTION_USER_PRESENT.equals(action)) { // 解锁
+            } else if (Intent.ACTION_USER_PRESENT.equals(action)) { // unlock
                 mScreenStateListener.OnUserPresent();
             }
         }
 
     }
 
-
-    //	开启屏幕观察者
     public void start(ScreenStateListener screenStateListener) {
         mScreenStateListener = screenStateListener;
         registerReceiver();
         firstGetScreenState();
     }
 
-
-    //因为广播是状态改变才会被监听到，所以第一次需要处理当前的屏幕状态
-    @SuppressWarnings("deprecation")
+    /**
+     * Only in broadcasting state changes to be listening to the broadcast
+     * so it is necessary to call this method when start observer
+     */
     private void firstGetScreenState() {
         PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
         if (pm.isScreenOn()) {
@@ -60,7 +59,6 @@ public class ScreenObserver {
             }
         }
     }
-
 
     private void registerReceiver() {
         mScreenReceiver = new ScreenReceiver();
@@ -75,8 +73,6 @@ public class ScreenObserver {
         mContext.unregisterReceiver(mScreenReceiver);
     }
 
-
-    // 接口说明:屏幕状态改变监听接口
     public interface ScreenStateListener {
         void OnScreenOn();
 

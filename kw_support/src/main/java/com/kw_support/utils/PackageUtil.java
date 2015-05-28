@@ -18,40 +18,40 @@ import android.text.TextUtils;
 import android.util.Log;
 
 /**
- * PackageUtils
+ * PackageUtil
  * <ul>
  * <strong>Install package</strong>
- * <li>{@link PackageUtils#installNormal(Context, String)}</li>
- * <li>{@link PackageUtils#installSilent(Context, String)}</li>
- * <li>{@link PackageUtils#install(Context, String)}</li>
+ * <li>{@link PackageUtil#installNormal(Context, String)}</li>
+ * <li>{@link PackageUtil#installSilent(Context, String)}</li>
+ * <li>{@link PackageUtil#install(Context, String)}</li>
  * </ul>
  * <ul>
  * <strong>Uninstall package</strong>
- * <li>{@link PackageUtils#uninstallNormal(Context, String)}</li>
- * <li>{@link PackageUtils#uninstallSilent(Context, String)}</li>
- * <li>{@link PackageUtils#uninstall(Context, String)}</li>
+ * <li>{@link PackageUtil#uninstallNormal(Context, String)}</li>
+ * <li>{@link PackageUtil#uninstallSilent(Context, String)}</li>
+ * <li>{@link PackageUtil#uninstall(Context, String)}</li>
  * </ul>
  * <ul>
  * <strong>Is system application</strong>
- * <li>{@link PackageUtils#isSystemApplication(Context)}</li>
- * <li>{@link PackageUtils#isSystemApplication(Context, String)}</li>
- * <li>{@link PackageUtils#isSystemApplication(PackageManager, String)}</li>
+ * <li>{@link PackageUtil#isSystemApplication(Context)}</li>
+ * <li>{@link PackageUtil#isSystemApplication(Context, String)}</li>
+ * <li>{@link PackageUtil#isSystemApplication(PackageManager, String)}</li>
  * </ul>
  * <ul>
  * <strong>Others</strong>
- * <li>{@link PackageUtils#getInstallLocation()} get system install location</li>
- * <li>{@link PackageUtils#isTopActivity(Context, String)} whether the app whost package's name is packageName is on the
+ * <li>{@link PackageUtil#getInstallLocation()} get system install location</li>
+ * <li>{@link PackageUtil#isTopActivity(Context, String)} whether the app whost package's name is packageName is on the
  * top of the stack</li>
- * <li>{@link PackageUtils#startInstalledAppDetails(Context, String)} start InstalledAppDetails Activity</li>
+ * <li>{@link PackageUtil#startInstalledAppDetails(Context, String)} start InstalledAppDetails Activity</li>
  * </ul>
  *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-5-15
  */
-public class PackageUtils {
+public class PackageUtil {
 
-    public static final String TAG = "PackageUtils";
+    public static final String TAG = "PackageUtil";
 
-    private PackageUtils() {
+    private PackageUtil() {
         throw new AssertionError();
     }
 
@@ -74,7 +74,7 @@ public class PackageUtils {
      * @return
      */
     public static final int install(Context context, String filePath) {
-        if (PackageUtils.isSystemApplication(context) || ShellUtils.checkRootPermission()) {
+        if (PackageUtil.isSystemApplication(context) || ShellUtils.checkRootPermission()) {
             return installSilent(context, filePath);
         }
         return installNormal(context, filePath) ? INSTALL_SUCCEEDED : INSTALL_FAILED_INVALID_URI;
@@ -112,8 +112,8 @@ public class PackageUtils {
      *
      * @param context
      * @param filePath file path of package
-     * @return {@link PackageUtils#INSTALL_SUCCEEDED} means install success, other means failed. details see
-     *         {@link PackageUtils}.INSTALL_FAILED_*. same to {@link PackageManager}.INSTALL_*
+     * @return {@link PackageUtil#INSTALL_SUCCEEDED} means install success, other means failed. details see
+     *         {@link PackageUtil}.INSTALL_FAILED_*. same to {@link PackageManager}.INSTALL_*
      * @see #installSilent(Context, String, String)
      */
     public static int installSilent(Context context, String filePath) {
@@ -132,8 +132,8 @@ public class PackageUtils {
      * @param context
      * @param filePath file path of package
      * @param pmParams pm install params
-     * @return {@link PackageUtils#INSTALL_SUCCEEDED} means install success, other means failed. details see
-     *         {@link PackageUtils}.INSTALL_FAILED_*. same to {@link PackageManager}.INSTALL_*
+     * @return {@link PackageUtil#INSTALL_SUCCEEDED} means install success, other means failed. details see
+     *         {@link PackageUtil}.INSTALL_FAILED_*. same to {@link PackageManager}.INSTALL_*
      */
     public static int installSilent(Context context, String filePath, String pmParams) {
         if (filePath == null || filePath.length() == 0) {
@@ -284,7 +284,7 @@ public class PackageUtils {
      * @return
      */
     public static final int uninstall(Context context, String packageName) {
-        if (PackageUtils.isSystemApplication(context) || ShellUtils.checkRootPermission()) {
+        if (PackageUtil.isSystemApplication(context) || ShellUtils.checkRootPermission()) {
             return uninstallSilent(context, packageName);
         }
         return uninstallNormal(context, packageName) ? DELETE_SUCCEEDED : DELETE_FAILED_INVALID_PACKAGE;

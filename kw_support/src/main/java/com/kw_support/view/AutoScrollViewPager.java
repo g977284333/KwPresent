@@ -13,6 +13,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.animation.Interpolator;
 
+import com.kw_support.view.controller.CustomDurationScroller;
+
 /**
  * Auto Scroll View Pager
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-12-30

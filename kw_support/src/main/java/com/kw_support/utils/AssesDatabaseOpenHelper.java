@@ -50,7 +50,7 @@ public class AssesDatabaseOpenHelper {
 
     private void copyDatabase(File dbFile) throws IOException {
         InputStream stream = mContext.getAssets().open(mDatabaseName);
-        FileUtils.writeFile(dbFile, stream);
+        FileUtil.writeFile(dbFile, stream);
         stream.close();
     }
 }

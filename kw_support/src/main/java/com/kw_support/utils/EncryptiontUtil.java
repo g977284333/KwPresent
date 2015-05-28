@@ -10,7 +10,7 @@ import java.security.MessageDigest;
  * @类说明:    	md5加密、Base64编码
  * @创建时间：2014-11-13 下午11:15:44
  */
-public class SecretUtil {
+public class EncryptiontUtil {
 
     public static String md5(String str) {
         if (TextUtils.isEmpty(str)) {

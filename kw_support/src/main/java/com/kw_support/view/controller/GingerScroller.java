@@ -1,4 +1,4 @@
-package com.kw_support.view;
+package com.kw_support.view.controller;
 
 import android.annotation.TargetApi;
 import android.content.Context;

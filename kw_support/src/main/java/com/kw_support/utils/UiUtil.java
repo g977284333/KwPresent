@@ -18,6 +18,10 @@ public class UiUtil {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
+    public static void showToast(Context context, int msg) {
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+    }
+
     public static Dialog createLoadingDialog(Context context) {
         String message = context.getResources().getString(R.string.loading);
         ProgressDialog progressDialog = new ProgressDialog(context);

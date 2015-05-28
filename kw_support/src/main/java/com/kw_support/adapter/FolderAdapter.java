@@ -40,8 +40,6 @@ public class FolderAdapter extends BaseAdapter {
 
     /**
      * 设置数据集
-     *
-     * @param folders
      */
     public void setData(List<Folder> folders) {
         if (folders != null && folders.size() > 0) {

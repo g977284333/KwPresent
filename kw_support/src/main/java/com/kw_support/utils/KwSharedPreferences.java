@@ -12,7 +12,7 @@ import java.util.Set;
 /**
  * the wrapper of SharedPreferences
  */
-public class PersistHelper {
+public class KwSharedPreferences {
 
     private static SharedPreferences mPreference = null;
 

@@ -27,7 +27,7 @@ import java.util.Locale;
 public class SystemFunUtil {
 
     /**
-     *  get the file path by uri
+     * get the file path by uri
      */
     public static String getFilePath(Activity activity, Uri imageUri) {
         String[] projection = {MediaStore.Images.Media.DATA};
@@ -91,6 +91,11 @@ public class SystemFunUtil {
 
 
     public static void openBluetoothWithRequest(Activity activity, int RequestCode) {
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (bluetoothAdapter == null) {
+            UiUtil.showToast(activity, R.string.no_blue_tooth_drive);
+            return;
+        }
         Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
         activity.startActivityForResult(intent, RequestCode);
     }

@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
 
+import com.kw_support.view.controller.ScrollerProxy;
+
 /**
  * 可以嵌套ListView的ScrollView， 第一层子View随着向上滚动而滚动出屏幕外
  * 第二层子View则会停留在屏幕顶端
