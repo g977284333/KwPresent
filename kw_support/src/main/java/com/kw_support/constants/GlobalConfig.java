@@ -12,11 +12,11 @@ public class GlobalConfig {
     public static final String ROOT_PATH = "/keepwalking";
 
     //应用log日志目录
-    public static final String LOG_PATH = ROOT_PATH + "/logs";
+    public static final String LOG_PATH = ROOT_PATH + "/logs/";
 
     // SharedPrefrence文件名
     public static final String SHARED_PREFERENCE_NAME = "default_sp_name";
 
     // 图片地址
-    public static final String IMAGE_PATH = "images";
+    public static final String IMAGE_PATH = ROOT_PATH  + "/images/";
 }

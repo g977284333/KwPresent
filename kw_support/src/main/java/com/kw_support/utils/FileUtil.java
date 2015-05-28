@@ -30,7 +30,7 @@ public class FileUtil {
     public static StringBuilder readFile(String filePath, String charsetName) {
         File file = new File(filePath);
         StringBuilder fileContent = new StringBuilder("");
-        if(file == null || !file.isFile()) {
+        if (file == null || !file.isFile()) {
             return null;
         }
 
@@ -39,8 +39,8 @@ public class FileUtil {
             InputStreamReader is = new InputStreamReader(new FileInputStream(file), charsetName);
             reader = new BufferedReader(is);
             String line = null;
-            while((line = reader.readLine()) != null) {
-                if(!fileContent.toString().equals("")) {
+            while ((line = reader.readLine()) != null) {
+                if (!fileContent.toString().equals("")) {
                     fileContent.append("\r\n");
                 }
                 fileContent.append(line);
@@ -48,17 +48,17 @@ public class FileUtil {
             reader.close();
             return fileContent;
         } catch (UnsupportedEncodingException e) {
-            throw  new RuntimeException("UnsupportedEncodingException occurred.", e);
+            throw new RuntimeException("UnsupportedEncodingException occurred.", e);
         } catch (FileNotFoundException e) {
-            throw  new RuntimeException("FileNotFoundException occurred.", e);
+            throw new RuntimeException("FileNotFoundException occurred.", e);
         } catch (IOException e) {
-            throw  new RuntimeException("IOException occurred.", e);
+            throw new RuntimeException("IOException occurred.", e);
         } finally {
-            if(reader != null) {
+            if (reader != null) {
                 try {
                     reader.close();
                 } catch (IOException e) {
-                    throw  new RuntimeException("IOException occurred.", e);
+                    throw new RuntimeException("IOException occurred.", e);
                 }
             }
         }
@@ -67,7 +67,7 @@ public class FileUtil {
     public static List<String> readFileToList(String filePath, String charsetName) {
         File file = new File(filePath);
         List<String> fileContent = new ArrayList<String>();
-        if(file == null || !file.isFile()) {
+        if (file == null || !file.isFile()) {
             return null;
         }
 
@@ -99,7 +99,7 @@ public class FileUtil {
     }
 
     public static boolean writeFile(String filePath, String content, boolean append) {
-        if(TextUtils.isEmpty(filePath)) {
+        if (TextUtils.isEmpty(filePath)) {
             return false;
         }
 
@@ -113,7 +113,7 @@ public class FileUtil {
         } catch (IOException e) {
             throw new RuntimeException("IOException occurred. ", e);
         } finally {
-            if(fileWriter != null) {
+            if (fileWriter != null) {
                 try {
                     fileWriter.close();
                 } catch (IOException e) {
@@ -124,7 +124,7 @@ public class FileUtil {
     }
 
     public static boolean writeFile(String filePath, List<String> contentList, boolean append) {
-        if(CommonUtil.isEmpty(contentList)) {
+        if (CommonUtil.isEmpty(contentList)) {
             return false;
         }
 
@@ -133,8 +133,8 @@ public class FileUtil {
             makeDirs(filePath);
             fileWriter = new FileWriter(filePath, append);
             int i = 0;
-            for(String line : contentList) {
-                if(i++ > 0) {
+            for (String line : contentList) {
+                if (i++ > 0) {
                     fileWriter.write("\r\n");
                 }
                 fileWriter.write(line);
@@ -202,24 +202,21 @@ public class FileUtil {
         return writeFile(file, stream, false);
     }
 
-    // 移动文件到指定目录
     public static void moveFile(String sourceFilePath, String destFilePath) {
-        if(TextUtils.isEmpty(sourceFilePath) || TextUtils.isEmpty(destFilePath)) {
+        if (TextUtils.isEmpty(sourceFilePath) || TextUtils.isEmpty(destFilePath)) {
             throw new RuntimeException("Both sourceFilePath and destFilePath cannot be null.");
         }
         moveFile(new File(sourceFilePath), new File(destFilePath));
     }
 
-    // 移动文件
     public static void moveFile(File srcFile, File destFile) {
         boolean rename = srcFile.renameTo(destFile);
-        if(!rename) {
+        if (!rename) {
             copyFile(srcFile.getAbsolutePath(), destFile.getAbsolutePath());
             deleteFile(srcFile.getAbsolutePath());
         }
     }
 
-    // 复制文件
     public static boolean copyFile(String sourceFilePath, String destFilePath) {
         InputStream is = null;
         try {
@@ -230,10 +227,16 @@ public class FileUtil {
         return writeFile(destFilePath, is);
     }
 
-    //  根据文件全路径，生成路径，如“storage/0/mnt/kw/fileutil.txt”
+    public static boolean makeFolders(String filePath) {
+        return makeDirs(filePath);
+    }
+
+    /**
+     * @param filePath such as: “storage/0/mnt/kw/fileutil.txt”
+     */
     public static boolean makeDirs(String filePath) {
         String folderName = getFolderName(filePath);
-        if(TextUtils.isEmpty(folderName)) {
+        if (TextUtils.isEmpty(folderName)) {
             return false;
         }
 
@@ -241,12 +244,6 @@ public class FileUtil {
         return (folder.exists() && folder.isDirectory()) ? true : folder.mkdirs();
     }
 
-    // 生成文件夹
-    public static boolean makeFolders(String filePath) {
-        return makeDirs(filePath);
-    }
-
-    // 文件是否存在
     public static boolean isFileExist(String filePath) {
         if (TextUtils.isEmpty(filePath)) {
             return false;
@@ -256,7 +253,6 @@ public class FileUtil {
         return (file.exists() && file.isFile());
     }
 
-    // 文件夹是否存在
     public static boolean isFolderExist(String directoryPath) {
         if (TextUtils.isEmpty(directoryPath)) {
             return false;
@@ -266,7 +262,7 @@ public class FileUtil {
         return (dire.exists() && dire.isDirectory());
     }
 
-    // 删除文件
+    // delete file or directory
     public static boolean deleteFile(String path) {
         if (TextUtils.isEmpty(path)) {
             return true;
@@ -292,7 +288,7 @@ public class FileUtil {
         return file.delete();
     }
 
-    // 获取文件名
+    // get the name of file from its absolute path
     public static String getFileName(String filePath) {
         if (TextUtils.isEmpty(filePath)) {
             return filePath;
@@ -302,9 +298,9 @@ public class FileUtil {
         return (filePosi == -1) ? filePath : filePath.substring(filePosi + 1);
     }
 
-    // 获取文件的目录
+    // get the folder of file
     public static String getFolderName(String filePath) {
-        if(TextUtils.isEmpty(filePath)) {
+        if (TextUtils.isEmpty(filePath)) {
             return filePath;
         }
 
@@ -312,26 +308,24 @@ public class FileUtil {
         return (filePosi == -1) ? "" : filePath.substring(0, filePosi);
     }
 
-    // 获取去掉后缀名的文件的文件名
     public static String getFileNameWithoutExtension(String filePath) {
-        if(TextUtils.isEmpty(filePath)) {
+        if (TextUtils.isEmpty(filePath)) {
             return filePath;
         }
 
         int extenPosi = filePath.lastIndexOf(FILE_EXTENSION_SEPARATOR);
         int filePosi = filePath.lastIndexOf(File.separator);
-        if(filePosi == -1) {
+        if (filePosi == -1) {
             return (extenPosi == -1 ? filePath : filePath.substring(0, extenPosi));
         }
 
-        if(extenPosi == -1) {
+        if (extenPosi == -1) {
             return filePath.substring(filePosi + 1);
         }
         return (filePosi < extenPosi ? filePath.substring(filePosi + 1, extenPosi)
                 : filePath.substring(filePosi + 1));
     }
 
-    // 获取文件扩展评
     public static String getFileExtension(String filePath) {
         if (TextUtils.isEmpty(filePath)) {
             return filePath;
@@ -345,7 +339,6 @@ public class FileUtil {
         return (filePosi >= extenPosi) ? "" : filePath.substring(extenPosi + 1);
     }
 
-    // 获取文件的大小
     public static long getFileSize(String path) {
         if (TextUtils.isEmpty(path)) {
             return -1;
@@ -356,21 +349,19 @@ public class FileUtil {
     }
 
     // Multi_Image_Selector 创建历史文件
-    public static File createTmpFile(Context context){
+    public static File createTmpFile(Context context) {
 
-        String state = Environment.getExternalStorageState();
-        if(state.equals(Environment.MEDIA_MOUNTED)){
-            // 已挂载
+        if (SdCardUtil.isMounted()) {
             File pic = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.CHINA).format(new Date());
-            String fileName = "kw_"+timeStamp+"";
-            File tmpFile = new File(pic, fileName+".jpg");
+            String fileName = "kw_" + timeStamp + "";
+            File tmpFile = new File(pic, fileName + ".jpg");
             return tmpFile;
-        }else{
+        } else {
             File cacheDir = context.getCacheDir();
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.CHINA).format(new Date());
-            String fileName = "kw_"+timeStamp+"";
-            File tmpFile = new File(cacheDir, fileName+".jpg");
+            String fileName = "kw_" + timeStamp + "";
+            File tmpFile = new File(cacheDir, fileName + ".jpg");
             return tmpFile;
         }
 

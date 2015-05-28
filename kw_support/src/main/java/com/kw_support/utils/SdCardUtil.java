@@ -126,7 +126,7 @@ public class SdCardUtil {
             Object invoke = getVolumePathsMethod.invoke(sm, params);
             for (int i = 0; i < ((String[]) invoke).length; i++) {
                 StatFs statFs = new StatFs(((String[]) invoke)[i]);
-                LogUtil.debugE("这是第" + i + "SD卡，总容量为：", formatMemorySize(statFs.getBlockSize()));
+                Logger.e("这是第" + i + "SD卡，总容量为：", formatMemorySize(statFs.getBlockSize()));
             }
         } catch (NoSuchMethodException e) {
             e.printStackTrace();

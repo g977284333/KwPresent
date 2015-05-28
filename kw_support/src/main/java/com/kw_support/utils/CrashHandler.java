@@ -26,7 +26,7 @@ import com.kw_support.constants.GlobalConfig;
 
 /**
  * @version 1.0
- * @author: 葛晨
+ * @author: gchen
  * @description:	UncaughtException处理类，当程序发生Uncaught异常时，由该类来接管程序，并记录发送错误报告
  * @date：2014-11-17 下午10:32:18
  */
@@ -56,7 +56,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
         Thread.setDefaultUncaughtExceptionHandler(this);
     }
 
-    //当UncaughtException发生时会转入该函数来处理
+    //  当UncaughtException发生时会转入该函数来处理
     @Override
     public void uncaughtException(Thread thread, Throwable ex) {
         if (!handleException(ex) && null != mDefaultHandler) {
@@ -66,7 +66,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
-                LogUtil.debugE(TAG, "error: " + e.getMessage());
+                Logger.e(TAG, "error: " + e.getMessage());
             }
 
             android.os.Process.killProcess(android.os.Process.myPid());
@@ -92,20 +92,42 @@ public class CrashHandler implements UncaughtExceptionHandler {
             ;
         }.start();
 
-        // 收集设备参数信息
         collectDeviceInfo(mContext);
-        // 保存异常到日志文件
         saveCrashInfoToFile(ex);
         return true;
     }
 
-    /**
-     * @return void    返回类型
-     * @throws
-     * @Title: saveCrashInfoToFile
-     * @说 明: 保存异常到日志文件
-     * @参 数: @param ex
-     */
+    private void collectDeviceInfo(Context mContext) {
+        try {
+            PackageManager pm = mContext.getPackageManager();
+            PackageInfo pi = pm.getPackageInfo(mContext.getPackageName(), PackageManager.GET_ACTIVITIES);
+            if (null != pi) {
+                String versionName = pi.versionName == null ? "null" : pi.versionName;
+                String versionCode = pi.versionCode + "";
+                infos.put("VersionName", versionName);
+                infos.put("VersionCode", versionCode);
+            }
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+            Logger.e(TAG, "an error occured when collect package info");
+        }
+
+        Field[] fields = Build.class.getDeclaredFields();
+        for (Field field : fields) {
+            try {
+                field.setAccessible(true);
+                infos.put(field.getName(), field.get(null).toString());
+                Logger.d(TAG, field.getName() + " : " + field.get(null));
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+                Logger.d(TAG, "an error occured when collect crash info");
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+                Logger.d(TAG, "an error occured when collect crash info");
+            }
+        }
+    }
+
     private String saveCrashInfoToFile(Throwable ex) {
         StringBuffer sb = new StringBuffer();
         for (Map.Entry<String, String> entry : infos.entrySet()) {
@@ -124,17 +146,17 @@ public class CrashHandler implements UncaughtExceptionHandler {
         printWriter.close();
 
         String result = writer.toString();
-        long timeStamp = System.currentTimeMillis();
         try {
-            String time = format.format(new Date(timeStamp));
-            sb.append("----------------------------------<exception start>--------------------------------------------<\\n");
+            long timeStamp = System.currentTimeMillis();
+            String time = format.format(new Date());
+            sb.append("----------------------------------<exception start>---------------------------------------<\\n");
             sb.append("Time: ");
             sb.append(timeStamp);
             sb.append("\n");
             sb.append(result);
             sb.append("\n");
-            sb.append("----------------------------------<exception end>--------------------------------------------");
-            String fileName = "crach-" + time + "-" + timeStamp + "-exception.log";
+            sb.append("----------------------------------<exception end>------------------------------------------");
+            String fileName = "crach-" + time + "-" + timeStamp + ".log";
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                 String path = SdCardUtil.getExternalStorageAbsolutePath() + GlobalConfig.LOG_PATH;
                 File filePath = new File(path);
@@ -147,46 +169,9 @@ public class CrashHandler implements UncaughtExceptionHandler {
             }
             return fileName;
         } catch (Exception e) {
-            LogUtil.debugE(TAG, "an error occured while writing file...");
+            Logger.e(TAG, "an error occured while writing file...");
         }
         return null;
     }
 
-    /**
-     * @return void    返回类型
-     * @throws
-     * @Title: collectDeviceInfo
-     * @说 明: 手机设备参数信息
-     * @参 数: @param mContext
-     */
-    private void collectDeviceInfo(Context mContext) {
-        try {
-            PackageManager pm = mContext.getPackageManager();
-            PackageInfo pi = pm.getPackageInfo(mContext.getPackageName(), PackageManager.GET_ACTIVITIES);
-            if (null != pi) {
-                String versionName = pi.versionName == null ? "null" : pi.versionName;
-                String versionCode = pi.versionCode + "";
-                infos.put("VersionName", versionName);
-                infos.put("VersionCode", versionCode);
-            }
-        } catch (NameNotFoundException e) {
-            e.printStackTrace();
-            LogUtil.debugE(TAG, "an error occured when collect package info");
-        }
-
-        Field[] fields = Build.class.getDeclaredFields();
-        for (Field field : fields) {
-            try {
-                field.setAccessible(true);
-                infos.put(field.getName(), field.get(null).toString());
-                LogUtil.debugD(TAG, field.getName() + " : " + field.get(null));
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-                LogUtil.debugD(TAG, "an error occured when collect crash info");
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-                LogUtil.debugD(TAG, "an error occured when collect crash info");
-            }
-        }
-    }
 }

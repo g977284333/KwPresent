@@ -11,10 +11,4 @@
     数据库存储
 
 有时间梳理一下
-    CrashHandler
-    FileUtils
-    ImageUtil
-    LogUtil
-    ShellUtils
-    PackageUtils
     优化MutiImageSelector

@@ -8,21 +8,8 @@ import java.util.List;
 
 /**
  * ShellUtils
- * <ul>
- * <strong>Check root</strong>
- * <li>{@link ShellUtils#checkRootPermission()}</li>
- * </ul>
- * <ul>
- * <strong>Execte command</strong>
- * <li>{@link ShellUtils#execCommand(String, boolean)}</li>
- * <li>{@link ShellUtils#execCommand(String, boolean, boolean)}</li>
- * <li>{@link ShellUtils#execCommand(List, boolean)}</li>
- * <li>{@link ShellUtils#execCommand(List, boolean, boolean)}</li>
- * <li>{@link ShellUtils#execCommand(String[], boolean)}</li>
- * <li>{@link ShellUtils#execCommand(String[], boolean, boolean)}</li>
- * </ul>
  *
- * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-5-16
+ * @author Trinea 2013-5-16
  */
 public class ShellUtils {
 
@@ -37,8 +24,6 @@ public class ShellUtils {
 
     /**
      * check whether has root permission
-     *
-     * @return
      */
     public static boolean checkRootPermission() {
         return execCommand("echo root", true, false).result == 0;
@@ -49,8 +34,6 @@ public class ShellUtils {
      *
      * @param command command
      * @param isRoot  whether need to run with root
-     * @return
-     * @see ShellUtils#execCommand(String[], boolean, boolean)
      */
     public static CommandResult execCommand(String command, boolean isRoot) {
         return execCommand(new String[]{command}, isRoot, true);
@@ -61,8 +44,6 @@ public class ShellUtils {
      *
      * @param commands command list
      * @param isRoot   whether need to run with root
-     * @return
-     * @see ShellUtils#execCommand(String[], boolean, boolean)
      */
     public static CommandResult execCommand(List<String> commands, boolean isRoot) {
         return execCommand(commands == null ? null : commands.toArray(new String[]{}), isRoot, true);
@@ -73,8 +54,6 @@ public class ShellUtils {
      *
      * @param commands command array
      * @param isRoot   whether need to run with root
-     * @return
-     * @see ShellUtils#execCommand(String[], boolean, boolean)
      */
     public static CommandResult execCommand(String[] commands, boolean isRoot) {
         return execCommand(commands, isRoot, true);
@@ -86,8 +65,6 @@ public class ShellUtils {
      * @param command         command
      * @param isRoot          whether need to run with root
      * @param isNeedResultMsg whether need result msg
-     * @return
-     * @see ShellUtils#execCommand(String[], boolean, boolean)
      */
     public static CommandResult execCommand(String command, boolean isRoot, boolean isNeedResultMsg) {
         return execCommand(new String[]{command}, isRoot, isNeedResultMsg);
@@ -99,8 +76,6 @@ public class ShellUtils {
      * @param commands        command list
      * @param isRoot          whether need to run with root
      * @param isNeedResultMsg whether need result msg
-     * @return
-     * @see ShellUtils#execCommand(String[], boolean, boolean)
      */
     public static CommandResult execCommand(List<String> commands, boolean isRoot, boolean isNeedResultMsg) {
         return execCommand(commands == null ? null : commands.toArray(new String[]{}), isRoot, isNeedResultMsg);
@@ -112,11 +87,6 @@ public class ShellUtils {
      * @param commands        command array
      * @param isRoot          whether need to run with root
      * @param isNeedResultMsg whether need result msg
-     * @return <ul>
-     * <li>if isNeedResultMsg is false, {@link CommandResult#successMsg} is null and
-     * {@link CommandResult#errorMsg} is null.</li>
-     * <li>if {@link CommandResult#result} is -1, there maybe some excepiton.</li>
-     * </ul>
      */
     public static CommandResult execCommand(String[] commands, boolean isRoot, boolean isNeedResultMsg) {
         int result = -1;
@@ -191,14 +161,9 @@ public class ShellUtils {
 
     /**
      * result of command
-     * <ul>
-     * <li>{@link CommandResult#result} means result of command, 0 means normal, else means error, same to excute in
-     * linux shell</li>
-     * <li>{@link CommandResult#successMsg} means success message of command result</li>
-     * <li>{@link CommandResult#errorMsg} means error message of command result</li>
-     * </ul>
-     *
-     * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-5-16
+     * means result of command, 0 means normal, else means error, same to excute in
+     * means success message of command result
+     * means error message of command result
      */
     public static class CommandResult {
 

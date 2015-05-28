@@ -29,7 +29,7 @@ public class StrictModeWrapper {
                         .build());
             } catch (Throwable throwable) {
                 throwable.printStackTrace();
-                LogUtil.debugE(TAG, "StrictMode is not Available!");
+                Logger.e(TAG, "StrictMode is not Available!");
             }
         }
     }

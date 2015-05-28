@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.RandomAccessFile;
 import java.io.StringWriter;
+import java.sql.Time;
 import java.util.Calendar;
 
 import android.text.TextUtils;
@@ -16,12 +17,10 @@ import com.kw_support.constants.GlobalConfig;
 
 /**
  * @author gechen
- * @类说明：the wrapper of Log
- * @创建时间：2014-11-14 下午16:30:19
+ * @discription：the wrapper of Log
+ * @date：2014-11-14 16:30:19
  */
-public class LogUtil {
-
-    private static final String FILE_NAME = "/log_gechen.htm"; // 记录log的文件名
+public class Logger {
     private static final String FILE_PATH = SdCardUtil.getAbsolutePath(GlobalConfig.LOG_PATH);
 
     public static final String LOG_COLOR_BLUE = "#0000ff";// 蓝色
@@ -29,110 +28,94 @@ public class LogUtil {
     public static final String LOG_COLOR_BLACK = "#000000";// 默认为黑色
     public static final String LOG_COLOR_MEGENTA = "#ff00ff";// 紫红色
 
-    public static void debugD(String tag, String msg) {
+    public static void d(String tag, String msg) {
         if (GlobalConfig.DEV_MODE) {
             Log.d(tag, msg);
         }
     }
 
-    public static void debugE(String tag, String msg) {
+    public static void e(String tag, String msg) {
         if (GlobalConfig.DEV_MODE) {
             Log.e(tag, msg);
         }
     }
 
-    public static void debugI(String tag, String msg) {
+    public static void i(String tag, String msg) {
         if (GlobalConfig.DEV_MODE) {
             Log.i(tag, msg);
         }
     }
 
-    public static void debugW(String tag, String msg) {
+    public static void w(String tag, String msg) {
         if (GlobalConfig.DEV_MODE) {
             Log.w(tag, msg);
         }
     }
 
-    /**
-     * @return void    返回类型
-     * @throws
-     * @Title: logToFile
-     * @说 明: 将异常的msg输入到日志文件中
-     * @参 数: @param tag
-     * @参 数: @param msg
-     */
     public static void logToFile(String tag, String msg) {
         logToFile(tag, msg, null);
     }
 
-    /**
-     * @return void    返回类型
-     * @throws
-     * @Title: logToFile
-     * @说 明: 将异常输入到日志文件中
-     * @参 数: @param tag
-     * @参 数: @param e  异常
-     */
     public static void logToFile(String tag, Exception e) {
         logToFile(tag, getErrorInfoFromException(e), null);
     }
 
-    /**
-     * @return void    返回类型
-     * @throws
-     * @Title: logToFile
-     * @说 明: 将异常输入到日志文件中
-     * @参 数: @param tag
-     * @参 数: @param e  异常
-     */
     public static void logToFile(String tag, Exception e, String color) {
         logToFile(tag, getErrorInfoFromException(e), color);
     }
 
-    /**
-     * 持久化Log(以htm的形式持久化到本地)
-     */
     public static void logToFile(String tag, String msg, String color) {
         if (null == color) {
             color = LOG_COLOR_BLACK;
         }
 
-        debugE(tag, msg);
+        e(tag, msg);
+
         try {
             if (GlobalConfig.DEV_MODE) {
+                StringBuilder builder = new StringBuilder();
                 String head = "";
-                File logFile = new File(FILE_PATH, FILE_NAME);
+                String fileName = getFileName();
+
+                File logFile = new File(FILE_PATH, fileName);
                 if (!logFile.exists()) {
-                    // 创建目录
                     File destDir = new File(FILE_PATH);
                     if (destDir.exists()) {
                         destDir.mkdirs();
                     }
                     logFile.createNewFile();
-                    head = "<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"></head>";
+                    head = getHead();
                 }
 
-                // 标识日志日期
-                Calendar calendar = Calendar.getInstance();
-                String time = String.format("%2d.%2d %2d:%2d:%2d.%2d",
-                        calendar.get(Calendar.MONTH),
-                        calendar.get(Calendar.DAY_OF_MONTH),
-                        calendar.get(Calendar.HOUR_OF_DAY),
-                        calendar.get(Calendar.MINUTE),
-                        calendar.get(Calendar.SECOND),
-                        calendar.get(Calendar.MILLISECOND));
+                String time = TimeUtil.getCurrentTimeInString();
                 String before = "<p><span lang=\"zh-cn\">";
                 String after = "</span></p>";
-                if (!TextUtils.isEmpty(color)) {
-                    before += "<font color=\"" + color + "\">";
-                    after = "</font>" + after;
-                }
-                saveToFile(FILE_PATH + FILE_NAME, head + before + time + "   ["
-                        + tag + "]  " + msg + after);
+                before += "<font color=\"" + color + "\">";
+                after = "</font>" + after;
+
+                builder.append(head);
+                builder.append(before);
+                builder.append(time);
+                builder.append("[");
+                builder.append(tag);
+                builder.append("]");
+                builder.append(msg);
+                builder.append(after);
+
+                saveToFile(FILE_PATH + fileName, builder.toString());
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private static String getFileName() {
+        String timestamp = TimeUtil.getCurrentDate();
+        return timestamp  + ".log";
+    }
+
+    private static String getHead() {
+        return "<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"></head>";
     }
 
     private static void saveToFile(String fileName, String content) {
@@ -148,14 +131,6 @@ public class LogUtil {
         }
     }
 
-    /**
-     * @return String    返回类型
-     * @throws
-     * @Title: getErrorInfoFromException
-     * @说 明: 将Exception信息转换成字符串
-     * @参 数: @param e
-     * @参 数: @return
-     */
     public static String getErrorInfoFromException(Exception e) {
         try {
             StringWriter sw = new StringWriter();
@@ -167,11 +142,4 @@ public class LogUtil {
         }
     }
 
-    /**
-     * 删除log文件
-     */
-    public static void clearLogFile() {
-        File logFile = new File(FILE_PATH, FILE_NAME);
-        logFile.delete();
-    }
 }
