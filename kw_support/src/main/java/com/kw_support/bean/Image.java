@@ -1,7 +1,7 @@
 package com.kw_support.bean;
 
 /**
- * 图片实体
+ * Image
  * Created by Nereo on 2015/4/7.
  */
 public class Image {

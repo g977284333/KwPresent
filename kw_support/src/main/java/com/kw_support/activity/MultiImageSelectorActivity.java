@@ -14,117 +14,115 @@ import java.util.ArrayList;
 
 
 /**
- * 多图选择
+ * MultiImageSelectorActivity
  * Created by Nereo on 2015/4/7.
  */
 public class MultiImageSelectorActivity extends BaseActivity implements MultiImageSelectorFragment.Callback {
 
     /**
-     * 最大图片选择次数，int类型，默认9
+     * The maximum number of selection
      */
     public static final String EXTRA_SELECT_COUNT = "max_select_count";
+
     /**
-     * 图片选择模式，默认多选
+     * Image Select mode, the default multiple choice
      */
     public static final String EXTRA_SELECT_MODE = "select_count_mode";
+
     /**
-     * 是否显示相机，默认显示
+     * Whether to display the camera option, the default is display
      */
     public static final String EXTRA_SHOW_CAMERA = "show_camera";
+
     /**
-     * 选择结果，返回为 ArrayList&lt;String&gt; 图片路径集合
+     * selection results
      */
     public static final String EXTRA_RESULT = "select_result";
+
     /**
-     * 默认选择集
+     * the default selection list
      */
     public static final String EXTRA_DEFAULT_SELECTED_LIST = "default_list";
 
     /**
-     * 单选
+     * SingleSelection
      */
     public static final int MODE_SINGLE = 0;
+
     /**
-     * 多选
+     * MultiSelect
      */
     public static final int MODE_MULTI = 1;
 
-    private ArrayList<String> resultList = new ArrayList<String>();
+    private ArrayList<String> mResultList = new ArrayList<String>();
+
     private Button mSubmitButton;
+
     private int mDefaultCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_default);
+        setContentView(R.layout.activity_multi_image_selector);
 
+        initData();
+        initView();
+    }
+
+    private void initView() {
+
+        findViewById(R.id.multi_image_selector_btn_back).setOnClickListener(mBtnBackListener);
+        mSubmitButton = (Button) findViewById(R.id.multi_image_selector_btn_submit);
+
+        if (mResultList == null || mResultList.size() <= 0) {
+            setSubmitTextInSingleMode();
+            mSubmitButton.setEnabled(false);
+        } else {
+            setSubmitTextInMultiMode();
+            mSubmitButton.setEnabled(true);
+        }
+
+        mSubmitButton.setOnClickListener(mBtcCommitListener);
+    }
+
+    private void initData() {
         Intent intent = getIntent();
         mDefaultCount = intent.getIntExtra(EXTRA_SELECT_COUNT, 9);
         int mode = intent.getIntExtra(EXTRA_SELECT_MODE, MODE_MULTI);
-        boolean isShow = intent.getBooleanExtra(EXTRA_SHOW_CAMERA, true);
         if (mode == MODE_MULTI && intent.hasExtra(EXTRA_DEFAULT_SELECTED_LIST)) {
-            resultList = intent.getStringArrayListExtra(EXTRA_DEFAULT_SELECTED_LIST);
+            mResultList = intent.getStringArrayListExtra(EXTRA_DEFAULT_SELECTED_LIST);
         }
+        boolean isShow = intent.getBooleanExtra(EXTRA_SHOW_CAMERA, true);
+
 
         Bundle bundle = new Bundle();
         bundle.putInt(MultiImageSelectorFragment.EXTRA_SELECT_COUNT, mDefaultCount);
         bundle.putInt(MultiImageSelectorFragment.EXTRA_SELECT_MODE, mode);
         bundle.putBoolean(MultiImageSelectorFragment.EXTRA_SHOW_CAMERA, isShow);
-        bundle.putStringArrayList(MultiImageSelectorFragment.EXTRA_DEFAULT_SELECTED_LIST, resultList);
+        bundle.putStringArrayList(MultiImageSelectorFragment.EXTRA_DEFAULT_SELECTED_LIST, mResultList);
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.image_grid, Fragment.instantiate(this, MultiImageSelectorFragment.class.getName(), bundle))
                 .commit();
-
-        // 返回按钮
-        findViewById(R.id.btn_back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setResult(RESULT_CANCELED);
-                finish();
-            }
-        });
-
-        // 完成按钮
-        mSubmitButton = (Button) findViewById(R.id.commit);
-        if (resultList == null || resultList.size() <= 0) {
-            mSubmitButton.setText("完成");
-            mSubmitButton.setEnabled(false);
-        } else {
-            mSubmitButton.setText("完成(" + resultList.size() + "/" + mDefaultCount + ")");
-            mSubmitButton.setEnabled(true);
-        }
-        mSubmitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (resultList != null && resultList.size() > 0) {
-                    // 返回已选择的图片数据
-                    Intent data = new Intent();
-                    data.putStringArrayListExtra(EXTRA_RESULT, resultList);
-                    setResult(RESULT_OK, data);
-                    finish();
-                }
-            }
-        });
     }
 
     @Override
     public void onSingleImageSelected(String path) {
         Intent data = new Intent();
-        resultList.add(path);
-        data.putStringArrayListExtra(EXTRA_RESULT, resultList);
+        mResultList.add(path);
+        data.putStringArrayListExtra(EXTRA_RESULT, mResultList);
         setResult(RESULT_OK, data);
         finish();
     }
 
     @Override
     public void onImageSelected(String path) {
-        if (!resultList.contains(path)) {
-            resultList.add(path);
+        if (!mResultList.contains(path)) {
+            mResultList.add(path);
         }
-        // 有图片之后，改变按钮状态
-        if (resultList.size() > 0) {
-            mSubmitButton.setText("完成(" + resultList.size() + "/" + mDefaultCount + ")");
+
+        if (mResultList.size() > 0) {
+            setSubmitTextInMultiMode();
             if (!mSubmitButton.isEnabled()) {
                 mSubmitButton.setEnabled(true);
             }
@@ -133,27 +131,57 @@ public class MultiImageSelectorActivity extends BaseActivity implements MultiIma
 
     @Override
     public void onImageUnselected(String path) {
-        if (resultList.contains(path)) {
-            resultList.remove(path);
-            mSubmitButton.setText("完成(" + resultList.size() + "/" + mDefaultCount + ")");
+        if (mResultList.contains(path)) {
+            mResultList.remove(path);
+            setSubmitTextInMultiMode();
         } else {
-            mSubmitButton.setText("完成(" + resultList.size() + "/" + mDefaultCount + ")");
+            setSubmitTextInMultiMode();
         }
-        // 当为选择图片时候的状态
-        if (resultList.size() == 0) {
-            mSubmitButton.setText("完成");
+
+        if (mResultList.size() == 0) {
+            setSubmitTextInSingleMode();
             mSubmitButton.setEnabled(false);
         }
+    }
+
+    private void setSubmitTextInSingleMode() {
+        mSubmitButton.setText("完成");
+    }
+
+    private void setSubmitTextInMultiMode() {
+        mSubmitButton.setText("完成(" + mResultList.size() + "/" + mDefaultCount + ")");
     }
 
     @Override
     public void onCameraShot(File imageFile) {
         if (imageFile != null) {
             Intent data = new Intent();
-            resultList.add(imageFile.getAbsolutePath());
-            data.putStringArrayListExtra(EXTRA_RESULT, resultList);
+            mResultList.add(imageFile.getAbsolutePath());
+            data.putStringArrayListExtra(EXTRA_RESULT, mResultList);
             setResult(RESULT_OK, data);
             finish();
         }
     }
+
+    private View.OnClickListener mBtnBackListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            setResult(RESULT_CANCELED);
+            finish();
+        }
+    };
+
+    private View.OnClickListener mBtcCommitListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (mResultList != null && mResultList.size() > 0) {
+                Intent data = new Intent();
+                data.putStringArrayListExtra(EXTRA_RESULT, mResultList);
+                setResult(RESULT_OK, data);
+                finish();
+            }
+        }
+    };
+
+
 }

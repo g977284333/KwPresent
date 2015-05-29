@@ -18,7 +18,7 @@ import java.util.List;
 
 
 /**
- * 文件夹Adapter
+ * FolderAdapter
  * Created by Nereo on 2015/4/7.
  */
 public class FolderAdapter extends BaseAdapter {
@@ -38,9 +38,6 @@ public class FolderAdapter extends BaseAdapter {
         mImageSize = mContext.getResources().getDimensionPixelOffset(R.dimen.folder_cover_size);
     }
 
-    /**
-     * 设置数据集
-     */
     public void setData(List<Folder> folders) {
         if (folders != null && folders.size() > 0) {
             mFolders = folders;
@@ -70,7 +67,7 @@ public class FolderAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder holder;
         if (view == null) {
-            view = mInflater.inflate(R.layout.list_item_folder, viewGroup, false);
+            view = mInflater.inflate(R.layout.layout_item_folder, viewGroup, false);
             holder = new ViewHolder(view);
         } else {
             holder = (ViewHolder) view.getTag();
@@ -138,14 +135,13 @@ public class FolderAdapter extends BaseAdapter {
         void bindData(Folder data) {
             name.setText(data.name);
             size.setText(data.images.size() + "张");
-            // 显示图片
+            // show iamge
             Picasso.with(mContext)
                     .load(new File(data.cover.path))
                     .placeholder(R.drawable.default_error)
                     .resize(mImageSize, mImageSize)
                     .centerCrop()
                     .into(cover);
-            // TODO 选择标识
         }
     }
 

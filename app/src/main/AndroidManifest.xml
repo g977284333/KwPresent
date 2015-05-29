@@ -81,7 +81,8 @@
 
         <activity
             android:configChanges="orientation|screenSize"
-            android:name="com.kw_support.activity.MultiImageSelectorActivity" />
+            android:name="com.kw_support.activity.MultiImageSelectorActivity"
+            android:launchMode="singleTask"/>
 
         <activity
             android:configChanges="orientation|screenSize"

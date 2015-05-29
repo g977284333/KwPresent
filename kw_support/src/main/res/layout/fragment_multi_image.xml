@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <GridView
-        android:id="@+id/grid"
+        android:id="@id/multi_image_selector_gv_images"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:horizontalSpacing="@dimen/space_size"
@@ -17,7 +17,7 @@
         android:columnWidth="@dimen/image_size"/>
 
     <TextView
-        android:id="@+id/timeline_area"
+        android:id="@id/multi_image_selector_tv_timeline_area"
         tools:text="2015年4月1日"
         android:textColor="#CDCECE"
         android:textSize="14sp"
@@ -37,7 +37,7 @@
         android:layout_height="?android:attr/actionBarSize">
 
         <Button
-            android:id="@+id/category_btn"
+            android:id="@id/multi_image_selector_btn_category"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:layout_centerVertical="true"
@@ -55,14 +55,14 @@
 
         <View
             android:visibility="gone"
-            android:layout_toLeftOf="@+id/preview"
+            android:layout_toLeftOf="@id/multi_image_selector_btn_preview"
             android:layout_width="1dp"
             android:background="#8828292A"
             android:layout_height="match_parent" />
 
         <Button
             android:visibility="gone"
-            android:id="@+id/preview"
+            android:id="@id/multi_image_selector_btn_preview"
             tools:text="预览(1)"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"

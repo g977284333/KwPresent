@@ -18,7 +18,7 @@ import java.util.List;
 
 
 /**
- * 图片Adapter
+ * ImageGridAdapter
  * Created by Nereo on 2015/4/7.
  */
 public class ImageGridAdapter extends BaseAdapter {
@@ -45,11 +45,6 @@ public class ImageGridAdapter extends BaseAdapter {
         mItemLayoutParams = new GridView.LayoutParams(GridView.LayoutParams.MATCH_PARENT, GridView.LayoutParams.MATCH_PARENT);
     }
 
-    /**
-     * 显示选择指示器
-     *
-     * @param b
-     */
     public void showSelectIndicator(boolean b) {
         showSelectIndicator = b;
     }
@@ -66,9 +61,7 @@ public class ImageGridAdapter extends BaseAdapter {
     }
 
     /**
-     * 选择某个图片，改变选择状态
-     *
-     * @param image
+     * Select and modify the image of state
      */
     public void select(Image image) {
         if (mSelectedImages.contains(image)) {
@@ -80,9 +73,7 @@ public class ImageGridAdapter extends BaseAdapter {
     }
 
     /**
-     * 通过图片路径设置默认选择
-     *
-     * @param resultList
+     * set the default selection by path
      */
     public void setDefaultSelected(ArrayList<String> resultList) {
         for (String path : resultList) {
@@ -107,11 +98,6 @@ public class ImageGridAdapter extends BaseAdapter {
         return null;
     }
 
-    /**
-     * 设置数据集
-     *
-     * @param images
-     */
     public void setData(List<Image> images) {
         mSelectedImages.clear();
 
@@ -124,9 +110,7 @@ public class ImageGridAdapter extends BaseAdapter {
     }
 
     /**
-     * 重置每个Column的Size
-     *
-     * @param columnWidth
+     * reset each column of size
      */
     public void setItemSize(int columnWidth) {
 
@@ -181,22 +165,22 @@ public class ImageGridAdapter extends BaseAdapter {
 
         int type = getItemViewType(i);
         if (type == TYPE_CAMERA) {
-            view = mInflater.inflate(R.layout.list_item_camera, viewGroup, false);
+            view = mInflater.inflate(R.layout.layout_item_camera, viewGroup, false);
             view.setTag(null);
         } else if (type == TYPE_NORMAL) {
-            ViewHolde holde;
+            ViewHolder holder;
             if (view == null) {
-                view = mInflater.inflate(R.layout.list_item_image, viewGroup, false);
-                holde = new ViewHolde(view);
+                view = mInflater.inflate(R.layout.layout_item_image, viewGroup, false);
+                holder = new ViewHolder(view);
             } else {
-                holde = (ViewHolde) view.getTag();
-                if (holde == null) {
-                    view = mInflater.inflate(R.layout.list_item_image, viewGroup, false);
-                    holde = new ViewHolde(view);
+                holder = (ViewHolder) view.getTag();
+                if (holder == null) {
+                    view = mInflater.inflate(R.layout.layout_item_image, viewGroup, false);
+                    holder = new ViewHolder(view);
                 }
             }
-            if (holde != null) {
-                holde.bindData(getItem(i));
+            if (holder != null) {
+                holder.bindData(getItem(i));
             }
         }
 
@@ -209,12 +193,12 @@ public class ImageGridAdapter extends BaseAdapter {
         return view;
     }
 
-    class ViewHolde {
+    class ViewHolder {
         ImageView image;
         ImageView indicator;
         View mask;
 
-        ViewHolde(View view) {
+        ViewHolder(View view) {
             image = (ImageView) view.findViewById(R.id.image);
             indicator = (ImageView) view.findViewById(R.id.checkmark);
             mask = view.findViewById(R.id.mask);
@@ -223,15 +207,15 @@ public class ImageGridAdapter extends BaseAdapter {
 
         void bindData(final Image data) {
             if (data == null) return;
-            // 处理单选和多选状态
+            // Deal with the Single and multiple-choice status
             if (showSelectIndicator) {
                 indicator.setVisibility(View.VISIBLE);
                 if (mSelectedImages.contains(data)) {
-                    // 设置选中状态
+                    // Set the selected state
                     indicator.setImageResource(R.drawable.btn_selected);
                     mask.setVisibility(View.VISIBLE);
                 } else {
-                    // 未选择
+                    // Not selected
                     indicator.setImageResource(R.drawable.btn_unselected);
                     mask.setVisibility(View.GONE);
                 }
@@ -241,7 +225,7 @@ public class ImageGridAdapter extends BaseAdapter {
             File imageFile = new File(data.path);
 
             if (mItemSize > 0) {
-                // 显示图片
+                // show image
                 Picasso.with(mContext)
                         .load(imageFile)
                         .placeholder(R.drawable.default_error)

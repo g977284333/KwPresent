@@ -44,51 +44,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 图片选择Fragment
+ * MultiImageSelectorFragment
  * Created by Nereo on 2015/4/7.
  */
 public class MultiImageSelectorFragment extends BaseFragment {
 
     private static final String TAG = "MultiImageSelector";
 
-    /**
-     * 最大图片选择次数，int类型
-     */
     public static final String EXTRA_SELECT_COUNT = "max_select_count";
-    /**
-     * 图片选择模式，int类型
-     */
     public static final String EXTRA_SELECT_MODE = "select_count_mode";
-    /**
-     * 是否显示相机，boolean类型
-     */
     public static final String EXTRA_SHOW_CAMERA = "show_camera";
-    /**
-     * 默认选择的数据集
-     */
     public static final String EXTRA_DEFAULT_SELECTED_LIST = "default_result";
-    /**
-     * 单选
-     */
     public static final int MODE_SINGLE = 0;
-    /**
-     * 多选
-     */
     public static final int MODE_MULTI = 1;
-    // 不同loader定义
+
+    /**
+     * 不同loader定
+     */
     private static final int LOADER_ALL = 0;
     private static final int LOADER_CATEGORY = 1;
-    // 请求加载系统照相机
     private static final int REQUEST_CAMERA = 100;
 
-
-    // 结果数据
     private ArrayList<String> resultList = new ArrayList<String>();
-    // 文件夹数据
     private ArrayList<Folder> mResultFolder = new ArrayList<Folder>();
 
-    // 图片Grid
     private GridView mGridView;
+
     private Callback mCallback;
 
     private ImageGridAdapter mImageAdapter;
@@ -96,21 +77,18 @@ public class MultiImageSelectorFragment extends BaseFragment {
 
     private ListPopupWindow mFolderPopupWindow;
 
-    // 时间线
     private TextView mTimeLineText;
-    // 类别
     private TextView mCategoryText;
-    // 预览按钮
+
     private Button mPreviewBtn;
-    // 底部View
+
     private View mPopupAnchorView;
 
     private int mDesireImageCount;
+    private int mGridWidth, mGridHeight;
 
     private boolean hasFolderGened = false;
     private boolean mIsShowCamera = false;
-
-    private int mGridWidth, mGridHeight;
 
     private File mTmpFile;
 
@@ -133,13 +111,9 @@ public class MultiImageSelectorFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // 选择图片数量
         mDesireImageCount = getArguments().getInt(EXTRA_SELECT_COUNT);
 
-        // 图片选择模式
         final int mode = getArguments().getInt(EXTRA_SELECT_MODE);
-
-        // 默认选择
         if (mode == MODE_MULTI) {
             ArrayList<String> tmp = getArguments().getStringArrayList(EXTRA_DEFAULT_SELECTED_LIST);
             if (tmp != null && tmp.size() > 0) {
@@ -147,20 +121,16 @@ public class MultiImageSelectorFragment extends BaseFragment {
             }
         }
 
-        // 是否显示照相机
         mIsShowCamera = getArguments().getBoolean(EXTRA_SHOW_CAMERA, true);
+
         mImageAdapter = new ImageGridAdapter(getActivity(), mIsShowCamera);
-        // 是否显示选择指示器
         mImageAdapter.showSelectIndicator(mode == MODE_MULTI);
 
         mPopupAnchorView = view.findViewById(R.id.footer);
-
-        mTimeLineText = (TextView) view.findViewById(R.id.timeline_area);
-        // 初始化，先隐藏当前timeline
+        mTimeLineText = (TextView) view.findViewById(R.id.multi_image_selector_tv_timeline_area);
         mTimeLineText.setVisibility(View.GONE);
 
-        mCategoryText = (TextView) view.findViewById(R.id.category_btn);
-        // 初始化，加载所有图片
+        mCategoryText = (TextView) view.findViewById(R.id.multi_image_selector_btn_category);
         mCategoryText.setText(R.string.folder_all);
         mCategoryText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,7 +151,7 @@ public class MultiImageSelectorFragment extends BaseFragment {
             }
         });
 
-        mPreviewBtn = (Button) view.findViewById(R.id.preview);
+        mPreviewBtn = (Button) view.findViewById(R.id.multi_image_selector_btn_preview);
         // 初始化，按钮状态初始化
         if (resultList == null || resultList.size() <= 0) {
             mPreviewBtn.setText(R.string.preview);
@@ -194,7 +164,7 @@ public class MultiImageSelectorFragment extends BaseFragment {
             }
         });
 
-        mGridView = (GridView) view.findViewById(R.id.grid);
+        mGridView = (GridView) view.findViewById(R.id.multi_image_selector_gv_images);
         mGridView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int state) {
@@ -418,7 +388,6 @@ public class MultiImageSelectorFragment extends BaseFragment {
     /**
      * 选择图片操作
      *
-     * @param image
      */
     private void selectImageFromGrid(Image image, int mode) {
         if (image != null) {
@@ -540,10 +509,8 @@ public class MultiImageSelectorFragment extends BaseFragment {
         }
     };
 
-    /**
-     * 回调接口
-     */
     public interface Callback {
+
         void onSingleImageSelected(String path);
 
         void onImageSelected(String path);
@@ -551,5 +518,6 @@ public class MultiImageSelectorFragment extends BaseFragment {
         void onImageUnselected(String path);
 
         void onCameraShot(File imageFile);
+
     }
 }

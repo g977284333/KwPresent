@@ -4,6 +4,12 @@
     <item type="id" name="gridview" />
     <item type="id" name="webview" />
     <item type="id" name="scrollview" />
+    <item type="id" name="multi_image_selector_btn_back" />
+    <item type="id" name="multi_image_selector_btn_submit" />
+    <item type="id" name="multi_image_selector_gv_images" />
+    <item type="id" name="multi_image_selector_tv_timeline_area" />
+    <item type="id" name="multi_image_selector_btn_category" />
+    <item type="id" name="multi_image_selector_btn_preview" />
 
     <!--    PullToRefreshViewPager  -->
     <item type="id" name="viewpager" />

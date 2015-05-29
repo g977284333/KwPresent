@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/btn_back"
+        android:id="@id/multi_image_selector_btn_back"
         android:src="@drawable/btn_back"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
@@ -15,7 +15,7 @@
 
     <TextView
         android:text="图片"
-        android:layout_toRightOf="@+id/btn_back"
+        android:layout_toRightOf="@id/multi_image_selector_btn_back"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:layout_centerVertical="true"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/commit"
+        android:id="@id/multi_image_selector_btn_submit"
         android:background="@drawable/action_btn"
         android:minHeight="1dp"
         android:minWidth="1dp"
