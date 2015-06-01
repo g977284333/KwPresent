@@ -10,6 +10,7 @@
     <item type="id" name="multi_image_selector_tv_timeline_area" />
     <item type="id" name="multi_image_selector_btn_category" />
     <item type="id" name="multi_image_selector_btn_preview" />
+    <item type="id" name="multi_image_selector_rl_footer" />
 
     <!--    PullToRefreshViewPager  -->
     <item type="id" name="viewpager" />

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.gechen.keepwalking.R;
-import com.kw_support.activity.MultiImageSelectorActivity;
 import com.kw_support.base.BaseActivity;
 
 /**
@@ -20,7 +19,7 @@ public class PhotoOrImageSimpleActivity extends BaseActivity{
     }
 
     public void skipToMultiImageSelector(View view) {
-        gotoTargetActivity(MainMuliImageSelectorActivity.class);
+        gotoTargetActivity(MainMultiImageSelectorActivity.class);
     }
 
     public void skipToPhotoViewActivity(View view) {

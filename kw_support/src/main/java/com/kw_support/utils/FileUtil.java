@@ -348,7 +348,7 @@ public class FileUtil {
         return (file.exists() && file.isFile() ? file.length() : -1);
     }
 
-    // Multi_Image_Selector 创建历史文件
+    // Multi_Image_Selector createTmpFile
     public static File createTmpFile(Context context) {
 
         if (SdCardUtil.isMounted()) {

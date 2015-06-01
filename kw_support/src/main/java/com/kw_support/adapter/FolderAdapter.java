@@ -22,14 +22,12 @@ import java.util.List;
  * Created by Nereo on 2015/4/7.
  */
 public class FolderAdapter extends BaseAdapter {
-
     private Context mContext;
     private LayoutInflater mInflater;
 
     private List<Folder> mFolders = new ArrayList<Folder>();
 
     int mImageSize;
-
     int lastSelected = 0;
 
     public FolderAdapter(Context context) {
@@ -135,7 +133,7 @@ public class FolderAdapter extends BaseAdapter {
         void bindData(Folder data) {
             name.setText(data.name);
             size.setText(data.images.size() + "张");
-            // show iamge
+            // show image
             Picasso.with(mContext)
                     .load(new File(data.cover.path))
                     .placeholder(R.drawable.default_error)

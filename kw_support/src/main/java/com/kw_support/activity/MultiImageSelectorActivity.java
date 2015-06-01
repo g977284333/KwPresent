@@ -55,9 +55,7 @@ public class MultiImageSelectorActivity extends BaseActivity implements MultiIma
     public static final int MODE_MULTI = 1;
 
     private ArrayList<String> mResultList = new ArrayList<String>();
-
     private Button mSubmitButton;
-
     private int mDefaultCount;
 
     @Override
@@ -93,7 +91,6 @@ public class MultiImageSelectorActivity extends BaseActivity implements MultiIma
             mResultList = intent.getStringArrayListExtra(EXTRA_DEFAULT_SELECTED_LIST);
         }
         boolean isShow = intent.getBooleanExtra(EXTRA_SHOW_CAMERA, true);
-
 
         Bundle bundle = new Bundle();
         bundle.putInt(MultiImageSelectorFragment.EXTRA_SELECT_COUNT, mDefaultCount);
@@ -182,6 +179,5 @@ public class MultiImageSelectorActivity extends BaseActivity implements MultiIma
             }
         }
     };
-
 
 }

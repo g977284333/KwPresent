@@ -11,4 +11,8 @@
     数据库存储
 
 有时间梳理一下
-    优化MutiImageSelector
+    继续优化MultiImageSelector
+
+BUG
+    MultiImageSelector 模块内存溢出的问题
+    文件夹列表弹出框第一次弹出宽度无法占满整个屏幕

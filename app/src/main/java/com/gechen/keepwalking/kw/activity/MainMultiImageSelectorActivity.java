@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -17,8 +15,7 @@ import com.kw_support.activity.MultiImageSelectorActivity;
 import java.util.ArrayList;
 
 
-public class MainMuliImageSelectorActivity extends ActionBarActivity {
-
+public class MainMultiImageSelectorActivity extends ActionBarActivity {
     private static final int REQUEST_IMAGE = 2;
 
     private TextView mResultText;
@@ -55,20 +52,20 @@ public class MainMuliImageSelectorActivity extends ActionBarActivity {
 
                 int selectedMode = MultiImageSelectorActivity.MODE_MULTI;
 
-                if(mChoiceMode.getCheckedRadioButtonId() == R.id.single){
+                if (mChoiceMode.getCheckedRadioButtonId() == R.id.single) {
                     selectedMode = MultiImageSelectorActivity.MODE_SINGLE;
-                }else{
+                } else {
                     selectedMode = MultiImageSelectorActivity.MODE_MULTI;
                 }
 
                 boolean showCamera = mShowCamera.getCheckedRadioButtonId() == R.id.show;
 
                 int maxNum = 9;
-                if(!TextUtils.isEmpty(mRequestNum.getText())){
+                if (!TextUtils.isEmpty(mRequestNum.getText())) {
                     maxNum = Integer.valueOf(mRequestNum.getText().toString());
                 }
 
-                Intent intent = new Intent(MainMuliImageSelectorActivity.this, MultiImageSelectorActivity.class);
+                Intent intent = new Intent(MainMultiImageSelectorActivity.this, MultiImageSelectorActivity.class);
                 // 是否显示拍摄图片
                 intent.putExtra(MultiImageSelectorActivity.EXTRA_SHOW_CAMERA, showCamera);
                 // 最大可选择图片数量
@@ -76,7 +73,7 @@ public class MainMuliImageSelectorActivity extends ActionBarActivity {
                 // 选择模式
                 intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_MODE, selectedMode);
                 // 默认选择
-                if(mSelectPath != null && mSelectPath.size()>0){
+                if (mSelectPath != null && mSelectPath.size() > 0) {
                     intent.putExtra(MultiImageSelectorActivity.EXTRA_DEFAULT_SELECTED_LIST, mSelectPath);
                 }
                 startActivityForResult(intent, REQUEST_IMAGE);
@@ -87,7 +84,7 @@ public class MainMuliImageSelectorActivity extends ActionBarActivity {
 /*        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainMuliImageSelectorActivity.this, GestureImageActivity.class);
+                Intent intent = new Intent(MainMultiImageSelectorActivity.this, GestureImageActivity.class);
                 startActivity(intent);
             }
         });*/
@@ -96,38 +93,16 @@ public class MainMuliImageSelectorActivity extends ActionBarActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_IMAGE){
-            if(resultCode == RESULT_OK){
+        if (requestCode == REQUEST_IMAGE) {
+            if (resultCode == RESULT_OK) {
                 mSelectPath = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
                 StringBuilder sb = new StringBuilder();
-                for(String p: mSelectPath){
+                for (String p : mSelectPath) {
                     sb.append(p);
                     sb.append("\n");
                 }
                 mResultText.setText(sb.toString());
             }
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

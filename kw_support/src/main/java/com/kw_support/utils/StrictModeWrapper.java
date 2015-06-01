@@ -19,6 +19,7 @@ public class StrictModeWrapper {
             try {
                 StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                         .detectAll()
+                        .penaltyDialog()
 //			.permitDiskReads()
                         .penaltyLog()
                         .build());

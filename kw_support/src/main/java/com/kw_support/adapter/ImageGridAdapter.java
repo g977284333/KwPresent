@@ -22,13 +22,13 @@ import java.util.List;
  * Created by Nereo on 2015/4/7.
  */
 public class ImageGridAdapter extends BaseAdapter {
-
     private static final int TYPE_CAMERA = 0;
     private static final int TYPE_NORMAL = 1;
 
     private Context mContext;
-
     private LayoutInflater mInflater;
+    private GridView.LayoutParams mItemLayoutParams;
+
     private boolean showCamera = true;
     private boolean showSelectIndicator = true;
 
@@ -36,7 +36,6 @@ public class ImageGridAdapter extends BaseAdapter {
     private List<Image> mSelectedImages = new ArrayList<Image>();
 
     private int mItemSize;
-    private GridView.LayoutParams mItemLayoutParams;
 
     public ImageGridAdapter(Context context, boolean showCamera) {
         mContext = context;
@@ -113,15 +112,12 @@ public class ImageGridAdapter extends BaseAdapter {
      * reset each column of size
      */
     public void setItemSize(int columnWidth) {
-
         if (mItemSize == columnWidth) {
             return;
         }
 
         mItemSize = columnWidth;
-
         mItemLayoutParams = new GridView.LayoutParams(mItemSize, mItemSize);
-
         notifyDataSetChanged();
     }
 
