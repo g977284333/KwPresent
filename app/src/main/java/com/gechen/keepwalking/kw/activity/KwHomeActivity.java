@@ -3,22 +3,27 @@ package com.gechen.keepwalking.kw.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 import com.gechen.keepwalking.R;
 import com.kw_support.base.BaseActivity;
 import com.kw_support.utils.UiUtil;
+import com.kw_support.view.OverLayLayout;
 
 
 public class KwHomeActivity extends BaseActivity {
+
     private Button mBounceScrollView;
     private Button mBaiduMap;
     private Button mKwAdapterBtn;
     private Button mPhotoOrImage;
     private Button mCustomWidget;
+
+    private OverLayLayout mOverlayLayout;
+
+    private ImageView mBanner;
 
     private long[] mHits = new long[2];
 
@@ -30,18 +35,24 @@ public class KwHomeActivity extends BaseActivity {
         setupView();
     }
 
-   private void setupView() {
-       mBounceScrollView = (Button) findViewById(R.id.btn_bounce_scroll_view);
-       mBaiduMap = (Button) findViewById(R.id.btn_baidu_map);
-       mKwAdapterBtn = (Button) findViewById(R.id.btn_list_or_scroll_view);
-       mPhotoOrImage = (Button) findViewById(R.id.btn_photo_or_image);
-       mCustomWidget = (Button) findViewById(R.id.btn_custom_widget);
+    private void setupView() {
+        mBounceScrollView = (Button) findViewById(R.id.btn_bounce_scroll_view);
+        mBaiduMap = (Button) findViewById(R.id.btn_baidu_map);
+        mKwAdapterBtn = (Button) findViewById(R.id.btn_list_or_scroll_view);
+        mPhotoOrImage = (Button) findViewById(R.id.btn_photo_or_image);
+        mCustomWidget = (Button) findViewById(R.id.btn_custom_widget);
+        mOverlayLayout = (OverLayLayout) findViewById(R.id.overlay);
+        mBanner = (ImageView) findViewById(R.id.iv_banner);
 
-       mBounceScrollView.setOnClickListener(this);
-       mBaiduMap.setOnClickListener(this);
-       mKwAdapterBtn.setOnClickListener(this);
-       mPhotoOrImage.setOnClickListener(this);
-       mCustomWidget.setOnClickListener(this);
+        mBounceScrollView.setOnClickListener(this);
+        mBaiduMap.setOnClickListener(this);
+        mKwAdapterBtn.setOnClickListener(this);
+        mPhotoOrImage.setOnClickListener(this);
+        mCustomWidget.setOnClickListener(this);
+        mOverlayLayout.setOnOverlayStateChangedListener(mOnOverlayStateChangeListener);
+
+        mOverlayLayout.setVisibility(View.VISIBLE);
+        mOverlayLayout.autoHideOverlay(3000);
     }
 
     @Override
@@ -75,10 +86,10 @@ public class KwHomeActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        System.arraycopy(mHits, 1, mHits, 0, mHits.length -1);
+        System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);
         mHits[mHits.length - 1] = SystemClock.uptimeMillis();
 
-        if(mHits[0] > SystemClock.uptimeMillis() - 500) {
+        if (mHits[0] > SystemClock.uptimeMillis() - 500) {
             finish();
         } else {
             UiUtil.showToast(this, "再按一次退出");
@@ -97,4 +108,13 @@ public class KwHomeActivity extends BaseActivity {
 //        }
 //        return super.onKeyDown(keyCode, event);
 //    }
+
+    private OverLayLayout.OnOverlayStateChangedListener mOnOverlayStateChangeListener = new OverLayLayout.OnOverlayStateChangedListener() {
+
+        @Override
+        public void onOverlayStateChanged(boolean isShow) {
+            mOverlayLayout.setVisibility(isShow ? View.VISIBLE : View.GONE);
+
+        }
+    };
 }

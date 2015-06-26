@@ -33,6 +33,8 @@ public abstract class ScrollerProxy {
 
     public abstract boolean computeScrollOffset();
 
+    public abstract void startScroll(int startX, int startY, int dx, int dy, int duration);
+
     public abstract void fling(int startX, int startY, int velocityX, int velocityY, int minX, int maxX, int minY,
                                int maxY, int overX, int overY);
 

@@ -23,7 +23,10 @@ public class BounceScrollView extends ScrollView {
 
     private boolean isCount = false;                  // 是否开始计算移动的距离
 
-    private int size = 5;                              // 可以拉伸的长度为屏幕宽度的比值
+    private int size = 3;                              // 可以拉伸的长度为屏幕宽度的比值
+
+    private float mLastMotionX;
+    private float mLastMotionY;
 
     public BounceScrollView(Context context) {
         super(context);
@@ -43,6 +46,32 @@ public class BounceScrollView extends ScrollView {
         if (getChildCount() > 0) {
             inner = getChildAt(0);                      // 获取第一个子View
         }
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        final int action = ev.getAction();
+
+        final float motionX = ev.getX();
+        final float motionY = ev.getY();
+
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                mLastMotionX = motionX;
+                mLastMotionY = motionY;
+
+                break;
+            case MotionEvent.ACTION_MOVE:
+                int xDiff = (int) Math.abs(motionX - mLastMotionX);
+                int yDiff = (int) Math.abs(motionY - mLastMotionY);
+
+                if(yDiff * 0.3f > xDiff) {
+                    return true;
+                }
+                break;
+        }
+
+        return super.onInterceptTouchEvent(ev);
     }
 
     @Override

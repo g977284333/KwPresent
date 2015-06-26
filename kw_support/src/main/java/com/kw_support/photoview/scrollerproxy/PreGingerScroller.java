@@ -32,6 +32,11 @@ public class PreGingerScroller extends ScrollerProxy {
     }
 
     @Override
+    public void startScroll(int startX, int startY, int dx, int dy, int duration) {
+        mScroller.startScroll(startX, startY, dx, dy, duration);
+    }
+
+    @Override
     public void fling(int startX, int startY, int velocityX, int velocityY, int minX, int maxX, int minY, int maxY,
                       int overX, int overY) {
         mScroller.fling(startX, startY, velocityX, velocityY, minX, maxX, minY, maxY);

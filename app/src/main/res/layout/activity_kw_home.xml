@@ -38,4 +38,19 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_photo_or_image"/>
 
+    <com.kw_support.view.OverLayLayout
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/banner"/>
+
+    </com.kw_support.view.OverLayLayout>
+
 </RelativeLayout>
