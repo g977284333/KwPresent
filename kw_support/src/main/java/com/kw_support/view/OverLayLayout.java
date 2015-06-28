@@ -23,7 +23,7 @@ public class OverLayLayout extends FrameLayout {
 
     private boolean mIsBeingDragged = false;
 
-    private int mTouchSlop;                     // 可以滚动一个页面的数值
+    private int mTouchSlop;
 
     private float mLastMotionX;
     private float mLastMotionY;

@@ -429,9 +429,9 @@ public class ImageUtil {
 			return null;
 		}
 		DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-		int width = Math.round(ScreenUtil.applayDimension(
+		int width = Math.round(ScreenUtil.applyDimension(
 				ScreenUtil.COMPLEX_UNIT_DIP, 12.0f, metrics));
-		int height = Math.round(ScreenUtil.applayDimension(
+		int height = Math.round(ScreenUtil.applyDimension(
 				ScreenUtil.COMPLEX_UNIT_DIP, 4.0f, metrics));
 		int round = Math.round(TypedValue.applyDimension(
 				TypedValue.COMPLEX_UNIT_DIP, 2.0f, metrics));

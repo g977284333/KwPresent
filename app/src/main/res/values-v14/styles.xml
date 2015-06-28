@@ -1,16 +1,19 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- this style file for wei xin main activity -->
+
+
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <!-- for modifying the default overflowButton icon -->
+        <item name="android:actionOverflowButtonStyle">@style/WeixinActionOverFlowButtonStyle</item>
     </style>
 
-    <!-- Base application theme. -->
     <style name="AppThemeNoTitle" parent="AppTheme">
         <item name="android:windowNoTitle">true</item>
-        <!-- Customize your theme here. -->
     </style>
-    
+
+
     <style name="WeixinActionOverFlowButtonStyle">
         <item name="android:src">@drawable/card_add_image</item>
     </style>

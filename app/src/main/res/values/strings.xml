@@ -20,4 +20,17 @@
     <string name="enable">是</string>
     <string name="disable">否</string>
     <string name="go_select">图片选择</string>
+
+    <!-- Strings for WeiXinMainActivity -->
+    <string name="weixin">微信</string>
+    <string name="action_search">搜索</string>
+    <string name="action_add">添加</string>
+    <string name="action_scan">扫一扫</string>
+    <string name="action_message">信息</string>
+    <string name="bar_conversation">微信</string>
+    <string name="bar_friend_list">通讯录</string>
+    <string name="bar_search">发现</string>
+    <string name="bar_me">我</string>
+
+
 </resources>

@@ -20,6 +20,7 @@ public class KwHomeActivity extends BaseActivity {
     private Button mKwAdapterBtn;
     private Button mPhotoOrImage;
     private Button mCustomWidget;
+    private Button mWeiXin;
 
     private OverLayLayout mOverlayLayout;
 
@@ -41,6 +42,8 @@ public class KwHomeActivity extends BaseActivity {
         mKwAdapterBtn = (Button) findViewById(R.id.btn_list_or_scroll_view);
         mPhotoOrImage = (Button) findViewById(R.id.btn_photo_or_image);
         mCustomWidget = (Button) findViewById(R.id.btn_custom_widget);
+        mWeiXin = (Button) findViewById(R.id.btn_wei_xin_activity);
+
         mOverlayLayout = (OverLayLayout) findViewById(R.id.overlay);
         mBanner = (ImageView) findViewById(R.id.iv_banner);
 
@@ -49,6 +52,7 @@ public class KwHomeActivity extends BaseActivity {
         mKwAdapterBtn.setOnClickListener(this);
         mPhotoOrImage.setOnClickListener(this);
         mCustomWidget.setOnClickListener(this);
+        mWeiXin.setOnClickListener(this);
         mOverlayLayout.setOnOverlayStateChangedListener(mOnOverlayStateChangeListener);
 
         mOverlayLayout.setVisibility(View.VISIBLE);
@@ -73,6 +77,9 @@ public class KwHomeActivity extends BaseActivity {
             case R.id.btn_custom_widget:
                 gotoTargetActivity(CustomWidgetActivity.class);
                 break;
+            case R.id.btn_wei_xin_activity:
+                gotoTargetActivity(WeiXinMainActivity.class);
+                break;
             default:
                 break;
         }
@@ -89,7 +96,7 @@ public class KwHomeActivity extends BaseActivity {
         System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);
         mHits[mHits.length - 1] = SystemClock.uptimeMillis();
 
-        if (mHits[0] > SystemClock.uptimeMillis() - 500) {
+        if (mHits[0] > SystemClock.uptimeMillis() - 2000) {
             finish();
         } else {
             UiUtil.showToast(this, "再按一次退出");

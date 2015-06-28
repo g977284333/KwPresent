@@ -1,0 +1,31 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".KwHomeActivity">
+
+    <item
+        android:id="@+id/action_search"
+        android:actionViewClass="android.widget.SearchView"
+        android:icon="@drawable/ic_search_night"
+        android:title="@string/action_search"
+        app:showAsAction="ifRoom|collapseActionView" />
+
+    <item
+        android:id="@+id/action_add"
+        android:icon="@drawable/menu_add_icon"
+        android:title="@string/action_add"/>
+
+    <item
+        android:id="@+id/action_scan"
+        android:icon="@drawable/ic_search_dimcode"
+        android:title="@string/action_scan"
+        app:showAsAction="ifRoom|collapseActionView" />
+
+    <item
+        android:id="@+id/action_photo"
+        android:icon="@drawable/ic_menu_pic_no"
+        android:title="@string/action_message"
+        app:showAsAction="ifRoom|collapseActionView" />
+
+
+</menu>

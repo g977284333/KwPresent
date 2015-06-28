@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="changeable_icon" format="reference"></attr>
+    <attr name="changeable_color" format="color"></attr>
+    <attr name="changeable_text" format="string"></attr>
+    <attr name="changeable_text_size" format="dimension"></attr>
+
+    <declare-styleable name="ChangeColorIconWithText">
+        <attr name="changeable_icon" ></attr>
+        <attr name="changeable_color" ></attr>
+        <attr name="changeable_text" ></attr>
+        <attr name="changeable_text_size" ></attr>
+    </declare-styleable>
+</resources>

@@ -38,6 +38,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_photo_or_image"/>
 
+    <Button
+        android:id="@+id/btn_wei_xin_activity"
+        android:text="OpenMyWeiXinActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_custom_widget"/>
+
     <com.kw_support.view.OverLayLayout
         android:id="@+id/overlay"
         android:layout_width="match_parent"

@@ -46,7 +46,7 @@ public class ScreenUtil {
      * @参 数: @param value
      * @参 数: @param metrics
      */
-    public static float applayDimension(int unit, float value,
+    public static float applyDimension(int unit, float value,
                                         DisplayMetrics metrics) {
         switch (unit) {
             case COMPLEX_UNIT_PX:

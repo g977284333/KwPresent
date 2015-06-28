@@ -35,10 +35,10 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppThemeNoTitle" >
         <activity
             android:name=".kw.activity.KwHomeActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -99,6 +99,11 @@
             android:configChanges="orientation|screenSize"
             android:name="com.gechen.keepwalking.kw.activity.CustomWidgetActivity" />
 
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name="com.gechen.keepwalking.kw.activity.WeiXinMainActivity"
+            android:theme="@style/AppTheme"
+            android:label="@string/weixin"/>
 
         <service
             android:name="com.baidu.location.f"

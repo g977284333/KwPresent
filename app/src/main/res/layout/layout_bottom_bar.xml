@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:gc="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/bottom_bar_bg"
+    android:orientation="horizontal">
+
+    <com.gechen.keepwalking.kw.widget.ChangeColorIconWithText
+        android:id="@+id/cciw_indicator_one"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="5dp"
+        gc:changeable_color="#ff45c01a"
+        gc:changeable_icon="@drawable/ic_menu_start_conversation"
+        gc:changeable_text="@string/bar_conversation"
+        gc:changeable_text_size="12sp" />
+
+    <com.gechen.keepwalking.kw.widget.ChangeColorIconWithText
+        android:id="@+id/cciw_indicator_two"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="5dp"
+        gc:changeable_color="#ff45c01a"
+        gc:changeable_icon="@drawable/ic_menu_allfriends"
+        gc:changeable_text="@string/bar_friend_list"
+        gc:changeable_text_size="12sp" />
+
+    <com.gechen.keepwalking.kw.widget.ChangeColorIconWithText
+        android:id="@+id/cciw_indicator_three"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="5dp"
+        gc:changeable_color="#ff45c01a"
+        gc:changeable_icon="@drawable/ic_menu_emoticons"
+        gc:changeable_text="@string/bar_search"
+        gc:changeable_text_size="12sp" />
+
+    <com.gechen.keepwalking.kw.widget.ChangeColorIconWithText
+        android:id="@+id/cciw_indicator_four"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="5dp"
+        gc:changeable_color="#ff45c01a"
+        gc:changeable_icon="@drawable/ic_menu_friendslist"
+        gc:changeable_text="@string/bar_me"
+        gc:changeable_text_size="12sp" />
+
+
+</LinearLayout>
