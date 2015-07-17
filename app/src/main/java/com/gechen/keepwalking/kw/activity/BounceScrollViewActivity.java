@@ -10,7 +10,7 @@ import com.kw_support.utils.AppUtil;
 import com.kw_support.utils.SystemFunUtil;
 import com.kw_support.utils.UiUtil;
 import com.kw_support.view.BounceScrollView;
-
+@Deprecated
 public class BounceScrollViewActivity extends BaseActivity {
 
     @Override

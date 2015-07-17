@@ -1,4 +1,4 @@
-package com.gechen.keepwalking.kw.widget;
+package com.kw_support.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -16,7 +16,8 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 
-import com.gechen.keepwalking.R;
+import com.kw_support.R;
+
 
 /**
  * Created by G-chen on 2015-6-28.
@@ -29,7 +30,7 @@ public class ChangeColorIconWithText extends View {
 
     private Bitmap mIconBitmap;
 
-    private String mText = "Î¢ÐÅ";
+    private String mText = "å¾®ä¿¡";
 
     private Canvas mCanvas;
 

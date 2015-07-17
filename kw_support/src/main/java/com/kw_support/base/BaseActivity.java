@@ -1,8 +1,10 @@
 package com.kw_support.base;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.kw_support.manager.ActivityManager;
 import com.kw_support.utils.Logger;

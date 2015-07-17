@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-
+@Deprecated
 public class PullToRefreshListViewActivity extends ActionBarActivity {
     private PullToRefreshListView mPtrListView;
     private LinkedList<String> mDatas;

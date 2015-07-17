@@ -4,15 +4,14 @@
 
 
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- for modifying the default overflowButton icon -->
         <item name="android:actionOverflowButtonStyle">@style/WeixinActionOverFlowButtonStyle</item>
     </style>
 
-    <style name="AppThemeNoTitle" parent="AppTheme">
+    <style name="AppThemeNoTitle" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:windowNoTitle">true</item>
     </style>
-
 
     <style name="WeixinActionOverFlowButtonStyle">
         <item name="android:src">@drawable/card_add_image</item>

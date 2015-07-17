@@ -14,7 +14,7 @@ import com.kw_support.activity.MultiImageSelectorActivity;
 
 import java.util.ArrayList;
 
-
+@Deprecated
 public class MainMultiImageSelectorActivity extends ActionBarActivity {
     private static final int REQUEST_IMAGE = 2;
 

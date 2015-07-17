@@ -27,7 +27,7 @@ import com.kw_support.constants.GlobalConfig;
 /**
  * @version 1.0
  * @author: gchen
- * @description:	UncaughtException处理类，当程序发生Uncaught异常时，由该类来接管程序，并记录发送错误报告
+ * @description: UncaughtException处理类，当程序发生Uncaught异常时，由该类来接管程序，并记录发送错误报告
  * @date：2014-11-17 下午10:32:18
  */
 public class CrashHandler implements UncaughtExceptionHandler {
@@ -43,7 +43,10 @@ public class CrashHandler implements UncaughtExceptionHandler {
 
     private DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    private CrashHandler() { };
+    private CrashHandler() {
+    }
+
+    ;
 
     public static CrashHandler getInstance() {
         return INSTANCE;
@@ -149,14 +152,15 @@ public class CrashHandler implements UncaughtExceptionHandler {
         try {
             long timeStamp = System.currentTimeMillis();
             String time = format.format(new Date());
-            sb.append("----------------------------------<exception start>---------------------------------------<\\n");
+            String lineFeed = "\r\n";
+            sb.append("-------<exception start>------<\\n");
             sb.append("Time: ");
             sb.append(timeStamp);
-            sb.append("\n");
+            sb.append(lineFeed);
             sb.append(result);
-            sb.append("\n");
-            sb.append("----------------------------------<exception end>------------------------------------------");
-            String fileName = "crach-" + time + "-" + timeStamp + ".log";
+            sb.append(lineFeed);
+            sb.append("------<exception end>---------");
+            String fileName = "crashLog-" + time + ".log";
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                 String path = SdCardUtil.getExternalStorageAbsolutePath() + GlobalConfig.LOG_PATH;
                 File filePath = new File(path);

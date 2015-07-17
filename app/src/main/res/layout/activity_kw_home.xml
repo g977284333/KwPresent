@@ -45,6 +45,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_custom_widget"/>
 
+    <Button
+        android:id="@+id/btn_fragment_with_anim_activity"
+        android:text="OpenFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_wei_xin_activity"/>
+
     <com.kw_support.view.OverLayLayout
         android:id="@+id/overlay"
         android:layout_width="match_parent"

@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.text.TextUtils;
 
 import com.kw_support.constants.GlobalConfig;
 
@@ -14,89 +15,65 @@ import java.util.Set;
  */
 public class KwSharedPreferences {
 
-    private static SharedPreferences mPreference = null;
+    SharedPreferences mSharedPreferences;
 
-    private static boolean isInited = false;
-
-    public synchronized static void init(Context context) {
-        if (mPreference == null) {
-            mPreference = context.getSharedPreferences(GlobalConfig.SHARED_PREFERENCE_NAME,
-                    Context.MODE_PRIVATE);
+    public KwSharedPreferences(Context context, String name) {
+        if(TextUtils.isEmpty(name)) {
+            name = GlobalConfig.SHARED_PREFERENCE_NAME;
         }
-        isInited = true;
+        mSharedPreferences = context.getSharedPreferences(name, Context.MODE_PRIVATE);
     }
 
-    public static boolean isInited() {
-        return isInited;
+    public void putBoolean(String name, boolean value) {
+         mSharedPreferences.edit().putBoolean(name, value).commit();
     }
 
-    public static void saveBoolean(String name, boolean value) {
-        SharedPreferences.Editor editor = mPreference.edit();
-        editor.putBoolean(name, value);
-        editor.commit();
+    public boolean getBoolean(String name, boolean defaultValue) {
+        return mSharedPreferences.getBoolean(name, defaultValue);
     }
 
-    public static boolean getBoolean(String name, boolean defaultValue) {
-        return mPreference.getBoolean(name, defaultValue);
+    public void putLong(String name, long value) {
+        mSharedPreferences.edit().putLong(name, value).commit();
     }
 
-    public static void saveLong(String name, long value) {
-        SharedPreferences.Editor editor = mPreference.edit();
-        editor.putLong(name, value);
-        editor.commit();
+    public long getLong(String name, long defaultValue) {
+        return mSharedPreferences.getLong(name, defaultValue);
     }
 
-    public static long getLong(String name, long defaultValue) {
-        return mPreference.getLong(name, defaultValue);
+    public  void putInt(String name, int value) {
+         mSharedPreferences.edit().putInt(name, value).commit();
     }
 
-    public static void saveInt(String name, int value) {
-        SharedPreferences.Editor editor = mPreference.edit();
-        editor.putInt(name, value);
-        editor.commit();
+    public  int getInt(String name, int defaultValue) {
+        return mSharedPreferences.getInt(name, defaultValue);
     }
 
-    public static int getInt(String name, int defaultValue) {
-        return mPreference.getInt(name, defaultValue);
+    public  void putFloat(String name, float value) {
+        mSharedPreferences.edit().putFloat(name, value).commit();
     }
 
-    public static void saveFloat(String name, float value) {
-        SharedPreferences.Editor editor = mPreference.edit();
-        editor.putFloat(name, value);
-        editor.commit();
+    public float getFloat(String name, float defaultValue) {
+        return mSharedPreferences.getFloat(name, defaultValue);
     }
 
-    public static float getFloat(String name, float defaultValue) {
-        return mPreference.getFloat(name, defaultValue);
+    public void putString(String name, String value) {
+       mSharedPreferences.edit().putString(name, value).commit();
     }
 
-    public static boolean saveString(String name, String value) {
-        boolean flag = false;
-        SharedPreferences.Editor editor = mPreference.edit();
-        editor.putString(name, value);
-        flag = editor.commit();
-        return flag;
-    }
-
-    public static String getString(String name, String defaultValue) {
-        return mPreference.getString(name, defaultValue);
+    public String getString(String name, String defaultValue) {
+        return mSharedPreferences.getString(name, defaultValue);
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static boolean saveSet(String key, Set<String> values) {
-        boolean bRet = false;
-        SharedPreferences.Editor editor = mPreference.edit();
-        editor.putStringSet(key, values);
-        bRet = editor.commit();
-        return bRet;
+    public  void putStringSet(String key, Set<String> values) {
+        mSharedPreferences.edit().putStringSet(key, values).commit();
     }
-
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static Set<String> getSet(String key, Set<String> defValues) {
-        return mPreference.getStringSet(key, defValues);
+    public  Set<String> getSet(String key, Set<String> defValues) {
+        return mSharedPreferences.getStringSet(key, defValues);
     }
 
-    public static boolean clear() {
-        return mPreference.edit().clear().commit();
+    public  boolean clear() {
+        return mSharedPreferences.edit().clear().commit();
     }
 }

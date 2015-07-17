@@ -11,6 +11,7 @@ import com.kw_support.base.BaseActivity;
  * demo for baidu map
  * Created by G-chen on 2015-5-11.
  */
+@Deprecated
 public class KwBaiduMapActivity extends BaseActivity {
     private MapView mMapView;
 

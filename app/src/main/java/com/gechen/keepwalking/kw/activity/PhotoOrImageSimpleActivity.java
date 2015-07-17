@@ -10,6 +10,7 @@ import com.kw_support.base.BaseActivity;
 /**
  * Created by gechen on 2015/5/23.
  */
+@Deprecated
 public class PhotoOrImageSimpleActivity extends BaseActivity{
 
     @Override

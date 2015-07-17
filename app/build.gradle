@@ -24,4 +24,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('libs/BaiduLBS_Android.jar')
     compile project(':kw_support')
+    compile files('libs/okhttp-2.4.0.jar')
+    compile files('libs/okio-1.4.0.jar')
 }

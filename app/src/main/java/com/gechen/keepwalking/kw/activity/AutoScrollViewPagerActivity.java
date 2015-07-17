@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * Created by gechen on 2015/5/25.
  */
+@Deprecated
 public class AutoScrollViewPagerActivity extends BaseActivity{
     private AutoScrollViewPager mViewpager;
 

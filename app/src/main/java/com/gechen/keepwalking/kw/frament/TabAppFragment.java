@@ -1,9 +1,8 @@
-package com.gechen.keepwalking.kw.widget;
+package com.gechen.keepwalking.kw.frament;
 
+import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,7 @@ import android.widget.TextView;
 /**
  * Created by G-chen on 2015-6-28.
  */
-public class TabFragment extends Fragment {
+public class TabAppFragment extends Fragment {
     private String mTitle = "Default";
 
     public static String ARGUMENTS = "arguments";

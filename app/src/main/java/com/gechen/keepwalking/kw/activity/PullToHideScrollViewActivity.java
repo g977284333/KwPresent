@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Created by G-chen on 2015-5-19.
  */
+@Deprecated
 public class PullToHideScrollViewActivity extends BaseActivity {
     private ListView mListView;
     private List<String> mDatas;
