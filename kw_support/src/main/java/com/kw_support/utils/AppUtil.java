@@ -8,6 +8,7 @@ import android.app.ActivityManager.RunningTaskInfo;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.location.LocationManager;
@@ -22,7 +23,7 @@ import java.util.List;
 /**
  * @version 1.0
  * @author: gchen
- * @description:	apputil
+ * @description: apputil
  * @date：2014-10-29 8:16:41
  */
 public class AppUtil {
@@ -72,18 +73,6 @@ public class AppUtil {
             }
         }
         return false;
-    }
-
-    public static String getApplicationVersion(Context context) {
-        PackageManager packageManager = context.getPackageManager();
-        String packageName = context.getPackageName();
-        String versionName = "";
-        try {
-            versionName = packageManager.getPackageInfo(packageName, 0).versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        return versionName;
     }
 
     public static String getDeviceId(Context context) {
@@ -146,6 +135,31 @@ public class AppUtil {
     public static int getDefaultThreadPoolSize(int max) {
         int availableProcessors = 2 * Runtime.getRuntime().availableProcessors() + 1;
         return availableProcessors > max ? max : availableProcessors;
+    }
+
+    public static String getAppVersionName(Context context) {
+        PackageInfo packageInfo = getPackageInfo(context);
+        if (packageInfo != null) {
+            return packageInfo.versionName;
+        }
+        return null;
+    }
+
+    public static int getAppVersionCode(Context context) {
+        PackageInfo packageInfo = getPackageInfo(context);
+        if (packageInfo != null) {
+            return packageInfo.versionCode;
+        }
+        return -1;
+    }
+
+    public static PackageInfo getPackageInfo(Context context) {
+        try {
+            return context.getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_CONFIGURATIONS);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**

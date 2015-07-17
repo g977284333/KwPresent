@@ -6,12 +6,14 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
+import android.view.Window;
 import android.widget.ImageView;
 
 import com.gechen.keepwalking.R;
 import com.gechen.keepwalking.kw.KwApplication;
 import com.kw_support.base.BaseActivity;
+import com.kw_support.manager.SystemBarTintManager;
+import com.kw_support.view.CirclePageIndicator;
 
 /**
  * Created by G-chen on 2015-7-15.
@@ -28,7 +30,7 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guide);
+        setContentView(R.layout.activity_welcome);
 
         initView();
     }
@@ -42,7 +44,13 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
 
         mGuideContent = (ViewPager) findViewById(R.id.vp_guide);
         mGuideContent.setAdapter(new GuideAdapter());
-        mGuideContent.setOnPageChangeListener(this);
+
+        CirclePageIndicator pageIndicator = (CirclePageIndicator) findViewById(R.id.page_indicator);
+        pageIndicator.setStrokeWidth(0.0f);
+        pageIndicator.setFillColor(getResources().getColor(R.color.blue));
+        pageIndicator.setPageColor(getResources().getColor(R.color.light_gray));
+        pageIndicator.setOnPageChangeListener(this);
+        pageIndicator.setViewPager(mGuideContent);
     }
 
     @Override
@@ -73,6 +81,7 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
         if(intent != null) {
             startActivity(intent);
         }
+        finish();
     }
 
     private class GuideAdapter extends PagerAdapter {

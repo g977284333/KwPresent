@@ -1,7 +1,6 @@
 package com.gechen.keepwalking.kw.activity;
 
 import android.annotation.SuppressLint;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,11 +10,10 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.Window;
-import android.view.WindowManager;
 
 import com.gechen.keepwalking.R;
 import com.gechen.keepwalking.kw.frament.TabFragment;
-import com.kw_support.base.BaseActivity;
+import com.kw_support.base.BaseImmerseStatusActivity;
 import com.kw_support.view.ChangeColorIconWithText;
 
 import java.lang.reflect.Field;
@@ -28,7 +26,7 @@ import java.util.List;
  * the sample for target 11+
  */
 @SuppressLint("NewApi")
-public class WeiXinMainActivity extends BaseActivity implements ViewPager.OnPageChangeListener {
+public class WeiXinMainActivity extends BaseImmerseStatusActivity implements ViewPager.OnPageChangeListener {
     private ViewPager mContent;
 
     private List<Fragment> mTabs = new ArrayList<Fragment>();

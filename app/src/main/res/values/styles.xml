@@ -8,6 +8,7 @@
     <!-- Base application theme. -->
     <style name="AppThemeNoTitle" parent="AppTheme">
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">?android:windowNoTitle</item>
         <!-- Customize your theme here. -->
     </style>
     

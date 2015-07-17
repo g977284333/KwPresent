@@ -25,19 +25,11 @@
         android:src="@drawable/btn_guide_confirm"
         android:visibility="invisible" />
 
-    <RelativeLayout
+    <com.kw_support.view.CirclePageIndicator
+        android:id="@id/page_indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:gravity="center"
-        android:background="@color/transparent">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-
-
-    </RelativeLayout>
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="20.0dip"/>
 </merge>
 

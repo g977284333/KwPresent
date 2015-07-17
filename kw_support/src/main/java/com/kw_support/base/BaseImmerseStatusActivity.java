@@ -17,22 +17,43 @@ import com.kw_support.utils.Logger;
 /**
  * Created by G-chen on 2015-3-15.
  */
-public class BaseActivity extends FragmentActivity implements View.OnClickListener {
+public class BaseImmerseStatusActivity extends FragmentActivity implements View.OnClickListener {
     protected final String TAG = getClass().getSimpleName();
+    protected SystemBarTintManager mTintManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         ActivityManager.getInstance().pushActivity(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setTranslucentStatus(true);
+        }
+
+        mTintManager = new SystemBarTintManager(this);
+
+        mTintManager.setStatusBarTintEnabled(true);
+        mTintManager.setStatusBarTintResource(R.color.actionbar_bg);
+        mTintManager.setStatusBarDarkMode(false, this);
+    }
+
+    @TargetApi(19)
+    protected void setTranslucentStatus(boolean on) {
+        Window win = getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         Logger.i(TAG, "className<< " + TAG + " --- started");
+
     }
 
     @Override

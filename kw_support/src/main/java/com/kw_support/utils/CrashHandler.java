@@ -41,7 +41,8 @@ public class CrashHandler implements UncaughtExceptionHandler {
 
     private Map<String, String> infos = new HashMap<String, String>();
 
-    private DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    private DateFormat wholeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     private CrashHandler() {
     }
@@ -112,7 +113,6 @@ public class CrashHandler implements UncaughtExceptionHandler {
             }
         } catch (NameNotFoundException e) {
             e.printStackTrace();
-            Logger.e(TAG, "an error occured when collect package info");
         }
 
         Field[] fields = Build.class.getDeclaredFields();
@@ -120,13 +120,10 @@ public class CrashHandler implements UncaughtExceptionHandler {
             try {
                 field.setAccessible(true);
                 infos.put(field.getName(), field.get(null).toString());
-                Logger.d(TAG, field.getName() + " : " + field.get(null));
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
-                Logger.d(TAG, "an error occured when collect crash info");
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
-                Logger.d(TAG, "an error occured when collect crash info");
             }
         }
     }
@@ -139,8 +136,8 @@ public class CrashHandler implements UncaughtExceptionHandler {
 
         Writer writer = new StringWriter();
         PrintWriter printWriter = new PrintWriter(writer);
-
         ex.printStackTrace(printWriter);
+
         Throwable cause = ex.getCause();
         while (null != cause) {
             cause.printStackTrace(printWriter);
@@ -150,7 +147,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 
         String result = writer.toString();
         try {
-            long timeStamp = System.currentTimeMillis();
+            String timeStamp = wholeFormat.format(System.currentTimeMillis());
             String time = format.format(new Date());
             String lineFeed = "\r\n";
             sb.append("-------<exception start>------<\\n");
@@ -173,7 +170,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
             }
             return fileName;
         } catch (Exception e) {
-            Logger.e(TAG, "an error occured while writing file...");
+            e.printStackTrace();
         }
         return null;
     }
