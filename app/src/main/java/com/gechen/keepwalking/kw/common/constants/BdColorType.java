@@ -1,4 +1,4 @@
-package com.gechen.keepwalking.common.constants;
+package com.gechen.keepwalking.kw.common.constants;
 
 /**
  * Created by G-chen on 2015-5-13.

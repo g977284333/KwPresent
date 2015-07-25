@@ -32,7 +32,7 @@ public class BaseImmerseStatusActivity extends FragmentActivity implements View.
         mTintManager = new SystemBarTintManager(this);
 
         mTintManager.setStatusBarTintEnabled(true);
-        mTintManager.setStatusBarTintResource(R.color.actionbar_bg);
+        mTintManager.setStatusBarTintResource(R.color.material_status);
         mTintManager.setStatusBarDarkMode(false, this);
     }
 

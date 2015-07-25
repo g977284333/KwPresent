@@ -1,4 +1,4 @@
-package com.gechen.keepwalking.common.reciever;
+package com.gechen.keepwalking.kw.common.reciever;
 
 import com.gechen.keepwalking.kw.activity.KwHomeActivity;
 

@@ -64,23 +64,21 @@ public class ChangeColorIconWithText extends View {
         int counts = a.getIndexCount();
         for (int i = 0; i < counts; i++) {
             int attr = a.getIndex(i);
-            switch (attr) {
-                case R.styleable.ChangeColorIconWithText_changeable_icon:
-                    BitmapDrawable drawable = (BitmapDrawable) a.getDrawable(attr);
-                    mIconBitmap = drawable.getBitmap();
-                    break;
-                case R.styleable.ChangeColorIconWithText_changeable_color:
-                    mColor = a.getColor(attr, 0xFF45C01A);
-                    break;
-                case R.styleable.ChangeColorIconWithText_changeable_text:
-                    mText = a.getString(attr);
-                    break;
-                case R.styleable.ChangeColorIconWithText_changeable_text_size:
-                    mTextSize = (int) a.getDimension(attr, TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
-                            12, getResources().getDisplayMetrics()));
-                    break;
-                default:
-                    break;
+            if (attr == R.styleable.ChangeColorIconWithText_changeable_icon) {
+                BitmapDrawable drawable = (BitmapDrawable) a.getDrawable(attr);
+                mIconBitmap = drawable.getBitmap();
+
+            } else if (attr == R.styleable.ChangeColorIconWithText_changeable_color) {
+                mColor = a.getColor(attr, 0xFF45C01A);
+
+            } else if (attr == R.styleable.ChangeColorIconWithText_changeable_text) {
+                mText = a.getString(attr);
+
+            } else if (attr == R.styleable.ChangeColorIconWithText_changeable_text_size) {
+                mTextSize = (int) a.getDimension(attr, TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+                        12, getResources().getDisplayMetrics()));
+
+            } else {
             }
         }
 

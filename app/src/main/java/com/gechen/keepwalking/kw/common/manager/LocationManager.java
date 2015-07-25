@@ -1,11 +1,11 @@
-package com.gechen.keepwalking.common.manager;
+package com.gechen.keepwalking.kw.common.manager;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.LocationClientOption.LocationMode;
-import com.gechen.keepwalking.common.constants.BdColorType;
+import com.gechen.keepwalking.kw.common.constants.BdColorType;
 import com.gechen.keepwalking.kw.KwApplication;
 import com.kw_support.manager.IManager;
 
