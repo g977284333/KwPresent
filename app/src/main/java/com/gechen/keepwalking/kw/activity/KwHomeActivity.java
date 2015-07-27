@@ -81,7 +81,7 @@ public class KwHomeActivity extends BaseActivity {
                 gotoTargetActivity(CustomWidgetActivity.class);
                 break;
             case R.id.btn_wei_xin_activity:
-                gotoTargetActivity(WeiXinMainActivity.class);
+                gotoTargetActivity(KwMainActivity.class);
                 break;
             case R.id.btn_fragment_with_anim_activity:
                 gotoTargetActivity(FragmentWithAnimationActivity.class);

@@ -6,15 +6,20 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.Window;
+import android.widget.ListView;
 
 import com.gechen.keepwalking.R;
 import com.gechen.keepwalking.kw.frament.TabFragment;
 import com.kw_support.base.BaseImmerseStatusActivity;
 import com.kw_support.view.ChangeColorIconWithText;
+import com.kw_support.view.DrawerArrowDrawable;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -23,17 +28,25 @@ import java.util.List;
 
 /**
  * Created by G-chen on 2015-6-28.
- * the sample for target 11+
  */
-@SuppressLint("NewApi")
-public class WeiXinMainActivity extends BaseImmerseStatusActivity implements ViewPager.OnPageChangeListener {
+public class KwMainActivity extends BaseImmerseStatusActivity implements ViewPager.OnPageChangeListener {
     private ViewPager mContent;
+    private Toolbar mToolBar;
+    private DrawerLayout mDrawerLayout;
+    private DrawerArrowDrawable mDrawerArrow;
+    private ActionBarDrawerToggle mActionBarToggle;
+    private ListView mDrawerContent;
 
     private List<Fragment> mTabs = new ArrayList<Fragment>();
 
     private String[] mTitles = new String[]{
             "FirstFragment", "SecondFragment", "ThirdFragment", "ForthFragment"
     };
+
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+    }
 
     private List<ChangeColorIconWithText> mIndicators = new ArrayList<ChangeColorIconWithText>();
 
@@ -44,7 +57,6 @@ public class WeiXinMainActivity extends BaseImmerseStatusActivity implements Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wei_xin_main);
 
-        getActionBar().setDisplayShowHomeEnabled(false);
         setOverFlowButtonAlways();
 
         initView();
@@ -70,6 +82,24 @@ public class WeiXinMainActivity extends BaseImmerseStatusActivity implements Vie
     }
 
     private void initView() {
+        mDrawerArrow = new DrawerArrowDrawable(this) {
+            @Override
+            public boolean isLayoutRtl() {
+                return false;
+            }
+        };
+        mToolBar = (Toolbar) findViewById(R.id.tool_bar);
+        mToolBar.setTitle(R.string.app_name);
+        mToolBar.setLogo(android.R.color.transparent);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerContent = (ListView) findViewById(R.id.drawer_content);
+
+        mActionBarToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolBar,
+                R.string.drawer_open, R.string.drawer_close);
+        mActionBarToggle.syncState();
+
+        mDrawerLayout.setDrawerListener(mActionBarToggle);
+
         mContent = (ViewPager) findViewById(R.id.vp_content);
 
         ChangeColorIconWithText indicatorOne = (ChangeColorIconWithText) findViewById(R.id.cciw_indicator_one);

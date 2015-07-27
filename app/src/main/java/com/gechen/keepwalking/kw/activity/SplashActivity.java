@@ -11,7 +11,6 @@ import android.view.WindowManager;
 import com.gechen.keepwalking.R;
 import com.gechen.keepwalking.kw.KwApplication;
 import com.gechen.keepwalking.kw.constants.AppConfig;
-import com.kw_support.base.BaseActivity;
 
 /**
  * Created by G-chen on 2015-7-16.
@@ -22,8 +21,8 @@ public class SplashActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
 
         init();
@@ -47,7 +46,7 @@ public class SplashActivity extends FragmentActivity {
         if (KwApplication.getInstance().getConfigManager().getFirstRun()) {
             intent = new Intent(SplashActivity.this, WelcomeActivity.class);
         } else {
-            intent = new Intent(SplashActivity.this, WeiXinMainActivity.class);
+            intent = new Intent(SplashActivity.this, KwMainActivity.class);
         }
         startActivity(intent);
     }

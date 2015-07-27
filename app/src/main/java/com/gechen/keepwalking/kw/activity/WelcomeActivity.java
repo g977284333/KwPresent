@@ -6,13 +6,11 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageView;
 
 import com.gechen.keepwalking.R;
 import com.gechen.keepwalking.kw.KwApplication;
 import com.kw_support.base.BaseActivity;
-import com.kw_support.manager.SystemBarTintManager;
 import com.kw_support.view.CirclePageIndicator;
 
 /**
@@ -72,10 +70,10 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
         Intent intent = null;
         switch (view.getId()) {
             case R.id.btn_guide_close:
-                intent = new Intent(WelcomeActivity.this, WeiXinMainActivity.class);
+                intent = new Intent(WelcomeActivity.this, KwMainActivity.class);
                 break;
             case R.id.btn_guide_confirm:
-                intent = new Intent(WelcomeActivity.this, WeiXinMainActivity.class);
+                intent = new Intent(WelcomeActivity.this, KwMainActivity.class);
                 break;
         }
         if(intent != null) {

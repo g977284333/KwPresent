@@ -35,30 +35,30 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:theme="@style/AppThemeNoTitle">
+        android:theme="@style/AppBaseTheme">
         <activity
             android:name=".kw.activity.SplashActivity"
-            android:screenOrientation="portrait">
-<!--            &lt;!&ndash;<intent-filter>&ndash;&gt;
-                &lt;!&ndash;<action android:name="android.intent.action.MAIN" />&ndash;&gt;
-
-                &lt;!&ndash;<category android:name="android.intent.category.LAUNCHER" />&ndash;&gt;
-            &lt;!&ndash;</intent-filter>-->-->
-        </activity>
-        <activity
-            android:name=".kw.activity.WelcomeActivity"
-            android:screenOrientation="portrait" />
-
-
-
-        <activity
-            android:name=".kw.activity.KwHomeActivity"
-            android:label="@string/app_name">
+            android:screenOrientation="portrait"
+            android:theme="@style/LaunchTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter></activity>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".kw.activity.WelcomeActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".kw.activity.KwHomeActivity"
+            android:label="@string/app_name">
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN" />-->
+
+        <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
+        </activity>
         <activity
             android:name=".kw.activity.BounceScrollViewActivity"
             android:screenOrientation="portrait" />
@@ -110,7 +110,7 @@
             android:configChanges="orientation|screenSize" />
 
         <activity
-            android:name="com.gechen.keepwalking.kw.activity.WeiXinMainActivity"
+            android:name="com.gechen.keepwalking.kw.activity.KwMainActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/weixin"
             android:theme="@style/AppTheme" />

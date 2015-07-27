@@ -1,19 +1,23 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat">
     </style>
 
     <!-- Base application theme. -->
-    <style name="AppThemeNoTitle" parent="AppTheme">
+    <style name="AppBaseTheme" parent="AppTheme">
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">?android:windowNoTitle</item>
-        <!-- Customize your theme here. -->
     </style>
-    
-    <style name="WeixinActionOverFlowButtonStyle">
-        <item name="android:src">@drawable/card_add_image</item>
+
+    <!-- LaunchActivity theme. -->
+    <style name="LaunchTheme" parent="Theme.AppCompat.Light">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <!--抽屉开关箭头颜色-->
+        <item name="color">@android:color/white</item>
     </style>
 
 </resources>
