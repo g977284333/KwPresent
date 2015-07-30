@@ -9,7 +9,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.kw_support.R;
-import com.kw_support.bean.Image;
+import com.kw_support.model.Image;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;

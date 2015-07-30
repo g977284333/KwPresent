@@ -143,24 +143,24 @@ public class ImageLoader {
     }
 
     /**
-     * Checks if the item is available in the cache.
+     * Checks if the layout_contacts_item is available in the cache.
      * @param requestUrl The url of the remote image
      * @param maxWidth The maximum width of the returned image.
      * @param maxHeight The maximum height of the returned image.
-     * @return True if the item exists in cache, false otherwise.
+     * @return True if the layout_contacts_item exists in cache, false otherwise.
      */
     public boolean isCached(String requestUrl, int maxWidth, int maxHeight) {
         return isCached(requestUrl, maxWidth, maxHeight, ScaleType.CENTER_INSIDE);
     }
 
     /**
-     * Checks if the item is available in the cache.
+     * Checks if the layout_contacts_item is available in the cache.
      *
      * @param requestUrl The url of the remote image
      * @param maxWidth   The maximum width of the returned image.
      * @param maxHeight  The maximum height of the returned image.
      * @param scaleType  The scaleType of the imageView.
-     * @return True if the item exists in cache, false otherwise.
+     * @return True if the layout_contacts_item exists in cache, false otherwise.
      */
     public boolean isCached(String requestUrl, int maxWidth, int maxHeight, ScaleType scaleType) {
         throwIfNotOnMainThread();
@@ -391,7 +391,7 @@ public class ImageLoader {
         /** The request being tracked */
         private final Request<?> mRequest;
 
-        /** The result of the request being tracked by this item */
+        /** The result of the request being tracked by this layout_contacts_item */
         private Bitmap mResponseBitmap;
 
         /** Error if one occurred for this response */

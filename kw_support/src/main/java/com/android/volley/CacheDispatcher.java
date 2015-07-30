@@ -96,7 +96,7 @@ public class CacheDispatcher extends Thread {
                     continue;
                 }
 
-                // Attempt to retrieve this item from cache.
+                // Attempt to retrieve this layout_contacts_item from cache.
                 Cache.Entry entry = mCache.get(request.getCacheKey());
                 if (entry == null) {
                     request.addMarker("cache-miss");

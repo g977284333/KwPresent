@@ -1,4 +1,4 @@
-package com.kw_support.bean;
+package com.kw_support.model;
 
 import android.os.Build;
 import android.util.SparseArray;
