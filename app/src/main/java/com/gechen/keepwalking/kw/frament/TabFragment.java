@@ -30,6 +30,7 @@ public class TabFragment extends Fragment {
 
         TextView tv = new TextView(getActivity());
         tv.setTextSize(30);
+        tv.setTextColor(Color.parseColor("#000000"));
         tv.setBackgroundColor(Color.parseColor("#ffffff"));
         tv.setText(mTitle);
         tv.setGravity(Gravity.CENTER);

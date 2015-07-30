@@ -1,6 +1,5 @@
 package com.gechen.keepwalking.kw.activity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,8 +14,14 @@ import android.view.ViewConfiguration;
 import android.view.Window;
 import android.widget.ListView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.gechen.keepwalking.R;
+import com.gechen.keepwalking.kw.KwApplication;
 import com.gechen.keepwalking.kw.frament.TabFragment;
+import com.gechen.keepwalking.kw.manager.ApiRequest;
+import com.gechen.keepwalking.kw.manager.DummyObject;
+import com.kw_support.manager.http.GsonGetRequest;
 import com.kw_support.base.BaseImmerseStatusActivity;
 import com.kw_support.view.ChangeColorIconWithText;
 import com.kw_support.view.DrawerArrowDrawable;
@@ -79,6 +84,25 @@ public class KwMainActivity extends BaseImmerseStatusActivity implements ViewPag
 
         mFragmentAdapter = new ContentFragmentAdapter(getSupportFragmentManager());
         mContent.setAdapter(mFragmentAdapter);
+
+        // 测试 volley + okhttp网络请求
+        final GsonGetRequest<DummyObject> gsonGetRequest = ApiRequest.getDummyObject
+                (new Response.Listener<DummyObject>() {
+                     @Override
+                     public void onResponse(DummyObject dummyObject) {
+                        DummyObject md = dummyObject;
+                     }
+                 }
+                        ,
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                VolleyError e = error;
+                            }
+                        }
+                );
+
+        KwApplication.addRequest(gsonGetRequest, "gechen");
     }
 
     private void initView() {
@@ -97,7 +121,6 @@ public class KwMainActivity extends BaseImmerseStatusActivity implements ViewPag
         mActionBarToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolBar,
                 R.string.drawer_open, R.string.drawer_close);
         mActionBarToggle.syncState();
-
         mDrawerLayout.setDrawerListener(mActionBarToggle);
 
         mContent = (ViewPager) findViewById(R.id.vp_content);
