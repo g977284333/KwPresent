@@ -2,13 +2,9 @@
     二维码扫描
 
 后期需要添加
-    网络请求
     图片裁剪
-    仿微信通讯录的ListView
-    Toolbar
     recycledView
-
-    gradle脚本
+    gradle脚本优化配置
 
 有可能修改
     数据库存储

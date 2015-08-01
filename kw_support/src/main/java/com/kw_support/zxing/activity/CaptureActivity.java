@@ -212,15 +212,15 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 					}
 
 					Log.d(TAG, "ImagePath: " + path);
-					
-					
+
+
 					mLoadingDialog = new ProgressDialog(CaptureActivity.this);
 					mLoadingDialog.setMessage("稍后...");
 					mLoadingDialog.setCancelable(false);
 					mLoadingDialog.show();
-					
+
 					new Thread(new Runnable() {
-						
+
 						@Override
 						public void run() {
 							Result result = scanningImage(path);
@@ -291,7 +291,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	/**
 	 * A valid barcode has been found, so give an indication of success and show
 	 * the results.
-	 * 
+	 *
 	 * @param rawResult
 	 *            The contents of the barcode.
 	 * @param scaleFactor
@@ -396,28 +396,28 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	public CameraManager getCameraManager() {
 		return cameraManager;
 	}
-	
+
 	public Result scanningImage(String path) {
 		if(TextUtils.isEmpty(path)){
 			return null;
 		}
 		multiFormatReader = new MultiFormatReader();
-	    
+
 		//BufferedImage image =null;
 		Hashtable<DecodeHintType, String> hints = new Hashtable<DecodeHintType, String>();
-		hints.put(DecodeHintType.CHARACTER_SET, "UTF8"); 
-		
+		hints.put(DecodeHintType.CHARACTER_SET, "UTF8");
+
 		multiFormatReader.setHints(hints);
-		
+
 		BitmapFactory.Options options = new BitmapFactory.Options();
 		options.inJustDecodeBounds = true;
 		Bitmap scanBitmap = BitmapFactory.decodeFile(path, options);
-		options.inJustDecodeBounds = false; 
+		options.inJustDecodeBounds = false;
 		int sampleSize = (int) (options.outHeight / (float) 200);
 		if (sampleSize <= 0)
 			sampleSize = 1;
 		scanBitmap = BitmapFactory.decodeFile(path, options);
-		
+
 		RGBLuminanceSource source = new RGBLuminanceSource(scanBitmap);
 		BinaryBitmap bitmap1 = new BinaryBitmap(new HybridBinarizer(source));
 	    try {
@@ -433,5 +433,5 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		  ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		  bm.compress(Bitmap.CompressFormat.PNG, 100, baos);
 		  return baos.toByteArray();
-	} 
+	}
 }

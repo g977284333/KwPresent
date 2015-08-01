@@ -1,4 +1,4 @@
-package com.kw_support.zxing;
+package com.gechen.keepwalking.kw.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -38,7 +38,7 @@ public class TestCaptureActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_test_capture);
 		
 		filePath = Environment.getExternalStorageDirectory().getAbsoluteFile() + "/keepwalking";
 

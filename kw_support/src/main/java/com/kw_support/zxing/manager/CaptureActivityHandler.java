@@ -61,19 +61,18 @@ public final class CaptureActivityHandler extends Handler {
 
 	@Override
 	public void handleMessage(Message message) {
-		switch (message.what) {
-		case R.id.restart_preview:
+		if (message.what == R.id.restart_preview) {
 			restartPreviewAndDecode();
-			break;
-		case R.id.decode_succeeded:
+
+		} else if (message.what == R.id.decode_succeeded) {
 			mState = State.SUCCESS;
 			Bundle bundle = message.getData();
 			Bitmap barcode = null;
 			float scaleFactor = 1.0f;
-			
+
 			if (bundle != null) {
 				byte[] compressedBitmap = bundle.getByteArray(DecodeThread.BARCODE_BITMAP);
-				
+
 				if (compressedBitmap != null) {
 					barcode = BitmapFactory.decodeByteArray(compressedBitmap, 0, compressedBitmap.length, null);
 					// Mutable copy:
@@ -82,18 +81,17 @@ public final class CaptureActivityHandler extends Handler {
 				scaleFactor = bundle.getFloat(DecodeThread.BARCODE_SCALED_FACTOR);
 			}
 			mActivity.handleDecode((Result) message.obj, barcode, scaleFactor);
-			break;
-		case R.id.decode_failed:
-			// We're decoding as fast as possible, so when one decode fails,
+
+		} else if (message.what == R.id.decode_failed) {// We're decoding as fast as possible, so when one decode fails,
 			// start another.
 			mState = State.PREVIEW;
 			mCameraManager.requestPreviewFrame(mDecodeThread.getHandler(), R.id.decode);
-			break;
-		case R.id.return_scan_result:
+
+		} else if (message.what == R.id.return_scan_result) {
 			mActivity.setResult(Activity.RESULT_OK, (Intent) message.obj);
 			mActivity.finish();
-			break;
-		case R.id.launch_product_query:
+
+		} else if (message.what == R.id.launch_product_query) {
 			String url = (String) message.obj;
 
 			Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -102,7 +100,7 @@ public final class CaptureActivityHandler extends Handler {
 
 			ResolveInfo resolveInfo = mActivity.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
 			String browserPackageName = null;
-			
+
 			if (resolveInfo != null && resolveInfo.activityInfo != null) {
 				browserPackageName = resolveInfo.activityInfo.packageName;
 				Log.d(TAG, "Using browser in package " + browserPackageName);
@@ -120,7 +118,7 @@ public final class CaptureActivityHandler extends Handler {
 			} catch (ActivityNotFoundException ignored) {
 				Log.w(TAG, "Can't find anything to handle VIEW of URI " + url);
 			}
-			break;
+
 		}
 	}
 

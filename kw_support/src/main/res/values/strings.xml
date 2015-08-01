@@ -17,4 +17,10 @@
 
     <string name="drawer_open">drawer_open</string>
     <string name="drawer_close">drawer_close</string>
+
+    <!-- zxing -->
+    <string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+    <string name="button_ok">OK</string>
+    <string name="dimension_content">将二维码/条形码放入框中，即可自动扫描</string>
+    <string name="capture_activity">CaptureActivity</string>
 </resources>
