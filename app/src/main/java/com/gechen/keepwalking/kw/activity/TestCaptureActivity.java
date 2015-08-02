@@ -15,7 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.kw_support.R;
+import com.gechen.keepwalking.R;
 import com.kw_support.zxing.activity.CaptureActivity;
 import com.kw_support.zxing.decode.QRCodeUtil;
 
