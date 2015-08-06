@@ -19,6 +19,27 @@ android {
     productFlavors {
     }
 }
+// 配置debug和release使用同一个签名
+//Properties props = new Properties()
+//props.load(new FileInputStream(file("signing.properties")))
+//android {
+//    signingConfigs {
+//        release{
+//            keyAlias props['KEY_ALIAS']
+//            keyPassword props['KEY_PASSWORD']
+//            storeFile file(props['KEYSTORE_FILE'])
+//            storePassword props['KEYSTORE_PASSWORD']
+//        }
+//    }
+//    buildTypes {
+//        release {
+//            signingConfig signingConfigs.release
+//        }
+//        debug {
+//            signingConfig signingConfigs.release
+//        }
+//    }
+//}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

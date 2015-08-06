@@ -129,7 +129,7 @@
         <activity android:name="com.kw_support.activity.ContactsActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="com.kw_support.zxing.activity.CaptureActivity"
+        <activity android:name="com.kw_support.thirdlib.zxing.activity.CaptureActivity"
             android:screenOrientation="portrait"/>
 
         <activity android:name="com.gechen.keepwalking.kw.activity.TestCaptureActivity"

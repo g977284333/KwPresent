@@ -7,7 +7,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 
-    <com.kw_support.zxing.widget.ViewfinderView
+    <com.kw_support.thirdlib.zxing.widget.ViewfinderView
         android:id="@+id/viewfinder_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />

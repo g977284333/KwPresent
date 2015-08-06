@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import com.kw_support.R;
 
+/**
+ * 带引导的通讯录别表的筛选menu
+ */
 public class SideBar extends View {
     // 触摸事件
     private OnTouchingLetterChangedListener onTouchingLetterChangedListener;

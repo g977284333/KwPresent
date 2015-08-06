@@ -17,7 +17,7 @@ import com.kw_support.view.controller.CustomDurationScroller;
 
 /**
  * Auto Scroll View Pager
- * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-12-30
+ * 自动滚动的ViewPager
  */
 public class AutoScrollViewPager extends ViewPager {
 

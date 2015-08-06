@@ -13,6 +13,7 @@ import com.kw_support.view.controller.ScrollerProxy;
 
 /**
  * Created by gechen on 2015/6/25.
+ * 落地广告效果的Layout
  */
 public class OverLayLayout extends FrameLayout {
 

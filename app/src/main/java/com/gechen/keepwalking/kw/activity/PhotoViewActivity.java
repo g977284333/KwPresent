@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 
 import com.gechen.keepwalking.R;
 import com.kw_support.base.BaseActivity;
-import com.kw_support.photoview.PhotoView;
-import com.kw_support.photoview.HackyViewPager;
+import com.kw_support.thirdlib.photoview.PhotoView;
+import com.kw_support.thirdlib.photoview.HackyViewPager;
 
 import java.util.ArrayList;
 import java.util.List;

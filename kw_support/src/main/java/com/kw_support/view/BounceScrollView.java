@@ -10,9 +10,9 @@ import android.widget.ScrollView;
 
 /**
  * Created by G-chen on 2015-3-15.
- *
- * @disctiption: ScrollView反弹效果的实现
+ * ScrollView反弹效果的实现 被OverScrollView取代
  */
+@Deprecated
 public class BounceScrollView extends ScrollView {
 
     private View inner;                                 // 孩子view
@@ -65,7 +65,7 @@ public class BounceScrollView extends ScrollView {
                 int xDiff = (int) Math.abs(motionX - mLastMotionX);
                 int yDiff = (int) Math.abs(motionY - mLastMotionY);
 
-                if(yDiff * 0.3f > xDiff) {
+                if (yDiff * 0.3f > xDiff) {
                     return true;
                 }
                 break;

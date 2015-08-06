@@ -20,12 +20,6 @@ import android.view.View;
 
 import java.util.List;
 
-/**
- * @version 1.0
- * @author: gchen
- * @description: apputil
- * @date：2014-10-29 8:16:41
- */
 public class AppUtil {
 
     // whether current progress named by progressName
@@ -112,7 +106,6 @@ public class AppUtil {
         return VERSION.SDK_INT;
     }
 
-
     public static boolean isLocationEnable(Context context) {
         LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         // 通过WLAN或移动网络(3G/2G)确定的位置（也称作AGPS，辅助GPS定位。主要用于在室内或遮盖物（建筑群或茂密的深林等）密集的地方定位）
@@ -162,34 +155,4 @@ public class AppUtil {
         return null;
     }
 
-    /**
-     * 获取Android各个版本的版本号
-     * 仅供参考
-     */
-    @SuppressWarnings("unused")
-    private String getSDKVersionInfo() {
-        StringBuffer sb = new StringBuffer();
-        sb.append("第一版：" + Build.VERSION_CODES.BASE + "/n");
-        sb.append("1.1版：" + Build.VERSION_CODES.BASE_1_1 + "/n");
-        sb.append("1.5版：" + Build.VERSION_CODES.CUPCAKE + "/n");
-        sb.append("此版官方未发布：" + Build.VERSION_CODES.CUR_DEVELOPMENT + "/n");
-        sb.append("1.6版：" + Build.VERSION_CODES.DONUT + "/n");
-        sb.append("2.0版：" + Build.VERSION_CODES.ECLAIR + "/n");
-        sb.append("2.0.1版：" + Build.VERSION_CODES.ECLAIR_0_1 + "/n");
-        sb.append("2.1版：" + Build.VERSION_CODES.ECLAIR_MR1 + "/n");
-        sb.append("2.2版：" + Build.VERSION_CODES.FROYO + "/n");
-        sb.append("2.3版：" + Build.VERSION_CODES.GINGERBREAD + "/n");
-        sb.append("2.3.3版：" + Build.VERSION_CODES.GINGERBREAD_MR1 + "/n");
-        sb.append("3.0版：" + Build.VERSION_CODES.HONEYCOMB + "/n");
-        sb.append("3.1版：" + Build.VERSION_CODES.HONEYCOMB_MR1 + "/n");
-        sb.append("3.2版：" + Build.VERSION_CODES.HONEYCOMB_MR2 + "/n");
-        sb.append("4.0版：" + Build.VERSION_CODES.ICE_CREAM_SANDWICH + "/n");
-        sb.append("4.0.3版：" + Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1
-                + "/n");
-        sb.append("4.1版：" + Build.VERSION_CODES.JELLY_BEAN + "/n");
-        sb.append("4.2版：" + Build.VERSION_CODES.JELLY_BEAN_MR1 + "/n");
-        sb.append("4.3版：" + Build.VERSION_CODES.JELLY_BEAN_MR2 + "/n");
-        sb.append("4.4版：" + Build.VERSION_CODES.KITKAT);
-        return sb.toString();
-    }
 }

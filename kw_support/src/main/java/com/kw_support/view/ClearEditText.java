@@ -15,6 +15,9 @@ import android.widget.EditText;
 
 import com.kw_support.R;
 
+/**
+ * 带删除按钮的EditText
+ */
 public class ClearEditText extends EditText implements OnFocusChangeListener,
 		TextWatcher {
 	/**

@@ -21,6 +21,7 @@ import com.kw_support.R;
 
 /**
  * Created by G-chen on 2015-6-28.
+ * 仿微信底部menu，随着viewpager滑动，颜色渐变
  */
 public class ChangeColorIconWithText extends View {
 

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     tools:context="com.gechen.keepwalking.kw.activity.PullToRefreshListViewActivity">
 
-    <com.kw_support.pulltorefresh.PullToRefreshListView
+    <com.kw_support.thirdlib.pulltorefresh.PullToRefreshListView
         android:id="@+id/pull_refresh_list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

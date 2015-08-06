@@ -16,8 +16,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.gechen.keepwalking.R;
-import com.kw_support.zxing.activity.CaptureActivity;
-import com.kw_support.zxing.decode.QRCodeUtil;
+import com.kw_support.thirdlib.zxing.activity.CaptureActivity;
+import com.kw_support.thirdlib.zxing.decode.QRCodeUtil;
 
 public class TestCaptureActivity extends Activity {
 	private static final String TAG = TestCaptureActivity.class.getSimpleName();

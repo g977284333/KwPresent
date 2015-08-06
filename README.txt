@@ -1,19 +1,23 @@
 2015-5-28：
-    二维码扫描
-
 后期需要添加
+    eventbus
+    greendao
     图片裁剪
-    recycledView
+    检查自动更新、覆盖安装
+
+优化
+    DbManager
+    FileManager
+    HttpMananger
+    ThreadMananger
+    图片浏览器
     gradle脚本优化配置
+    将picasso换成Fresco或Glide
 
-有可能修改
-    数据库存储
-    将picasso换成Fresco
-
-有时间梳理一下
-    继续优化MultiImageSelector
-
-BUG
-    MultiImageSelector 模块内存溢出的问题
-    文件夹列表弹出框第一次弹出宽度无法占满整个屏幕
-    图片的文件排序错误（按时间排序）
+待添加
+    MaterialDesign的控件
+    mipmap文件夹，可以提升性能
+    版本支持，可能提升到4.0
+    注解的方式(本人不是很喜欢)
+    APK动态加载机制
+    apk加壳
