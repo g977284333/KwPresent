@@ -1,5 +1,16 @@
 package com.kw_support.utils;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Build;
+import android.os.Environment;
+import android.os.Looper;
+import android.widget.Toast;
+
+import com.kw_support.constants.LibConfig;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
@@ -12,17 +23,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.Build;
-import android.os.Environment;
-import android.os.Looper;
-import android.widget.Toast;
-
-import com.kw_support.constants.GlobalConfig;
 
 /**
  * @version 1.0
@@ -159,7 +159,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
             sb.append("------<exception end>---------");
             String fileName = "crashLog-" + time + ".log";
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                String path = SdCardUtil.getExternalStorageAbsolutePath() + GlobalConfig.LOG_PATH;
+                String path = SdCardUtil.getExternalStorageAbsolutePath() + LibConfig.LOG_PATH;
                 File filePath = new File(path);
                 if (!filePath.exists()) {
                     filePath.mkdirs();

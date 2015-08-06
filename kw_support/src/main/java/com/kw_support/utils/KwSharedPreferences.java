@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.text.TextUtils;
 
-import com.kw_support.constants.GlobalConfig;
+import com.kw_support.constants.LibConfig;
 
 import java.util.Set;
 
@@ -19,7 +19,7 @@ public class KwSharedPreferences {
 
     public KwSharedPreferences(Context context, String name) {
         if(TextUtils.isEmpty(name)) {
-            name = GlobalConfig.SHARED_PREFERENCE_NAME;
+            name = LibConfig.SHARED_PREFERENCE_NAME;
         }
         mSharedPreferences = context.getSharedPreferences(name, Context.MODE_PRIVATE);
     }

@@ -3,7 +3,7 @@ package com.kw_support.constants;
 /**
  * Created by G-chen on 2015-3-15.
  */
-public class GlobalConfig {
+public class LibConfig {
 
     // 开发模式
     public static final boolean DEV_MODE = true;

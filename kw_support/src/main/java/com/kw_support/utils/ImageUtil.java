@@ -8,7 +8,6 @@ import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
@@ -28,7 +27,7 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Display;
 
-import com.kw_support.constants.GlobalConfig;
+import com.kw_support.constants.LibConfig;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -36,7 +35,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
-import java.security.MessageDigest;
 import java.util.UUID;
 
 /**
@@ -294,7 +292,7 @@ public class ImageUtil {
 		if(TextUtils.isEmpty(filePath)) {
 			return null;
 		}
-		final File file = new File(GlobalConfig.IMAGE_PATH
+		final File file = new File(LibConfig.IMAGE_PATH
 				+ "small_pic" + UUID.randomUUID() + ".png");
 		new Thread(new Runnable() {
 			
