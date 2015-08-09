@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import java.lang.ref.WeakReference;
 
 /**
- * Բ��ͼƬ�ĸ�View
+ * 多种样式图片的父View
  */
 public abstract class BaseImageView extends ImageView {
     private static final String TAG = BaseImageView.class.getSimpleName();

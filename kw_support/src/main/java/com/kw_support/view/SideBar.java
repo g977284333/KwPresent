@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.kw_support.R;
+import com.kw_support.utils.UiUtil;
 
 /**
  * 带引导的通讯录别表的筛选menu
@@ -20,11 +21,15 @@ public class SideBar extends View {
     // 触摸事件
     private OnTouchingLetterChangedListener onTouchingLetterChangedListener;
     // 26个字母
-    public static String[] b = {"A", "B", "C", "D", "E", "F", "G", "H", "I",
+    public static String[] b = {"#","A", "B", "C", "D", "E", "F", "G", "H", "I",
             "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
             "W", "X", "Y", "Z", "#"};
     private int choose = -1;// 选中
+    private int mTextSize = 12;
+    private String mTextColor = "#b8b8b8";
+    private String mSelectedTextColor = "#3399ff";
     private Paint paint = new Paint();
+
 
     private TextView mTextDialog;
 
@@ -55,14 +60,14 @@ public class SideBar extends View {
         int singleHeight = height / b.length;// 获取每一个字母的高度
 
         for (int i = 0; i < b.length; i++) {
-            paint.setColor(Color.rgb(33, 65, 98));
+            paint.setColor(Color.parseColor(mTextColor));
             // paint.setColor(Color.WHITE);
             paint.setTypeface(Typeface.DEFAULT_BOLD);
             paint.setAntiAlias(true);
-            paint.setTextSize(20);
+            paint.setTextSize(UiUtil.dpToPx(getContext(), mTextSize));
             // 选中的状态
             if (i == choose) {
-                paint.setColor(Color.parseColor("#3399ff"));
+                paint.setColor(Color.parseColor(mSelectedTextColor));
                 paint.setFakeBoldText(true);
             }
             // x坐标等于中间-字符串宽度的一半.

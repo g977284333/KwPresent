@@ -17,7 +17,6 @@ import com.kw_support.view.controller.CustomDurationScroller;
 
 /**
  * Auto Scroll View Pager
- * 自动滚动的ViewPager
  */
 public class AutoScrollViewPager extends ViewPager {
 
