@@ -28,7 +28,7 @@ public class ThridLoginManager implements Handler.Callback, PlatformActionListen
     private static final int MSG_AUTH_COMPLETE = 5;
 
 
-    public void onInit(Context context) {
+    public ThridLoginManager(Context context) {
         this.mContext = context;
         ShareSDK.initSDK(context);
     }

@@ -1,4 +1,4 @@
-package com.gechen.keepwalking.kw.manager;
+package com.gechen.keepwalking.kw.common.manager;
 
 import com.gechen.keepwalking.kw.KwApplication;
 import com.gechen.keepwalking.kw.constants.AppConfig;

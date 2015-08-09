@@ -172,7 +172,10 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".kw.wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"/>
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"

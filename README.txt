@@ -4,7 +4,7 @@
     greendao
     图片裁剪
     检查自动更新、覆盖安装
-
+    WebViewActivity封装
 优化
     DbManager
     FileManager
@@ -14,6 +14,7 @@
     将picasso换成Fresco或Glide
 
 待添加
+    第三方功能：支付宝支付、QQ登录、微博登录、友盟、极光推送
     MaterialDesign的控件
     mipmap文件夹，可以提升性能
     版本支持，可能提升到4.0

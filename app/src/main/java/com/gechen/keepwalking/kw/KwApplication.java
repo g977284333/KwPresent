@@ -1,13 +1,11 @@
 package com.gechen.keepwalking.kw
         ;
 
-import android.app.Application;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.baidu.mapapi.SDKInitializer;
-import com.gechen.keepwalking.kw.manager.ConfigManager;
+import com.gechen.keepwalking.kw.common.manager.ConfigManager;
 import com.kw_support.base.BaseApplication;
 import com.kw_support.manager.http.OkHttpStack;
 import com.kw_support.utils.CrashHandler;
