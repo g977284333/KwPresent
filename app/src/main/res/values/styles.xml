@@ -22,4 +22,16 @@
         <item name="color">@android:color/white</item>
     </style>
 
+    <style name="custom_text_view" parent="@android:style/Widget.TextView">
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="custom_gray_big_text" parent="@style/custom_text_view">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+    <style name="custom_gray_middle_text" parent="@style/custom_text_view">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
 </resources>

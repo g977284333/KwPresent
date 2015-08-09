@@ -5,4 +5,12 @@
     <item name="btn_guide_confirm" type="id"/>
     <item name="page_indicator" type="id"/>
     <item name="tool_bar" type="id"/>
+
+    <item name="btn_share_wechat" type="id"></item>
+    <item name="btn_share_wechat_moments" type="id"></item>
+    <item name="btn_share_tencent" type="id"></item>
+    <item name="btn_share_tencent_weibo" type="id"></item>
+    <item name="btn_share_qzone" type="id"></item>
+    <item name="btn_share_sina_weibo" type="id"></item>
+    <item name="btn_cancel" type="id"></item>
 </resources>
