@@ -5,6 +5,7 @@
     图片裁剪
     检查自动更新、覆盖安装
     WebViewActivity封装
+    本地文件缓存DiscCache
 优化
     DbManager
     FileManager
@@ -12,7 +13,6 @@
     ThreadMananger
     图片浏览器
     将picasso换成Fresco或Glide
-
 待添加
     第三方功能：支付宝支付、QQ登录、微博登录、友盟、极光推送
     MaterialDesign的控件
