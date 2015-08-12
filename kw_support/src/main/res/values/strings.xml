@@ -23,4 +23,6 @@
     <string name="button_ok">OK</string>
     <string name="dimension_content">将二维码/条形码放入框中，即可自动扫描</string>
     <string name="capture_activity">CaptureActivity</string>
+
+    <string name="data_empty">亲~暂时没有数据呦!</string>
 </resources>

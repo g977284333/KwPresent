@@ -13,10 +13,12 @@ import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.location.LocationManager;
 import android.net.wifi.WifiManager;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.telephony.TelephonyManager;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 
 import java.util.List;
 
@@ -155,4 +157,14 @@ public class AppUtil {
         return null;
     }
 
+    public static DisplayMetrics getDisplayMetric(Context context) {
+        if (context != null) {
+            WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            Display display = windowManager.getDefaultDisplay();
+            display.getMetrics(displayMetrics);
+            return displayMetrics;
+        }
+        return null;
+    }
 }

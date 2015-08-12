@@ -1,6 +1,9 @@
 package com.kw_support.utils;
 
 import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 
 import java.security.MessageDigest;
 import java.util.List;
@@ -45,5 +48,15 @@ public class CommonUtil {
             hexString.append(hex);
         }
         return hexString.toString();
+    }
+
+    public static void removeSelfFromParent(View view) {
+        if (view != null) {
+            ViewParent parent = view.getParent();
+            if (parent != null && parent instanceof ViewGroup) {
+                ViewGroup group = (ViewGroup) parent;
+                group.removeView(view);
+            }
+        }
     }
 }

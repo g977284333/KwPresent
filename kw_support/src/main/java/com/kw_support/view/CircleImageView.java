@@ -8,9 +8,6 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 
-/**
- * ÏÔÊ¾Ô²ÐÎÍ¼Æ¬µÄView
- */
 public class CircleImageView extends BaseImageView {
 
     public CircleImageView(Context context) {

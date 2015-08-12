@@ -6,6 +6,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kw_support.R;
@@ -21,6 +25,22 @@ public class UiUtil {
 
     public static void showToast(Context context, int msg) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    public void showCustomToast(Context context, boolean flag, String msg) {
+        Toast toast = Toast.makeText(context, "自定义", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        View view = View.inflate(context, R.layout.customer_toast, null);
+        ImageView iv_icon = (ImageView) view.findViewById(R.id.iv_icon);
+        if (flag) {
+            iv_icon.setImageResource(R.drawable.icon_toast_game_ok);
+        } else {
+            iv_icon.setImageResource(R.drawable.icon_toast_game_error);
+        }
+        TextView tv_des = (TextView) view.findViewById(R.id.tv_des);
+        tv_des.setText(msg);
+        toast.setView(view);
+        toast.show();
     }
 
     public static Dialog createLoadingDialog(Context context) {

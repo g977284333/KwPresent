@@ -1,8 +1,5 @@
 package com.kw_support.utils;
 
-import java.io.File;
-import java.util.List;
-
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.content.Context;
@@ -16,6 +13,9 @@ import android.os.Build;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
+
+import java.io.File;
+import java.util.List;
 
 /**
  * PackageUtil
@@ -464,6 +464,24 @@ public class PackageUtil {
         }
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+    }
+
+    /**
+     * 是否安装了某个app
+     */
+    public static boolean isInstalledApp(Context context, String packageName) {
+        try {
+            PackageManager pm = context.getPackageManager();
+            List<PackageInfo> pkgs = pm.getInstalledPackages(PackageManager.GET_UNINSTALLED_PACKAGES);
+            for (PackageInfo pkg : pkgs) {
+                if ((pkg.packageName).equals(packageName)) {
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     /**

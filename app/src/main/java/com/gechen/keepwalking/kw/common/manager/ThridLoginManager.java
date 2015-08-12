@@ -53,7 +53,6 @@ public class ThridLoginManager implements Handler.Callback, PlatformActionListen
         platform.showUser(null);
     }
 
-    // 实现app服务器登录
     private void login(CharSequence name, String userID, HashMap<String, Object> userInfo) {
         Message msg = Message.obtain();
         msg.what = MSG_LOGIN;

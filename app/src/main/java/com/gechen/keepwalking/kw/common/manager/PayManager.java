@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Handler;
-import android.os.Message;
 
 import com.gechen.keepwalking.kw.common.model.PayInfo;
 import com.gechen.keepwalking.kw.constants.AppConfig;
@@ -30,10 +29,6 @@ public class PayManager {
         mContext.registerReceiver(mHandleMessageReceiver, filter);
     }
 
-    /**
-     * 微信支付的appsecret/appkey/partnerkey/由服务端完成，支付前确定订单
-     * 将订单参数给服务器，服务器返回响应的数据，在调用微信api支付
-     */
     private void sendPayRequestByWechat(PayInfo payInfo) {
         if(payInfo == null) {
             return;
