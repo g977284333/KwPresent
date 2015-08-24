@@ -14,14 +14,14 @@ import android.view.ViewConfiguration;
 import android.view.Window;
 import android.widget.ListView;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
+import com.kw_support.thirdlib.http.Response;
+import com.kw_support.thirdlib.http.VolleyError;
 import com.gechen.keepwalking.R;
 import com.gechen.keepwalking.kw.KwApplication;
 import com.gechen.keepwalking.kw.frament.TabFragment;
 import com.gechen.keepwalking.kw.manager.ApiRequest;
 import com.gechen.keepwalking.kw.manager.DummyObject;
-import com.kw_support.manager.http.GsonGetRequest;
+import com.kw_support.thirdlib.http.request.GsonGetRequest;
 import com.kw_support.base.BaseImmerseStatusActivity;
 import com.kw_support.view.ChangeColorIconWithText;
 import com.kw_support.view.DrawerArrowDrawable;

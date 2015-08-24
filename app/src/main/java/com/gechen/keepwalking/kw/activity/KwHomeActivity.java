@@ -109,7 +109,15 @@ public class KwHomeActivity extends BaseActivity {
         }
     }
 
-//    @Override
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if(intent != null) {
+            setIntent(intent);
+        }
+    }
+
+    //    @Override
     // 按返回键，回到主界面
 //    public boolean onKeyDown(int keyCode, KeyEvent event) {
 //        if (keyCode == KeyEvent.KEYCODE_BACK) {

@@ -3,7 +3,8 @@ package com.kw_support.utils;
 import android.content.Context;
 import android.os.Environment;
 import android.text.TextUtils;
-import android.view.TextureView;
+
+import com.kw_support.constants.LibConfig;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -26,6 +27,37 @@ import java.util.Locale;
  */
 public class FileUtil {
     private final static String FILE_EXTENSION_SEPARATOR = ".";
+
+    public static String getAppCachePath() {
+        return getAppRootPath(LibConfig.PATH_CAHCHE);
+    }
+
+    public static String getAppRootPath(String path) {
+        String tmpPath = null;
+        if (SdCardUtil.isMounted()) {
+            tmpPath = SdCardUtil.getExternalStorageAbsolutePath() + LibConfig.PATH_ROOT + path;
+            createFilePath(tmpPath);
+            return tmpPath;
+        } else {
+            tmpPath = SdCardUtil.getDataDirectoryPath() + LibConfig.PATH_ROOT + path;
+            return tmpPath;
+        }
+    }
+
+    public static void createFilePath(String path) {
+        if (TextUtils.isEmpty(path)) {
+            return;
+        }
+
+        File file = new File(path);
+        if (file.exists()) {
+            return;
+        } else {
+            if (file.isDirectory()) {
+                file.mkdirs();
+            }
+        }
+    }
 
     public static StringBuilder readFile(String filePath, String charsetName) {
         File file = new File(filePath);
@@ -288,6 +320,25 @@ public class FileUtil {
         return file.delete();
     }
 
+    public static boolean clearDirectory(String path) {
+        if(TextUtils.isEmpty(path)) {
+            return true;
+        }
+
+        File file = new File(path);
+        if(file.isDirectory()) {
+            for (File f : file.listFiles()) {
+                if (f.isFile()) {
+                    f.delete();
+                } else if (f.isDirectory()) {
+                    deleteFile(f.getAbsolutePath());
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     // get the name of file from its absolute path
     public static String getFileName(String filePath) {
         if (TextUtils.isEmpty(filePath)) {
@@ -346,6 +397,33 @@ public class FileUtil {
 
         File file = new File(path);
         return (file.exists() && file.isFile() ? file.length() : -1);
+    }
+
+    public static long getFolderSize(File file) {
+
+        long size = 0;
+        try {
+            java.io.File[] fileList = file.listFiles();
+            for (int i = 0; i < fileList.length; i++) {
+                if (fileList[i].isDirectory()) {
+                    size = size + getFolderSize(fileList[i]);
+
+                } else {
+                    size = size + fileList[i].length();
+
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return size;
+    }
+
+    public static long getFolderSize(String folderPath) {
+        if(TextUtils.isEmpty(folderPath)) {
+            return -1;
+        }
+        return getFolderSize(new File(folderPath));
     }
 
     // Multi_Image_Selector createTmpFile

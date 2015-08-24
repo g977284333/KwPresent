@@ -56,11 +56,11 @@ public abstract class LoadingPage extends FrameLayout {
     }
 
     private View createLoadingView() {
-        return mActivity.getLayoutInflater().inflate(R.layout.loading_page_loading, null);
+        return mActivity.getLayoutInflater().inflate(R.layout.layout_loading_page_loading, null);
     }
 
     private View createErrorView() {
-        View view = mActivity.getLayoutInflater().inflate(R.layout.loading_page_error, null);
+        View view = mActivity.getLayoutInflater().inflate(R.layout.layout_loading_page_error, null);
         view.findViewById(R.id.btn_connect_net_work).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +71,7 @@ public abstract class LoadingPage extends FrameLayout {
     }
 
     private View createEmptyView() {
-        return mActivity.getLayoutInflater().inflate(R.layout.loading_page_empty, null);
+        return mActivity.getLayoutInflater().inflate(R.layout.layout_loading_page_empty, null);
     }
 
     protected boolean needReset() {

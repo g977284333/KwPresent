@@ -18,7 +18,7 @@ import java.io.StringWriter;
  * @date：2014-11-14 16:30:19
  */
 public class Logger {
-    private static final String FILE_PATH = SdCardUtil.getAbsolutePath(LibConfig.LOG_PATH);
+    private static final String FILE_PATH = SdCardUtil.getAbsolutePath(LibConfig.PATH_LOG);
 
     public static final String LOG_COLOR_BLUE = "#0000ff";// 蓝色
     public static final String LOG_COLOR_RED = "#ff0000";// 红色

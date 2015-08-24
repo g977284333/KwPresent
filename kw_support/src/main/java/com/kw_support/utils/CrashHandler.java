@@ -92,8 +92,6 @@ public class CrashHandler implements UncaughtExceptionHandler {
                         Toast.LENGTH_SHORT).show();
                 Looper.loop();
             }
-
-            ;
         }.start();
 
         collectDeviceInfo(mContext);
@@ -159,7 +157,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
             sb.append("------<exception end>---------");
             String fileName = "crashLog-" + time + ".log";
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                String path = SdCardUtil.getExternalStorageAbsolutePath() + LibConfig.LOG_PATH;
+                String path = SdCardUtil.getExternalStorageAbsolutePath() + LibConfig.PATH_LOG;
                 File filePath = new File(path);
                 if (!filePath.exists()) {
                     filePath.mkdirs();

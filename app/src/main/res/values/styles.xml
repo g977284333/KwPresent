@@ -1,11 +1,12 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat">
-    </style>
+    <style name="MainTheme" parent="Theme.AppCompat"/>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
 
     <!-- Base application theme. -->
-    <style name="AppBaseTheme" parent="AppTheme">
+    <style name="AppBaseTheme" parent="MainTheme">
         <item name="android:windowNoTitle">true</item>
         <!--抽屉开关样式-->
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>

@@ -31,5 +31,7 @@
     <color name="slide_color">#FF40Ad7e</color>
     <color name="actionbar_color">#FF4DD298</color>
     <color name="loading_page_bg">#ffffffff</color>
+    <color name="setting_txt">#8f8f8f</color>
+    <color name="rippelColor">#FFFFFF</color>
 
 </resources>

@@ -41,7 +41,7 @@ public class AlertDialog {
     }
 
     public AlertDialog builder() {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.dialog_msg_hint, null);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.layout_dialog, null);
         txt_title = (TextView) view.findViewById(R.id.txt_title);
         txt_title.setVisibility(View.GONE);
         txt_msg = (TextView) view.findViewById(R.id.txt_msg);

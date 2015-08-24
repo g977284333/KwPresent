@@ -3,10 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 22
     buildToolsVersion '22.0.1'
-
     Properties props = new Properties()
     props.load(new FileInputStream(file("signing.properties")))
-
     signingConfigs {
         release {
             keyAlias props['KEY_ALIAS']
@@ -15,7 +13,6 @@ android {
             storePassword props['KEYSTORE_PASSWORD']
         }
     }
-
     defaultConfig {
         applicationId "com.gechen.keepwalking"
         minSdkVersion 9
@@ -31,6 +28,8 @@ android {
         debug {
             signingConfig signingConfigs.release
         }
+    }
+    productFlavors {
     }
 }
 

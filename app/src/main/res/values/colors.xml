@@ -7,4 +7,6 @@
     <color name="light_gray">#ff999999</color>
     <color name="blue">#ff0068b7</color>
     <color name="gray">#ff666666</color>
+    <color name="reppe_view_color">#585858</color>
+    <color name="pressed_color">#dddddd</color>
 </resources>

@@ -36,7 +36,7 @@ public class SdCardUtil {
         if (!isMounted())
             throw new IOException("sd card is not exist!");
         File storageDirectory = Environment.getExternalStorageDirectory();
-        File storagePath = new File(storageDirectory, LibConfig.ROOT_PATH);
+        File storagePath = new File(storageDirectory, LibConfig.PATH_ROOT);
         if (!storagePath.exists() && !storagePath.mkdirs())
             throw new IOException(String.format("%s cannot be created!", storagePath.toString()));
         if (!storagePath.isDirectory())
@@ -106,6 +106,8 @@ public class SdCardUtil {
         } else if (size >= 1024 * 1024 * 1024) {
             newSize = newSize / (1024 * 1024 * 1024);
             sb.append(newSize + "G");
+        } else if(size <= 0) {
+            sb.append(0.0 + "B");
         }
         return sb.toString();
     }

@@ -9,14 +9,18 @@ public class LibConfig {
     public static final boolean DEV_MODE = true;
 
     // 应用根目录
-    public static final String ROOT_PATH = "/keepwalking";
+    public static final String PATH_ROOT = "/keepwalking";
 
-    //应用log日志目录
-    public static final String LOG_PATH = ROOT_PATH + "/logs/";
+    // 应用log日志目录
+    public static final String PATH_LOG = PATH_ROOT + "/logs/";
 
-    // SharedPrefrence文件名
+    // 图片目录
+    public static final String PATH_IMAGE = PATH_ROOT + "/images/";
+
+    // 缓存目录
+    public static final String PATH_CAHCHE = PATH_ROOT + "/cache/";
+
+    // SharedPreference文件名
     public static final String SHARED_PREFERENCE_NAME = "default_sp_name";
 
-    // 图片地址
-    public static final String IMAGE_PATH = ROOT_PATH  + "/images/";
 }

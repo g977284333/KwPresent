@@ -47,4 +47,22 @@
         <item>~夏先生</item>
     </string-array>
 
+    <string-array name="setting_upload_pic_mode">
+        <item>自动</item>
+        <item>原图</item>
+        <item>高(小于700kb)</item>
+        <item>中(小于300kb)</item>
+        <item>低(小于100kb)</item>
+    </string-array>
+
+    <string-array name="setting_pic_mode">
+        <item>大图</item>
+        <item>小图</item>
+    </string-array>
+
+    <string-array name="setting_swipe_back_edge">
+        <item>左</item>
+        <item>右</item>
+    </string-array>
+
 </resources>

@@ -30,7 +30,7 @@ public class UiUtil {
     public void showCustomToast(Context context, boolean flag, String msg) {
         Toast toast = Toast.makeText(context, "自定义", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
-        View view = View.inflate(context, R.layout.customer_toast, null);
+        View view = View.inflate(context, R.layout.layout_toast, null);
         ImageView iv_icon = (ImageView) view.findViewById(R.id.iv_icon);
         if (flag) {
             iv_icon.setImageResource(R.drawable.icon_toast_game_ok);

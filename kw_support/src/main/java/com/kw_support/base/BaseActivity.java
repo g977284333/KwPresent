@@ -1,16 +1,10 @@
 package com.kw_support.base;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
-import com.kw_support.R;
 import com.kw_support.manager.ActivityManager;
-import com.kw_support.manager.SystemBarTintManager;
 import com.kw_support.utils.Logger;
 
 
@@ -23,9 +17,6 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         ActivityManager.getInstance().pushActivity(this);
     }
 

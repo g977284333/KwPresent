@@ -1,13 +1,13 @@
 package com.gechen.keepwalking.kw.manager;
 
-import com.android.volley.Response;
+import com.kw_support.thirdlib.http.Response;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
-import com.kw_support.manager.http.GsonGetRequest;
-import com.kw_support.manager.http.GsonPostRequest;
+import com.kw_support.thirdlib.http.request.GsonGetRequest;
+import com.kw_support.thirdlib.http.request.GsonPostRequest;
 
 import java.util.ArrayList;
 

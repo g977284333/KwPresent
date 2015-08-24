@@ -292,7 +292,7 @@ public class ImageUtil {
 		if(TextUtils.isEmpty(filePath)) {
 			return null;
 		}
-		final File file = new File(LibConfig.IMAGE_PATH
+		final File file = new File(LibConfig.PATH_IMAGE
 				+ "small_pic" + UUID.randomUUID() + ".png");
 		new Thread(new Runnable() {
 			
