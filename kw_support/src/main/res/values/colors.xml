@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="color_primary_dark">#38299c</color>
-    <color name="color_primary">#5139b5</color>
-    <color name="window_back_ground">#38299c</color>
-
+    <color name="color_primary">#38299c</color>
+    <color name="window_back_ground">#FFFFFFFF</color>
 
     <color name="ldrawer_color">#ffffffff</color>
 

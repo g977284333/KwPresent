@@ -5,7 +5,9 @@ import android.content.Context;
 import com.kw_support.thirdlib.http.RequestQueue;
 import com.kw_support.thirdlib.http.stack.OkHttpStack;
 import com.kw_support.thirdlib.http.toolbox.Volley;
+import com.squareup.okhttp.Call;
 import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
 
 /**
  * Created by Administrator on 2015/8/6.
