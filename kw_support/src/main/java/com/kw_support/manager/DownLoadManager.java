@@ -45,21 +45,21 @@ public class DownLoadManager {
     }
 
     /**
-     * Í¬²½»ùÓÚpostÎÄ¼şÉÏ´«£ºÉÏ´«µ¥¸öÎÄ¼ş
+     * åŒæ­¥åŸºäºpostæ–‡ä»¶ä¸Šä¼ ï¼šä¸Šä¼ å•ä¸ªæ–‡ä»¶ï¿½
      */
     public Response upload(String url, String fileKey, File file) throws IOException {
         return upload(url, new String[]{fileKey}, new File[]{file}, null);
     }
 
     /**
-     * Í¬²½µ¥ÎÄ¼şÉÏ´«
+     * åŒæ­¥å•æ–‡ä»¶ä¸Šä¼ 
      */
     public Response post(String url, String fileKey, File file, Param... params) throws IOException {
         return upload(url, new String[]{fileKey}, new File[]{file}, params);
     }
 
     /**
-     * Í¬²½»ùÓÚpostµÄÎÄ¼şÉÏ´«£ºÉÏ´«¶à¸öÎÄ¼şÒÔ¼°Ğ¯´økey-value¶Ô
+     * åŒæ­¥åŸºäºpostçš„æ–‡ä»¶ä¸Šä¼ ï¼šä¸Šä¼ å¤šä¸ªæ–‡ä»¶ä»¥åŠæºå¸¦key-valueå¯¹ï¿½ï¿½
      */
     public Response upload(String url, String[] fileKeys, File[] files, Param[] paramses) throws IOException {
         Request request = buildMultipartFormRequest(url, fileKeys, files, paramses);
@@ -67,7 +67,7 @@ public class DownLoadManager {
     }
 
     /**
-     * Òì²½»ùÓÚpostµÄÎÄ¼şÉÏ´«:Ö÷·½·¨
+     * å¼‚æ­¥åŸºäºpostçš„æ–‡ä»¶ä¸Šä¼ :ä¸»æ–¹æ³•ï¿½ï¿½ï¿½ï¿½
      */
     public void postAsyn(String url, String[] fileKeys, File[] files, Param[] params, ResultCallback callback) {
         Request request = buildMultipartFormRequest(url, fileKeys, files, params);
@@ -75,14 +75,14 @@ public class DownLoadManager {
     }
 
     /**
-     * Òì²½»ùÓÚpostµÄÎÄ¼şÉÏ´«:µ¥ÎÄ¼ş²»´ø²ÎÊıÉÏ´«
+     * å¼‚æ­¥åŸºäºpostçš„æ–‡ä»¶ä¸Šä¼ :å•æ–‡ä»¶ä¸å¸¦å‚æ•°ä¸Šä¼ 
      */
     public void postAsyn(String url, String fileKey, File file, ResultCallback callback) throws IOException {
         postAsyn(url, new String[]{fileKey}, new File[]{file}, null, callback);
     }
 
     /**
-     * Òì²½»ùÓÚpostµÄÎÄ¼şÉÏ´«£¬µ¥ÎÄ¼şÇÒĞ¯´øÆäËûform²ÎÊıÉÏ´«
+     * å¼‚æ­¥åŸºäºpostçš„æ–‡ä»¶ä¸Šä¼ ï¼Œå•æ–‡ä»¶ä¸”æºå¸¦å…¶ä»–formå‚æ•°ä¸Šä¼ 
      */
     public void postAsyn(String url, String fileKey, File file, Param[] params, ResultCallback callback) {
         postAsyn(url, new String[]{fileKey}, new File[]{file}, params, callback);
@@ -150,11 +150,11 @@ public class DownLoadManager {
 
 
     /**
-     * ÎÄ¼şÏÂÔØÀà
+     * æ–‡ä»¶ä¸‹è½½ç±»ï¿½
      *
      * @param url
-     * @param destFilePath Ä¿±êÎÄ¼ş´æ·ÅµØÖ·
-     * @param callback     callbackÈÔÔÚÔÚ·ÇUIÏß³Ìµ±ÖĞ£¬ËùÒÔĞèÒª×ª»»³ÉUIÏß³Ì
+     * @param destFilePath ç›®æ ‡æ–‡ä»¶å­˜æ”¾åœ°å€
+     * @param callback     callbackä»åœ¨åœ¨éUIçº¿ç¨‹å½“ä¸­ï¼Œæ‰€ä»¥éœ€è¦è½¬æ¢æˆUIçº¿ç¨‹ï¿½
      */
 
     public void downLoad(final String url, final String destFilePath, final ResultCallback callback) {

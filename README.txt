@@ -1,6 +1,6 @@
 2015-5-28：
 后期需要添加
-    将picasso换成Fresco或Glide
+    Glide
     代码混淆
 优化
     图片裁剪
@@ -9,7 +9,7 @@
     greendao
     DbManager
     FileManager
-    下载和上传的工具类
+    下载和上传的工具类（ui线程回调）
     检查自动更新、覆盖安装
     加载页
     HttpMananger
