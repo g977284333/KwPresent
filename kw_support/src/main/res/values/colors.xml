@@ -6,6 +6,8 @@
 
     <color name="ldrawer_color">#ffffffff</color>
 
+    <color name="white">#ffffff</color>
+
     <!-- zxing -->
     <color name="contents_text">#ff000000</color>
     <color name="encode_view">#ffffffff</color>
@@ -16,6 +18,7 @@
     <color name="result_view">#b0000000</color>
     <color name="status_text">#ffffffff</color>
     <color name="transparent">#00000000</color>
+    <color name="transparent_6">#99000000</color>
     <color name="viewfinder_laser">#ffcc0000</color> <!-- Android standard ICS color -->
     <color name="viewfinder_mask">#60000000</color>
     <color name="viewfinder_corner">#ff00ff00</color>
@@ -32,5 +35,5 @@
     <color name="loading_page_bg">#ffffffff</color>
     <color name="setting_txt">#8f8f8f</color>
     <color name="rippelColor">#FFFFFF</color>
-
+    <color name="loading_point">#E3007F</color>
 </resources>

@@ -47,7 +47,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
     @Override
     public void onResp(BaseResp resp) {
         if (resp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
-//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//            KwAlertDialog.Builder builder = new KwAlertDialog.Builder(this);
 //            builder.setTitle(R.string.pay_tip);
 //            builder.setMessage(getString(R.string.pay_result_callback_msg, resp.errStr + ";code=" + String.valueOf(resp.errCode)));
 //            builder.show();

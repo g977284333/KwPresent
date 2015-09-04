@@ -2,7 +2,6 @@ package com.gechen.keepwalking.kw.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -11,10 +10,12 @@ import android.widget.TextView;
 import com.gechen.keepwalking.R;
 import com.gechen.keepwalking.kw.KwApplication;
 import com.gechen.keepwalking.kw.common.manager.ConfigManager;
+import com.gechen.keepwalking.kw.common.widget.ShareDialog;
 import com.kw_support.base.BaseActivity;
-import com.kw_support.base.BaseWebViewActivity;
 import com.kw_support.utils.FileUtil;
 import com.kw_support.utils.SdCardUtil;
+import com.kw_support.view.KwAlertDialog;
+import com.kw_support.view.LoadingDialog;
 
 /**
  * Created by Administrator on 2015/8/22.
@@ -142,9 +143,6 @@ public class SettingActivity extends BaseActivity {
                 break;
             case R.id.btn_setting_clear_cache:
                 FileUtil.clearDirectory(FileUtil.getAppCachePath());
-
-                Intent intent = new Intent(this, BaseWebViewActivity.class);
-                startActivity(intent);
                 break;
             default:
                 break;

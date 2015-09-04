@@ -25,4 +25,8 @@
     <string name="capture_activity">CaptureActivity</string>
 
     <string name="data_empty">亲~暂时没有数据呦!</string>
+
+    <string name="pull_to_refresh_loading">优鲜正在奔跑...</string>
+    <string name="pull_to_refresh_ready">别拉了，放开我</string>
+    <string name="pull_to_refresh_release">下拉刷新</string>
 </resources>

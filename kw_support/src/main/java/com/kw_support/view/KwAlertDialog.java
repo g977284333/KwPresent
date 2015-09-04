@@ -18,7 +18,7 @@ import com.kw_support.R;
 /**
  * Created by Administrator on 2015/8/12.
  */
-public class AlertDialog {
+public class KwAlertDialog {
 
     private Context mContext;
     private Dialog dialog;
@@ -34,14 +34,16 @@ public class AlertDialog {
     private boolean showPosBtn = false;
     private boolean showNegBtn = false;
 
-    public AlertDialog(Context context) {
+    public KwAlertDialog(Context context) {
         this.mContext = context;
         WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
         mDisplay = wm.getDefaultDisplay();
     }
 
-    public AlertDialog builder() {
+    public KwAlertDialog builder() {
         View view = LayoutInflater.from(mContext).inflate(R.layout.layout_dialog, null);
+
+        lLayout_bg = (LinearLayout) view.findViewById(R.id.lLayout_bg);
         txt_title = (TextView) view.findViewById(R.id.txt_title);
         txt_title.setVisibility(View.GONE);
         txt_msg = (TextView) view.findViewById(R.id.txt_msg);
@@ -53,14 +55,14 @@ public class AlertDialog {
         img_line = (ImageView) view.findViewById(R.id.img_line);
         img_line.setVisibility(View.GONE);
 
-        dialog = new Dialog(mContext, R.style.AlertDialogStyle);
+        dialog = new Dialog(mContext, R.style.alert_dialog_style);
         dialog.setContentView(view);
 
         lLayout_bg.setLayoutParams(new FrameLayout.LayoutParams((int) (mDisplay.getWidth() * 0.85), ViewGroup.LayoutParams.WRAP_CONTENT));
         return this;
     }
 
-    public AlertDialog setTitle(String title) {
+    public KwAlertDialog setTitle(String title) {
         showTitle = true;
         if ("".equals(title)) {
             txt_title.setText("提示");
@@ -70,7 +72,7 @@ public class AlertDialog {
         return this;
     }
 
-    public AlertDialog setMsg(String msg) {
+    public KwAlertDialog setMsg(String msg) {
         showMsg = true;
         if ("".equals(msg)) {
             txt_msg.setText("标题");
@@ -80,12 +82,12 @@ public class AlertDialog {
         return this;
     }
 
-    public AlertDialog setCancelable(boolean cancel) {
+    public KwAlertDialog setCancelable(boolean cancel) {
         dialog.setCancelable(cancel);
         return this;
     }
 
-    public AlertDialog setPositiveButton(String text, final View.OnClickListener listener) {
+    public KwAlertDialog setPositiveButton(String text, final View.OnClickListener listener) {
         showPosBtn = true;
         if ("".equals(text)) {
             btn_pos.setText("确定");
@@ -102,7 +104,7 @@ public class AlertDialog {
         return this;
     }
 
-    public AlertDialog setNegativeButton(String text, final View.OnClickListener listener) {
+    public KwAlertDialog setNegativeButton(String text, final View.OnClickListener listener) {
         showNegBtn = true;
         if ("".equals(text)) {
             btn_neg.setText("取消");

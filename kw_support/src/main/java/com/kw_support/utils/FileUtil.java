@@ -404,6 +404,10 @@ public class FileUtil {
         long size = 0;
         try {
             java.io.File[] fileList = file.listFiles();
+            if(fileList == null || fileList.length == 0) {
+                return size;
+            }
+
             for (int i = 0; i < fileList.length; i++) {
                 if (fileList[i].isDirectory()) {
                     size = size + getFolderSize(fileList[i]);
