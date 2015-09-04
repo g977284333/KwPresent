@@ -23,4 +23,5 @@ public class LibConfig {
     // SharedPreference文件名
     public static final String SHARED_PREFERENCE_NAME = "default_sp_name";
 
+    public static final int DISK_CACHE_CAPACITY = 10 * 1024 * 1024;
 }

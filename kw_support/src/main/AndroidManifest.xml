@@ -3,4 +3,9 @@
     package="com.kw_support" >
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
+
+
+    <meta-data
+        android:name="com.kw_support.utils.KwGlideModule"
+        android:value="GlideModule"/>
 </manifest>
