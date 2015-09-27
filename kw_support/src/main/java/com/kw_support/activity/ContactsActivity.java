@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.kw_support.R;
 import com.kw_support.adapter.SortAdapter;
 import com.kw_support.view.controller.CharacterParser;
@@ -58,7 +59,6 @@ public class ContactsActivity extends Activity {
 		sideBar = (SideBar) findViewById(R.id.sidrbar);
 		dialog = (TextView) findViewById(R.id.dialog);
 		sideBar.setTextView(dialog);
-
 		// 设置右侧触摸监听
 		sideBar.setOnTouchingLetterChangedListener(new SideBar.OnTouchingLetterChangedListener() {
 

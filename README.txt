@@ -1,7 +1,7 @@
 2015-5-28：
 后期需要添加
-    Glide
-    代码混淆
+   PulToRefresh -- Urtra
+   代码混淆
 优化
     图片裁剪
     本地文件缓存DiscCache(学习使用，阅读源码)
@@ -9,7 +9,6 @@
     greendao
     DbManager
     FileManager
-    下载和上传的工具类（ui线程回调）
     检查自动更新、覆盖安装
     加载页
     HttpMananger
@@ -36,6 +35,8 @@
     网络状态监听类、屏幕开关监听类
     简单的线程管理类
     沉浸式状态栏
+    Glide -- ImageLoader
+    下载和上传的工具类（ui线程回调）
     第三方--PulToRefresh、photoview、zxing
     自定义View、OverLayout、OverScrollView(有拉伸效果Layout和ScrollView)、CircleImageView（显示圆形图片的ImageView）
                 OverLayout(落地效果的广告页)、ChangeColorIconWithText(底部Menu，可渐变图片和文字)、
