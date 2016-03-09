@@ -17,7 +17,6 @@ import com.kw_support.view.controller.CustomDurationScroller;
 
 /**
  * Auto Scroll View Pager
- * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-12-30
  */
 public class AutoScrollViewPager extends ViewPager {
 
@@ -27,15 +26,15 @@ public class AutoScrollViewPager extends ViewPager {
     public static final int RIGHT = 1;
 
     /**
-     * do nothing when sliding at the last or first item *
+     * do nothing when sliding at the last or first layout_contacts_item *
      */
     public static final int SLIDE_BORDER_MODE_NONE = 0;
     /**
-     * cycle when sliding at the last or first item *
+     * cycle when sliding at the last or first layout_contacts_item *
      */
     public static final int SLIDE_BORDER_MODE_CYCLE = 1;
     /**
-     * deliver event to parent when sliding at the last or first item *
+     * deliver event to parent when sliding at the last or first layout_contacts_item *
      */
     public static final int SLIDE_BORDER_MODE_TO_PARENT = 2;
 
@@ -48,7 +47,7 @@ public class AutoScrollViewPager extends ViewPager {
      */
     private int direction = RIGHT;
     /**
-     * whether automatic cycle when auto scroll reaching the last or first item, default is true *
+     * whether automatic cycle when auto scroll reaching the last or first layout_contacts_item, default is true *
      */
     private boolean isCycle = true;
     /**
@@ -56,11 +55,11 @@ public class AutoScrollViewPager extends ViewPager {
      */
     private boolean stopScrollWhenTouch = true;
     /**
-     * how to process when sliding at the last or first item, default is {@link #SLIDE_BORDER_MODE_NONE} *
+     * how to process when sliding at the last or first layout_contacts_item, default is {@link #SLIDE_BORDER_MODE_NONE} *
      */
     private int slideBorderMode = SLIDE_BORDER_MODE_NONE;
     /**
-     * whether animating when auto scroll at the last or first item *
+     * whether animating when auto scroll at the last or first layout_contacts_item *
      */
     private boolean isBorderAnimation = true;
     /**
@@ -214,7 +213,7 @@ public class AutoScrollViewPager extends ViewPager {
             /**
              * current index is first one and slide to right or current index is last one and slide to left.<br/>
              * if slide border mode is to parent, then requestDisallowInterceptTouchEvent false.<br/>
-             * else scroll to last one when current item is first one, scroll to first one when current item is last
+             * else scroll to last one when current layout_contacts_item is first one, scroll to first one when current layout_contacts_item is last
              * one.
              */
             if ((currentItem == 0 && downX <= touchX) || (currentItem == pageCount - 1 && downX >= touchX)) {
@@ -290,14 +289,14 @@ public class AutoScrollViewPager extends ViewPager {
     }
 
     /**
-     * whether automatic cycle when auto scroll reaching the last or first item, default is true
+     * whether automatic cycle when auto scroll reaching the last or first layout_contacts_item, default is true
      */
     public boolean isCycle() {
         return isCycle;
     }
 
     /**
-     * set whether automatic cycle when auto scroll reaching the last or first item, default is true
+     * set whether automatic cycle when auto scroll reaching the last or first layout_contacts_item, default is true
      */
     public void setCycle(boolean isCycle) {
         this.isCycle = isCycle;
@@ -318,28 +317,28 @@ public class AutoScrollViewPager extends ViewPager {
     }
 
     /**
-     * get how to process when sliding at the last or first item
+     * get how to process when sliding at the last or first layout_contacts_item
      */
     public int getSlideBorderMode() {
         return slideBorderMode;
     }
 
     /**
-     * set how to process when sliding at the last or first item
+     * set how to process when sliding at the last or first layout_contacts_item
      */
     public void setSlideBorderMode(int slideBorderMode) {
         this.slideBorderMode = slideBorderMode;
     }
 
     /**
-     * whether animating when auto scroll at the last or first item, default is true
+     * whether animating when auto scroll at the last or first layout_contacts_item, default is true
      */
     public boolean isBorderAnimation() {
         return isBorderAnimation;
     }
 
     /**
-     * set whether animating when auto scroll at the last or first item, default is true
+     * set whether animating when auto scroll at the last or first layout_contacts_item, default is true
      */
     public void setBorderAnimation(boolean isBorderAnimation) {
         this.isBorderAnimation = isBorderAnimation;

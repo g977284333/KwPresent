@@ -3,7 +3,7 @@ package com.kw_support.utils;
 import android.content.Context;
 import android.os.StrictMode;
 
-import com.kw_support.constants.GlobalConfig;
+import com.kw_support.constants.LibConfig;
 
 /**
  * @version 1.0
@@ -15,7 +15,7 @@ public class StrictModeWrapper {
     private static final String TAG = "StrictModeWraper";
 
     public static void init(Context context) {
-        if (GlobalConfig.DEV_MODE) {
+        if (LibConfig.DEV_MODE) {
             try {
                 StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                         .detectAll()

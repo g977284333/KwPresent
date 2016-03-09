@@ -1,5 +1,16 @@
 package com.kw_support.utils;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Build;
+import android.os.Environment;
+import android.os.Looper;
+import android.widget.Toast;
+
+import com.kw_support.constants.LibConfig;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
@@ -13,21 +24,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.Build;
-import android.os.Environment;
-import android.os.Looper;
-import android.widget.Toast;
-
-import com.kw_support.constants.GlobalConfig;
-
 /**
  * @version 1.0
  * @author: gchen
- * @description:	UncaughtException处理类，当程序发生Uncaught异常时，由该类来接管程序，并记录发送错误报告
+ * @description: UncaughtException处理类，当程序发生Uncaught异常时，由该类来接管程序，并记录发送错误报告
  * @date：2014-11-17 下午10:32:18
  */
 public class CrashHandler implements UncaughtExceptionHandler {
@@ -41,9 +41,13 @@ public class CrashHandler implements UncaughtExceptionHandler {
 
     private Map<String, String> infos = new HashMap<String, String>();
 
-    private DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    private DateFormat wholeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    private CrashHandler() { };
+    private CrashHandler() {
+    }
+
+    ;
 
     public static CrashHandler getInstance() {
         return INSTANCE;
@@ -88,8 +92,6 @@ public class CrashHandler implements UncaughtExceptionHandler {
                         Toast.LENGTH_SHORT).show();
                 Looper.loop();
             }
-
-            ;
         }.start();
 
         collectDeviceInfo(mContext);
@@ -109,7 +111,6 @@ public class CrashHandler implements UncaughtExceptionHandler {
             }
         } catch (NameNotFoundException e) {
             e.printStackTrace();
-            Logger.e(TAG, "an error occured when collect package info");
         }
 
         Field[] fields = Build.class.getDeclaredFields();
@@ -117,13 +118,10 @@ public class CrashHandler implements UncaughtExceptionHandler {
             try {
                 field.setAccessible(true);
                 infos.put(field.getName(), field.get(null).toString());
-                Logger.d(TAG, field.getName() + " : " + field.get(null));
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
-                Logger.d(TAG, "an error occured when collect crash info");
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
-                Logger.d(TAG, "an error occured when collect crash info");
             }
         }
     }
@@ -136,8 +134,8 @@ public class CrashHandler implements UncaughtExceptionHandler {
 
         Writer writer = new StringWriter();
         PrintWriter printWriter = new PrintWriter(writer);
-
         ex.printStackTrace(printWriter);
+
         Throwable cause = ex.getCause();
         while (null != cause) {
             cause.printStackTrace(printWriter);
@@ -147,18 +145,19 @@ public class CrashHandler implements UncaughtExceptionHandler {
 
         String result = writer.toString();
         try {
-            long timeStamp = System.currentTimeMillis();
+            String timeStamp = wholeFormat.format(System.currentTimeMillis());
             String time = format.format(new Date());
-            sb.append("----------------------------------<exception start>---------------------------------------<\\n");
+            String lineFeed = "\r\n";
+            sb.append("-------<exception start>------<\\n");
             sb.append("Time: ");
             sb.append(timeStamp);
-            sb.append("\n");
+            sb.append(lineFeed);
             sb.append(result);
-            sb.append("\n");
-            sb.append("----------------------------------<exception end>------------------------------------------");
-            String fileName = "crach-" + time + "-" + timeStamp + ".log";
+            sb.append(lineFeed);
+            sb.append("------<exception end>---------");
+            String fileName = "crashLog-" + time + ".log";
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                String path = SdCardUtil.getExternalStorageAbsolutePath() + GlobalConfig.LOG_PATH;
+                String path = SdCardUtil.getExternalStorageAbsolutePath() + LibConfig.PATH_LOG;
                 File filePath = new File(path);
                 if (!filePath.exists()) {
                     filePath.mkdirs();
@@ -169,7 +168,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
             }
             return fileName;
         } catch (Exception e) {
-            Logger.e(TAG, "an error occured while writing file...");
+            e.printStackTrace();
         }
         return null;
     }

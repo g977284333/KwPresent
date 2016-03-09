@@ -10,7 +10,8 @@ import com.kw_support.base.BaseActivity;
 /**
  * Created by gechen on 2015/5/23.
  */
-public class ListOrScrollViewSimpleActivity extends BaseActivity{
+@Deprecated
+public class ListOrScrollViewSimpleActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

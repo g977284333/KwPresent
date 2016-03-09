@@ -1,8 +1,18 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion '19.1.0'
+    compileSdkVersion 22
+    buildToolsVersion '22.0.1'
+    Properties props = new Properties()
+    props.load(new FileInputStream(file("signing.properties")))
+    signingConfigs {
+//        release {
+//            keyAlias props['KEY_ALIAS']
+//            keyPassword props['KEY_PASSWORD']
+//            storeFile file(props['KEYSTORE_FILE'])
+//            storePassword props['KEYSTORE_PASSWORD']
+//        }
+    }
     defaultConfig {
         applicationId "com.gechen.keepwalking"
         minSdkVersion 9
@@ -15,13 +25,32 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+//            signingConfig signingConfigs.release
+        }
     }
     productFlavors {
     }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('libs/BaiduLBS_Android.jar')
     compile project(':kw_support')
+    compile files('libs/MobLogCollector.jar')
+    compile files('libs/MobTools.jar')
+    compile files('libs/ShareSDK-Core-2.6.1.jar')
+    compile files('libs/ShareSDK-QQ-2.6.1.jar')
+    compile files('libs/ShareSDK-QZone-2.6.1.jar')
+    compile files('libs/ShareSDK-Wechat-2.6.1.jar')
+    compile files('libs/ShareSDK-Wechat-Core-2.6.1.jar')
+    compile files('libs/ShareSDK-Wechat-Favorite-2.6.1.jar')
+    compile files('libs/ShareSDK-Wechat-Moments-2.6.1.jar')
+    compile files('libs/ShareSDK-SinaWeibo-2.6.1.jar')
+    compile files('libs/ShareSDK-TencentWeibo-2.6.1.jar')
+    compile files('libs/libammsdk.jar')
 }

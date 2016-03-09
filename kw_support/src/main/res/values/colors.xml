@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary_dark">#38299c</color>
+    <color name="color_primary">#38299c</color>
+    <color name="window_back_ground">#FFFFFFFF</color>
+
+    <color name="ldrawer_color">#ffffffff</color>
+
+    <color name="white">#ffffff</color>
+
+    <!-- zxing -->
+    <color name="contents_text">#ff000000</color>
+    <color name="encode_view">#ffffffff</color>
+    <color name="possible_result_points">#c0ffbd21</color> <!-- Android standard ICS color -->
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c099cc00</color> <!-- Android standard ICS color -->
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="status_text">#ffffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent_6">#99000000</color>
+    <color name="viewfinder_laser">#ffcc0000</color> <!-- Android standard ICS color -->
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="viewfinder_corner">#ff00ff00</color>
+    <color name="viewfinder_main_line">#ff00ff00</color>
+    <color name="viewfinder_main_line_edge">#2200ff00</color>
+    <color name="viewfinder_hint_text">#ffffffff</color>
+
+    <color name="alertdialog_line">#c6c6c6</color>
+    <color name="actionsheet_blue">#037BFF</color>
+    <color name="actionsheet_red">#FD4A2E</color>
+    <color name="actionsheet_gray">#8F8F8F</color>
+    <color name="slide_color">#FF40Ad7e</color>
+    <color name="actionbar_color">#FF4DD298</color>
+    <color name="loading_page_bg">#ffffffff</color>
+    <color name="setting_txt">#8f8f8f</color>
+    <color name="rippelColor">#FFFFFF</color>
+    <color name="loading_point">#E3007F</color>
+</resources>

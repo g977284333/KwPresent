@@ -6,7 +6,7 @@
     android:background="@drawable/bottom_bar_bg"
     android:orientation="horizontal">
 
-    <com.gechen.keepwalking.kw.widget.ChangeColorIconWithText
+    <com.kw_support.view.ChangeColorIconWithText
         android:id="@+id/cciw_indicator_one"
         android:layout_width="1dp"
         android:layout_height="match_parent"
@@ -17,7 +17,7 @@
         gc:changeable_text="@string/bar_conversation"
         gc:changeable_text_size="12sp" />
 
-    <com.gechen.keepwalking.kw.widget.ChangeColorIconWithText
+    <com.kw_support.view.ChangeColorIconWithText
         android:id="@+id/cciw_indicator_two"
         android:layout_width="1dp"
         android:layout_height="match_parent"
@@ -28,7 +28,7 @@
         gc:changeable_text="@string/bar_friend_list"
         gc:changeable_text_size="12sp" />
 
-    <com.gechen.keepwalking.kw.widget.ChangeColorIconWithText
+    <com.kw_support.view.ChangeColorIconWithText
         android:id="@+id/cciw_indicator_three"
         android:layout_width="1dp"
         android:layout_height="match_parent"
@@ -39,7 +39,7 @@
         gc:changeable_text="@string/bar_search"
         gc:changeable_text_size="12sp" />
 
-    <com.gechen.keepwalking.kw.widget.ChangeColorIconWithText
+    <com.kw_support.view.ChangeColorIconWithText
         android:id="@+id/cciw_indicator_four"
         android:layout_width="1dp"
         android:layout_height="match_parent"

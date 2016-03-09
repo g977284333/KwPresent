@@ -9,8 +9,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.kw_support.R;
-import com.kw_support.bean.Image;
-import com.squareup.picasso.Picasso;
+import com.kw_support.manager.ImageLoader;
+import com.kw_support.model.Image;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -221,14 +221,7 @@ public class ImageGridAdapter extends BaseAdapter {
             File imageFile = new File(data.path);
 
             if (mItemSize > 0) {
-                // show image
-                Picasso.with(mContext)
-                        .load(imageFile)
-                        .placeholder(R.drawable.default_error)
-                                //.error(R.drawable.default_error)
-                        .resize(mItemSize, mItemSize)
-                        .centerCrop()
-                        .into(image);
+                ImageLoader.getInstance().display(mContext, imageFile, mItemSize, mItemSize, image);
             }
         }
     }

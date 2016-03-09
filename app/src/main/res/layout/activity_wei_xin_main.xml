@@ -2,17 +2,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
     android:orientation="vertical">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_content"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
+    <!--  Toolbar -->
     <include
+        layout="@layout/include_tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        layout="@layout/layout_bottom_bar"/>
+        android:layout_height="wrap_content" />
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--Main Content-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <include
+                layout="@layout/layout_bottom_bar"
+                android:layout_width="match_parent"
+                android:layout_height="60dp" />
+
+        </LinearLayout>
+
+        <!--DrawerLayout Content-->
+        <ListView
+            android:id="@+id/drawer_content"
+            android:layout_width="@dimen/drawer_menu_content_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@android:color/white"
+            android:choiceMode="singleChoice"
+            android:divider="#33000000"
+            android:dividerHeight="0.1dp"
+            android:drawSelectorOnTop="false" >
+        </ListView>
+
+    </android.support.v4.widget.DrawerLayout>
 
 </LinearLayout>

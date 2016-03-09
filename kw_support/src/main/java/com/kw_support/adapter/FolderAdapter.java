@@ -9,10 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kw_support.R;
-import com.kw_support.bean.Folder;
-import com.squareup.picasso.Picasso;
+import com.kw_support.manager.ImageLoader;
+import com.kw_support.model.Folder;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,12 +75,7 @@ public class FolderAdapter extends BaseAdapter {
                 holder.size.setText(getTotalImageSize() + "张");
                 if (mFolders.size() > 0) {
                     Folder f = mFolders.get(0);
-                    Picasso.with(mContext)
-                            .load(new File(f.cover.path))
-                            .error(R.drawable.default_error)
-                            .resize(mImageSize, mImageSize)
-                            .centerCrop()
-                            .into(holder.cover);
+                    ImageLoader.getInstance().display(mContext, f.cover.path, mImageSize, mImageSize, holder.cover);
                 }
             } else {
                 holder.bindData(getItem(i));
@@ -133,13 +127,7 @@ public class FolderAdapter extends BaseAdapter {
         void bindData(Folder data) {
             name.setText(data.name);
             size.setText(data.images.size() + "张");
-            // show image
-            Picasso.with(mContext)
-                    .load(new File(data.cover.path))
-                    .placeholder(R.drawable.default_error)
-                    .resize(mImageSize, mImageSize)
-                    .centerCrop()
-                    .into(cover);
+            ImageLoader.getInstance().display(mContext, data.cover.path, mImageSize, mImageSize, cover);
         }
     }
 

@@ -12,7 +12,7 @@ import com.kw_support.base.BaseActivity;
 import com.kw_support.utils.UiUtil;
 import com.kw_support.view.OverLayLayout;
 
-
+@Deprecated
 public class KwHomeActivity extends BaseActivity {
 
     private Button mBounceScrollView;
@@ -21,6 +21,7 @@ public class KwHomeActivity extends BaseActivity {
     private Button mPhotoOrImage;
     private Button mCustomWidget;
     private Button mWeiXin;
+    private Button mOpenFragment;
 
     private OverLayLayout mOverlayLayout;
 
@@ -43,6 +44,7 @@ public class KwHomeActivity extends BaseActivity {
         mPhotoOrImage = (Button) findViewById(R.id.btn_photo_or_image);
         mCustomWidget = (Button) findViewById(R.id.btn_custom_widget);
         mWeiXin = (Button) findViewById(R.id.btn_wei_xin_activity);
+        mOpenFragment = (Button) findViewById(R.id.btn_fragment_with_anim_activity);
 
         mOverlayLayout = (OverLayLayout) findViewById(R.id.overlay);
         mBanner = (ImageView) findViewById(R.id.iv_banner);
@@ -53,6 +55,7 @@ public class KwHomeActivity extends BaseActivity {
         mPhotoOrImage.setOnClickListener(this);
         mCustomWidget.setOnClickListener(this);
         mWeiXin.setOnClickListener(this);
+        mOpenFragment.setOnClickListener(this);
         mOverlayLayout.setOnOverlayStateChangedListener(mOnOverlayStateChangeListener);
 
         mOverlayLayout.setVisibility(View.VISIBLE);
@@ -78,7 +81,10 @@ public class KwHomeActivity extends BaseActivity {
                 gotoTargetActivity(CustomWidgetActivity.class);
                 break;
             case R.id.btn_wei_xin_activity:
-                gotoTargetActivity(WeiXinMainActivity.class);
+                gotoTargetActivity(KwMainActivity.class);
+                break;
+            case R.id.btn_fragment_with_anim_activity:
+                gotoTargetActivity(FragmentWithAnimationActivity.class);
                 break;
             default:
                 break;
@@ -103,7 +109,15 @@ public class KwHomeActivity extends BaseActivity {
         }
     }
 
-//    @Override
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if(intent != null) {
+            setIntent(intent);
+        }
+    }
+
+    //    @Override
     // 按返回键，回到主界面
 //    public boolean onKeyDown(int keyCode, KeyEvent event) {
 //        if (keyCode == KeyEvent.KEYCODE_BACK) {

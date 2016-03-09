@@ -1,10 +1,5 @@
 package com.kw_support.utils;
 
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
@@ -12,7 +7,12 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.os.storage.StorageManager;
 
-import com.kw_support.constants.GlobalConfig;
+import com.kw_support.constants.LibConfig;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * @author gechen
@@ -36,7 +36,7 @@ public class SdCardUtil {
         if (!isMounted())
             throw new IOException("sd card is not exist!");
         File storageDirectory = Environment.getExternalStorageDirectory();
-        File storagePath = new File(storageDirectory, GlobalConfig.ROOT_PATH);
+        File storagePath = new File(storageDirectory, LibConfig.PATH_ROOT);
         if (!storagePath.exists() && !storagePath.mkdirs())
             throw new IOException(String.format("%s cannot be created!", storagePath.toString()));
         if (!storagePath.isDirectory())
@@ -106,6 +106,8 @@ public class SdCardUtil {
         } else if (size >= 1024 * 1024 * 1024) {
             newSize = newSize / (1024 * 1024 * 1024);
             sb.append(newSize + "G");
+        } else if(size <= 0) {
+            sb.append(0.0 + "B");
         }
         return sb.toString();
     }

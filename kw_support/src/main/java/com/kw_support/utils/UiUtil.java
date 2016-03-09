@@ -5,6 +5,11 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.DisplayMetrics;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kw_support.R;
@@ -20,6 +25,22 @@ public class UiUtil {
 
     public static void showToast(Context context, int msg) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    public void showCustomToast(Context context, boolean flag, String msg) {
+        Toast toast = Toast.makeText(context, "自定义", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        View view = View.inflate(context, R.layout.layout_toast, null);
+        ImageView iv_icon = (ImageView) view.findViewById(R.id.iv_icon);
+        if (flag) {
+            iv_icon.setImageResource(R.drawable.icon_toast_game_ok);
+        } else {
+            iv_icon.setImageResource(R.drawable.icon_toast_game_error);
+        }
+        TextView tv_des = (TextView) view.findViewById(R.id.tv_des);
+        tv_des.setText(msg);
+        toast.setView(view);
+        toast.show();
     }
 
     public static Dialog createLoadingDialog(Context context) {
@@ -58,5 +79,58 @@ public class UiUtil {
         builder.create().show();
     }
 
+    public static final int COMPLEX_UNIT_PX = 0;  // px
+    public static final int COMPLEX_UNIT_DIP = 1; // dp
+    public static final int COMPLEX_UNIT_SP = 2;  // scaled pixel
+    public static final int COMPLEX_UNIT_PT = 3;  // points
+    public static final int COMPLEX_UNIT_IN = 4;  // inches
+    public static final int COMPLEX_UNIT_MM = 5;  // millimeters
 
+    public static float pxToDp(Context context, float px) {
+        if (context == null) {
+            return -1;
+        }
+        return px / context.getResources().getDisplayMetrics().density;
+    }
+
+    public static float dpToPx(Context context, float dp) {
+        if (context == null) {
+            return -1;
+        }
+        return dp * context.getResources().getDisplayMetrics().density;
+    }
+
+    public static int pxToDpInt(Context context, float px) {
+        return (int) (pxToDp(context, px) + 0.5f);
+    }
+
+    public static int dpToPxInt(Context context, float dp) {
+        return (int) (dpToPx(context, dp) + 0.5f);
+    }
+
+    /**
+     * @return float
+     * @说 明: Pixels of conversion
+     * @参 数: @param unit
+     * @参 数: @param value
+     * @参 数: @param metrics
+     */
+    public static float applyDimension(int unit, float value,
+                                       DisplayMetrics metrics) {
+        switch (unit) {
+            case COMPLEX_UNIT_PX:
+                return value;
+            case COMPLEX_UNIT_DIP:
+                return value * metrics.density + 0.5f;
+            case COMPLEX_UNIT_SP:
+                return value * metrics.scaledDensity;
+            case COMPLEX_UNIT_PT:
+                return value * metrics.xdpi * (1.0f / 72);
+            case COMPLEX_UNIT_IN:
+                return value * metrics.xdpi;
+            case COMPLEX_UNIT_MM:
+                return value * metrics.xdpi * (1.0f / 25.4f);
+        }
+        return 0;
+    }
 }

@@ -7,20 +7,17 @@ import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.gechen.keepwalking.R;
-import com.kw_support.pulltorefresh.PullToRefreshBase;
-import com.kw_support.pulltorefresh.PullToRefreshListView;
-import com.kw_support.pulltorefresh.extras.SoundPullEventListener;
+import com.kw_support.thirdlib.pulltorefresh.PullToRefreshBase;
+import com.kw_support.thirdlib.pulltorefresh.PullToRefreshListView;
+import com.kw_support.thirdlib.pulltorefresh.extras.SoundPullEventListener;
 import com.kw_support.utils.UiUtil;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
 
+@Deprecated
 public class PullToRefreshListViewActivity extends ActionBarActivity {
     private PullToRefreshListView mPtrListView;
     private LinkedList<String> mDatas;

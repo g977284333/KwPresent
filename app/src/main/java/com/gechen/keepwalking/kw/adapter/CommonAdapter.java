@@ -1,6 +1,8 @@
 package com.gechen.keepwalking.kw.adapter;
 
 import android.content.Context;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.gechen.keepwalking.R;
 import com.kw_support.base.KwBaseAdapter;

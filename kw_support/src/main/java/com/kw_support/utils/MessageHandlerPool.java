@@ -13,6 +13,7 @@ import android.os.Message;
  * @类说明:	消息池
  * @创建时间：2014-11-15 下午10:55:10
  */
+@Deprecated
 public class MessageHandlerPool {
     private static MessageHandlerPool mHandlerList = null;
 

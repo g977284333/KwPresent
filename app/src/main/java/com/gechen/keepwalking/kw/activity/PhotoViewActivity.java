@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 
 import com.gechen.keepwalking.R;
 import com.kw_support.base.BaseActivity;
-import com.kw_support.photoview.PhotoView;
-import com.kw_support.photoview.HackyViewPager;
+import com.kw_support.thirdlib.photoview.PhotoView;
+import com.kw_support.thirdlib.photoview.HackyViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,7 @@ import java.util.List;
 /**
  * Created by gechen on 2015/5/26.
  */
+@Deprecated
 public class PhotoViewActivity extends BaseActivity {
     private ViewPager mViewPager;
     private List<PhotoView> mViews;

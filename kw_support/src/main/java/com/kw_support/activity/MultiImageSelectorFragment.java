@@ -15,8 +15,7 @@ import android.provider.MediaStore;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v7.internal.widget.ListPopupWindow;
-import android.util.Log;
+import android.support.v7.widget.ListPopupWindow;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,15 +27,16 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.kw_support.R;
 import com.kw_support.adapter.FolderAdapter;
 import com.kw_support.adapter.ImageGridAdapter;
 import com.kw_support.base.BaseFragment;
-import com.kw_support.bean.Folder;
-import com.kw_support.bean.Image;
+import com.kw_support.model.Folder;
+import com.kw_support.model.Image;
 import com.kw_support.utils.FileUtil;
 import com.kw_support.utils.TimeUtil;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -314,11 +314,11 @@ public class MultiImageSelectorFragment extends BaseFragment {
     private AbsListView.OnScrollListener mOnScrollListener = new AbsListView.OnScrollListener() {
         @Override
         public void onScrollStateChanged(AbsListView view, int scrollState) {
-            final Picasso picasso = Picasso.with(getActivity());
+            final RequestManager glide = Glide.with(getActivity());
             if (scrollState == SCROLL_STATE_IDLE || scrollState == SCROLL_STATE_TOUCH_SCROLL) {
-                picasso.resumeTag(getActivity());
+                glide.resumeRequests();
             } else {
-                picasso.pauseTag(getActivity());
+                glide.pauseRequests();
             }
 
             if (scrollState == SCROLL_STATE_IDLE) {

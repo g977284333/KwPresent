@@ -11,6 +11,7 @@ import android.view.WindowManager;
 
 /**
  * Created by G-chen on 2015-5-20.
+ * 带有一点像素的Service
  */
 public class ViewService extends Service {
     private WindowManager mWindowManager;

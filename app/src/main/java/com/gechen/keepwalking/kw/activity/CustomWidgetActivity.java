@@ -9,7 +9,7 @@ import com.kw_support.base.BaseActivity;
 import com.kw_support.utils.AppUtil;
 import com.kw_support.utils.SystemFunUtil;
 import com.kw_support.utils.UiUtil;
-
+@Deprecated
 public class CustomWidgetActivity extends BaseActivity {
 
     @Override

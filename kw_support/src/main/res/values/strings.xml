@@ -15,4 +15,18 @@
     <string name="msg_no_camera">No system camera found</string>
     <string name="msg_amount_limit">Select images amount is limit</string>
 
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+
+    <!-- zxing -->
+    <string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+    <string name="button_ok">OK</string>
+    <string name="dimension_content">将二维码/条形码放入框中，即可自动扫描</string>
+    <string name="capture_activity">CaptureActivity</string>
+
+    <string name="data_empty">亲~暂时没有数据呦!</string>
+
+    <string name="pull_to_refresh_loading">优鲜正在奔跑...</string>
+    <string name="pull_to_refresh_ready">别拉了，放开我</string>
+    <string name="pull_to_refresh_release">下拉刷新</string>
 </resources>

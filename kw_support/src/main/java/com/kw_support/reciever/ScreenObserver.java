@@ -8,7 +8,7 @@ import android.os.PowerManager;
 
 /**
  * @author gechen
- * @discription: ScreenObserver
+ * 监控屏幕开关
  */
 public class ScreenObserver {
     private Context mContext;

@@ -10,6 +10,7 @@ import com.kw_support.view.SegmentBar;
 /**
  * Created by gechen on 2015/5/27.
  */
+@Deprecated
 public class SegmentBarActivity extends BaseActivity implements SegmentBar.OnTabSelectionChanged{
     private SegmentBar mSegmentBar;
     private TextView mTextView;

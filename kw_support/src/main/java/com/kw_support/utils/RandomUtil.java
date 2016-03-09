@@ -4,37 +4,6 @@ import android.text.TextUtils;
 
 import java.util.Random;
 
-/**
- * Random Utils
- * <ul>
- * Shuffling algorithm
- * <li>{@link #shuffle(Object[])} Shuffling algorithm, Randomly permutes the specified array using a default source of
- * randomness</li>
- * <li>{@link #shuffle(Object[], int)} Shuffling algorithm, Randomly permutes the specified array</li>
- * <li>{@link #shuffle(int[])} Shuffling algorithm, Randomly permutes the specified int array using a default source of
- * randomness</li>
- * <li>{@link #shuffle(int[], int)} Shuffling algorithm, Randomly permutes the specified int array</li>
- * </ul>
- * <ul>
- * get random int
- * <li>{@link #getRandom(int)} get random int between 0 and max</li>
- * <li>{@link #getRandom(int, int)} get random int between min and max</li>
- * </ul>
- * <ul>
- * get random numbers or letters
- * <li>{@link #getRandomCapitalLetters(int)} get a fixed-length random string, its a mixture of uppercase letters</li>
- * <li>{@link #getRandomLetters(int)} get a fixed-length random string, its a mixture of uppercase and lowercase letters
- * </li>
- * <li>{@link #getRandomLowerCaseLetters(int)} get a fixed-length random string, its a mixture of lowercase letters</li>
- * <li>{@link #getRandomNumbers(int)} get a fixed-length random string, its a mixture of numbers</li>
- * <li>{@link #getRandomNumbersAndLetters(int)} get a fixed-length random string, its a mixture of uppercase, lowercase
- * letters and numbers</li>
- * <li>{@link #getRandom(String, int)} get a fixed-length random string, its a mixture of chars in source</li>
- * <li>{@link #getRandom(char[], int)} get a fixed-length random string, its a mixture of chars in sourceChar</li>
- * </ul>
- *
- * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2012-5-12
- */
 public class RandomUtil {
 
     public static final String NUMBERS_AND_LETTERS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";

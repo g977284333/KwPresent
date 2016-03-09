@@ -1,18 +1,15 @@
 package com.kw_support.utils;
 
+import android.util.Log;
+
+import com.kw_support.constants.LibConfig;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.RandomAccessFile;
 import java.io.StringWriter;
-import java.sql.Time;
-import java.util.Calendar;
-
-import android.text.TextUtils;
-import android.util.Log;
-
-import com.kw_support.constants.GlobalConfig;
 
 
 /**
@@ -21,7 +18,7 @@ import com.kw_support.constants.GlobalConfig;
  * @date：2014-11-14 16:30:19
  */
 public class Logger {
-    private static final String FILE_PATH = SdCardUtil.getAbsolutePath(GlobalConfig.LOG_PATH);
+    private static final String FILE_PATH = SdCardUtil.getAbsolutePath(LibConfig.PATH_LOG);
 
     public static final String LOG_COLOR_BLUE = "#0000ff";// 蓝色
     public static final String LOG_COLOR_RED = "#ff0000";// 红色
@@ -29,25 +26,25 @@ public class Logger {
     public static final String LOG_COLOR_MEGENTA = "#ff00ff";// 紫红色
 
     public static void d(String tag, String msg) {
-        if (GlobalConfig.DEV_MODE) {
+        if (LibConfig.DEV_MODE) {
             Log.d(tag, msg);
         }
     }
 
     public static void e(String tag, String msg) {
-        if (GlobalConfig.DEV_MODE) {
+        if (LibConfig.DEV_MODE) {
             Log.e(tag, msg);
         }
     }
 
     public static void i(String tag, String msg) {
-        if (GlobalConfig.DEV_MODE) {
+        if (LibConfig.DEV_MODE) {
             Log.i(tag, msg);
         }
     }
 
     public static void w(String tag, String msg) {
-        if (GlobalConfig.DEV_MODE) {
+        if (LibConfig.DEV_MODE) {
             Log.w(tag, msg);
         }
     }
@@ -72,7 +69,7 @@ public class Logger {
         e(tag, msg);
 
         try {
-            if (GlobalConfig.DEV_MODE) {
+            if (LibConfig.DEV_MODE) {
                 StringBuilder builder = new StringBuilder();
                 String head = "";
                 String fileName = getFileName();

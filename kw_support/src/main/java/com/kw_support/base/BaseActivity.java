@@ -24,7 +24,6 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     protected void onStart() {
         super.onStart();
         Logger.i(TAG, "className<< " + TAG + " --- started");
-
     }
 
     @Override
